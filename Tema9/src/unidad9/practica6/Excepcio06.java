@@ -1,7 +1,7 @@
 package unidad9.practica6;
 
 import java.io.IOException;
-//prueba git
+
 public class Excepcio06 {
 
 	public static void main(String[] args) {
