@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;ejercicio2.Agenda.contactosOrd&apos; in &apos;ejercicio2.Agenda&apos;&#x0A;- Original project: &apos;examen67&apos;&#x0A;- Original element: &apos;ejercicio2.Agenda.contactosOrd&apos;&#x0A;- Getter method name: &apos;getContactosOrd&apos;&#x0A;- Setter method name: &apos;setContactosOrd&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;contactosOrd&apos;" flags="589830" getter="getContactosOrd" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;ejercicio2{Agenda.java[Agenda^contactosOrd" insertion="7" setter="setContactosOrd" stamp="1516967649159" version="1.0" visibility="1"/>
+</session>

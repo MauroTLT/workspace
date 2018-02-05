@@ -1,0 +1,18 @@
+package unidad9.practica3;
+
+public class Excepcio03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Iniciem el programa i anem a executar met01");
+		met01();
+	}
+
+	public static void met02() {
+		String t[] = {"Hola", "Adéu", "Fins demà"};
+		for(int i = 0; i <= t.length; i++){
+			System.out.println("Posició " + i + " : " + t[i]);
+		}
+		System.out.println("El met02 s'ha acabat.");
+	}
+}

@@ -1,0 +1,2 @@
+System.out.println("¿Cuantos adornos quieres?");
+		adornos = entradaTeclado.nextInt();
