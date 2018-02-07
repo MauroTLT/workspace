@@ -12,7 +12,7 @@ public class Excepcio06 {
 		} catch(ArrayIndexOutOfBoundsException e) {
 			System.out.println("Esto con ArrayList no pasaba");
 		} catch(IOException e) {
-			System.out.println("Esto con ArrayList no pasaba");
+			System.out.println("Y la has liado");
 		}
 		System.out.println("Tornem a estar en el main després de finalitzar met01");
 	}
