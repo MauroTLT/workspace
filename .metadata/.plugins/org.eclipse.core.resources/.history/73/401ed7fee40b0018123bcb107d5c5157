@@ -34,7 +34,6 @@ public class CentroDocente {
 				System.out.println("Persona no encontrada");
 			}
 		}
-
 		/*for(Persona i : personas) {
 			if(i.getDni().equals(dni)) {
 				personas.remove(i);
