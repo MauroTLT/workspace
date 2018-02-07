@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <syncparticipants>
-<participant displayName="Git (ampliacion, a..., Tema5, Tema6)" id="org.eclipse.egit.ui.modelCompareParticipant" secondary_id="1517829718538">
+<participant displayName="Git (Tema9)" id="org.eclipse.egit.ui.modelCompareParticipant" secondary_id="1517994681460">
 <data forceFetch="false" root="false">
-<org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS org.eclipse.team.ui.MODEL_PARTICIPANT_DESCRIPTION="ampliacion, a..., Tema5, Tema6" startupAction="none">
+<org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS org.eclipse.team.ui.MODEL_PARTICIPANT_DESCRIPTION="Tema9" startupAction="none">
 <org.eclipse.team.ui.MODEL_PARTICIPANT_REFRESH_SCHEDULE org.eclipse.team.ui.CTX_REFRESHSCHEDULE_ENABLED="false" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_INTERVAL="3600" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_RUNONCE="false"/>
 <org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS modelProviderId="org.eclipse.core.resources.modelProvider">
 <mappings>
-<resources resourcePath="/ampliacion" resourceType="4"/>
-<resources resourcePath="/ampliacionT6-7" resourceType="4"/>
-<resources resourcePath="/examen12" resourceType="4"/>
-<resources resourcePath="/examen45" resourceType="4"/>
-<resources resourcePath="/ED" resourceType="4"/>
-<resources resourcePath="/examen67" resourceType="4"/>
-<resources resourcePath="/Tema3" resourceType="4"/>
-<resources resourcePath="/Tema5" resourceType="4"/>
-<resources resourcePath="/ampliacionT5" resourceType="4"/>
-<resources resourcePath="/proyecto" resourceType="4"/>
-<resources resourcePath="/examen3" resourceType="4"/>
-<resources resourcePath="/Tema4" resourceType="4"/>
-<resources resourcePath="/Tema6" resourceType="4"/>
-<resources resourcePath="/ampliacionT4" resourceType="4"/>
-<resources resourcePath="/ampliacionT8" resourceType="4"/>
-<resources resourcePath="/FireEmblem" resourceType="4"/>
-<resources resourcePath="/pruebas" resourceType="4"/>
+<resources resourcePath="/Tema9" resourceType="4"/>
 </mappings>
 </org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS>
 </org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS>
+<gitSynchronizeData container="/home/mati/workspace/examen45" dstRev="refs/remotes/origin/master" inludeLocal="true" srcRev="HEAD"/>
 </data>
 </participant>
 </syncparticipants>
