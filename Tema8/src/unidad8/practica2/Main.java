@@ -1,5 +1,6 @@
 package unidad8.practica2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -34,17 +35,22 @@ public class Main {
 			case "2": 	
 				System.out.println("¿Matricula?");
 				matricula = entradaTeclado.next();
-				if(garaje.buscaCoche(matricula) != null) {
+				Coche coche = garaje.buscaCoche(matricula);
+				if(coche != null) {
 					garaje.buscaCoche(matricula).visualizar();
 					System.out.println("¿Palabra Clave?");
 					palabraClave = entradaTeclado.next();
-					garaje.buscaCoche(matricula).buscaReparaciones(palabraClave);
+					ArrayList<Reparacion> reparaciones = coche.buscaReparaciones(palabraClave);
+					for(Reparacion i : reparaciones){
+						i.visualizar();
+					}
 				}
 				break;
 			case "3":
 				System.out.println("¿Matricula?");
 				matricula = entradaTeclado.next(); entradaTeclado.nextLine();
-				if(garaje.buscaCoche(matricula) != null) {
+				Coche coche2 = garaje.buscaCoche(matricula);
+				if(coche2 != null) {
 					System.out.println("¿Descripcion?");
 					descripcion = entradaTeclado.nextLine();
 					System.out.println("¿Kms?");
@@ -53,15 +59,16 @@ public class Main {
 						entradaTeclado.next();
 					}
 					kms = entradaTeclado.nextInt();
-					garaje.buscaCoche(matricula).añadeReparacion(new Reparacion(descripcion, kms));
+					coche2.añadeReparacion(new Reparacion(descripcion, kms));
 				}
 				break;
 			case "4": 	
 				System.out.println("¿Matricula?");
 				matricula = entradaTeclado.next();
-				if(garaje.buscaCoche(matricula) != null) {
-					if(garaje.buscaCoche(matricula).ultimaReparacion() != null) {
-						garaje.buscaCoche(matricula).ultimaReparacion().visualizar();
+				Coche coche3 = garaje.buscaCoche(matricula);
+				if(coche3 != null) {
+					if(coche3.ultimaReparacion() != null) {
+						coche3.ultimaReparacion().visualizar();
 					}
 				}
 				break;

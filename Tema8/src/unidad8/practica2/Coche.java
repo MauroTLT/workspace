@@ -29,21 +29,22 @@ public class Coche {
 		}
 	}
 	
-	public void buscaReparaciones(String descripcion) {
+	public ArrayList <Reparacion> buscaReparaciones(String descripcion) {
+		ArrayList <Reparacion> reparaciones = new ArrayList<Reparacion>();
 		boolean semaforo = false;
-		for(int i = 0; i < lista.size(); i++){
-			if(lista.get(i).getDescripcion().contains(descripcion)){
-				lista.get(i).visualizar();
+		if(lista.size() == 0) {
+			System.out.println("No hay reparaciones");
+			return reparaciones;
+		}
+		for(Reparacion i : lista){
+			if(i.getDescripcion().contains(descripcion)){
+				reparaciones.add(i);
 				semaforo = true;
-			} else if(i == lista.size() - 1 && !semaforo){
+			} else if(lista.indexOf(i) == lista.size() - 1 && !semaforo) {
 				System.out.println("No existen reparaciones de ese tipo");
 			}
 		}
-		if(lista.size() == 0) {
-			System.out.println("No hay reparaciones");
-			semaforo = true;
-		}
-		
+		return reparaciones;
 	}
 	
 	public Reparacion ultimaReparacion(){
