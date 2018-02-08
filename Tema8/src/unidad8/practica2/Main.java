@@ -10,7 +10,6 @@ public class Main {
 		Scanner entradaTeclado = new Scanner(System.in);
 		Main programa = new Main();
 		programa.inici(entradaTeclado);
-		
 	}
 
 	public void inici(Scanner entradaTeclado) {

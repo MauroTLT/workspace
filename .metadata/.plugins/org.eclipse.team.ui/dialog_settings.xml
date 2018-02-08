@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="SynchronizeViewSettings">
-		<item value="1517829718538" key="lastactiveparticipant_sec_id"/>
+		<item value="1517994681460" key="lastactiveparticipant_sec_id"/>
 		<item value="org.eclipse.egit.ui.modelCompareParticipant" key="lastactiveparticipant_id"/>
 		<item value="false" key="linkWithEditor"/>
 		<section name="org.eclipse.egit.ui.modelCompareParticipant.1517828261250">
@@ -9,6 +9,8 @@
 		<section name="org.eclipse.egit.ui.modelCompareParticipant.1517826389802">
 		</section>
 		<section name="org.eclipse.egit.ui.modelCompareParticipant.1517829718538">
+		</section>
+		<section name="org.eclipse.egit.ui.modelCompareParticipant.1517994681460">
 		</section>
 	</section>
 </section>
