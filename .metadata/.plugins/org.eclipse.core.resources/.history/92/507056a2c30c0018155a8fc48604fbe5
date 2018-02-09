@@ -1,0 +1,14 @@
+package unidad8.practica5;
+
+@SuppressWarnings("serial")
+public class Excepciones extends Exception{
+	
+	public void vacio(){
+		toString("Lista vacia");
+	}
+
+	public String toString(String error){
+		return "Error del tipo: " + error;
+	}
+
+}

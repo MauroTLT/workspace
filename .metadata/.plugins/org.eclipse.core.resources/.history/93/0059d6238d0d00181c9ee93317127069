@@ -1,0 +1,14 @@
+package unidad8.practica5;
+
+public class ExcepcionesKms {
+	private String mensaje;
+	private int kmsAntes;
+	
+	public ExcepcionesKms(int x){
+		this.kmsAntes = x;
+	}
+	public String toString(int kmsAntes) {
+		mensaje = "Kilometraje menor a " + kmsAntes;
+		return "Error del tipo: " + mensaje;
+	}
+}

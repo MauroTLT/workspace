@@ -1,0 +1,19 @@
+package unidad8.practica5;
+
+@SuppressWarnings("serial")
+public class Excepciones extends Exception{
+	private int valor;
+	
+	public void vacio(){
+		toString("Lista vacia");
+	}
+	
+	public void noEncontrado(){
+		toString("Dato no encontrado");
+	}
+
+	public String toString(String error){
+		return "Error del tipo: " + error;
+	}
+
+}

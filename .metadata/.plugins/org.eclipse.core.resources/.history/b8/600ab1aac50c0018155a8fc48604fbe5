@@ -1,0 +1,11 @@
+package unidad8.practica5;
+
+@SuppressWarnings("serial")
+public class Excepciones extends Exception{
+	private Integer valor;
+	
+	public String toString(int valor){
+		return "Error del tipo: " + valor.toString();
+	}
+
+}

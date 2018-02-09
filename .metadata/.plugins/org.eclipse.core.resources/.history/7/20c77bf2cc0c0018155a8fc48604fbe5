@@ -1,0 +1,39 @@
+package unidad8.practica5;
+
+@SuppressWarnings("serial")
+public class Excepciones extends Exception {
+	private int valor;
+	private int kmsAntes;
+	
+	public Excepciones(int x){
+		this.valor = x;
+	}
+	
+	public Excepciones(int x, int kmsAntes){
+		this.valor = x;
+		this.kmsAntes = kmsAntes;
+	}
+	
+	public String toString() {
+		String mensaje = "";
+		switch(valor){
+		case 1:
+			mensaje = "Matricula repetida";
+			break;
+		case 2:
+			mensaje = "Matricula no encontrada";
+			break;
+		case 3:
+			mensaje = "Lista vacia";
+			break;
+		case 4:
+			mensaje = "No existen reparaciones de ese tipo";
+			break;
+		case 5:
+			mensaje = "Kilometraje menor a " + this.kmsAntes;
+			break;
+		}
+		return "Error del tipo: " + mensaje;
+	}
+
+}
