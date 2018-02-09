@@ -11,12 +11,13 @@ public class CentroDocente {
 	
 	public void darAlta(Persona persona) {
 		boolean semaforo = false;
-		for(Persona i : personas) {
-			if(i.getDni().equals(persona.getDni())) {
+		for(int i = 0; i < personas.size() && !semaforo; i++) { //NO usar FOR EACH, provoca errores al comprobar dni ya que lo comprueba con él mismo
+			if(personas.get(i).getDni().equals(persona.getDni())) {
 				System.out.println("Persona ya en la lista (DNI's identicos)");
 				semaforo = true;
-			} else if(personas.indexOf(i) == (personas.size() - 1) && !semaforo) {
+			} else if(i == personas.size() - 1 && !semaforo) {
 				this.personas.add(persona);
+				semaforo = true;
 			}
 		}
 		if(personas.isEmpty()) {
@@ -26,7 +27,7 @@ public class CentroDocente {
 	
 	public void darBaja(String dni) {
 		boolean semaforo = false;
-		for(int i = 0; i < personas.size() && !semaforo; i++) {
+		for(int i = 0; i < personas.size() && !semaforo; i++) {//NO usar FOR EACH, provoca errores al eliminar personas
 			if(personas.get(i).getDni().equals(dni)) {
 				personas.remove(personas.get(i));
 				semaforo = true;

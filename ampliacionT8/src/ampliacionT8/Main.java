@@ -10,9 +10,6 @@ public class Main {
 		Scanner entradaTeclado = new Scanner(System.in);
 		Main programa = new Main();
 		programa.inici(entradaTeclado);
-		//Persona p1 = new Profesor("Mauro", "Pérez", "2168", "Soltero", 1999, 1000, "Informatica");
-		//Persona p2 = new PersonalServicio("Bat", "Man", "2177", "Casado", 2004, 1000, "Secretaria");
-		//Persona p3 = new Estudiante("Topo", "Oscuro", "2188", "Ciego", "Mate");
 	}
 	
 	public void inici(Scanner entradaTeclado) {
@@ -20,7 +17,7 @@ public class Main {
 	}
 
 	public void menu(Scanner entradaTeclado) {
-		String nombre, apellido, dni, estado, aux = "";
+		String nombre, apellido, dni, estado, aux, elec = "";
 		int anios = 0;
 		double salario = 0.0;
 		System.out.println("\nDar de Alta(1)  |  Dar de Baja(2)  |  Imprimir Listado(3)  |  Imprimir Nominas(4)  |  Finalizar Programa(5)");
@@ -28,16 +25,17 @@ public class Main {
 			case "1":
 				System.out.println("¿Que clase de persona?");
 				System.out.println("Profesor(1)  |  Persona de Servicio(2)  |  Estudiante(3)");
-				switch(entradaTeclado.next()) {
+				elec = entradaTeclado.next();
+				System.out.println("¿Nombre?");
+				nombre = entradaTeclado.next(); entradaTeclado.nextLine();
+				System.out.println("¿Apellidos?");
+				apellido = entradaTeclado.nextLine();
+				System.out.println("¿DNI?");
+				dni = entradaTeclado.next();
+				System.out.println("¿Estado Civil?");
+				estado = entradaTeclado.next();
+				switch(elec) {
 					case "1":
-						System.out.println("¿Nombre?");
-						nombre = entradaTeclado.next(); entradaTeclado.nextLine();
-						System.out.println("¿Apellidos?");
-						apellido = entradaTeclado.nextLine();
-						System.out.println("¿DNI?");
-						dni = entradaTeclado.next();
-						System.out.println("¿Estado Civil?");
-						estado = entradaTeclado.next();
 						System.out.println("¿Año de incorporación?");
 						while (!entradaTeclado.hasNextInt()) {
 							System.out.println("Formato Incorrecto, prueba otra vez");
@@ -56,14 +54,6 @@ public class Main {
 						batoi.darAlta(profesor);
 						break;
 					case "2":
-						System.out.println("¿Nombre?");
-						nombre = entradaTeclado.next(); entradaTeclado.nextLine();
-						System.out.println("¿Apellidos?");
-						apellido = entradaTeclado.nextLine();
-						System.out.println("¿DNI?");
-						dni = entradaTeclado.next();
-						System.out.println("¿Estado Civil?");
-						estado = entradaTeclado.next();
 						System.out.println("¿Año de incorporación?");
 						while (!entradaTeclado.hasNextInt()){
 							System.out.println("Formato Incorrecto, prueba otra vez");
@@ -82,19 +72,11 @@ public class Main {
 						batoi.darAlta(servicio);
 						break;
 					case "3":
-						System.out.println("¿Nombre?");
-						nombre = entradaTeclado.next(); entradaTeclado.nextLine();
-						System.out.println("¿Apellidos?");
-						apellido = entradaTeclado.nextLine();
-						System.out.println("¿DNI?");
-						dni = entradaTeclado.next();
-						System.out.println("¿Estado Civil?");
-						estado = entradaTeclado.next();
 						System.out.println("¿Curso?");
 						aux = entradaTeclado.next();
 						Persona estudiante = new Estudiante(nombre, apellido, dni, estado, aux);
-						System.out.println("¿Añadir mas cursos?\nEscribir Si o No");
-						while(entradaTeclado.next().equals("Si")) {
+						System.out.println("¿Añadir mas cursos?\nEscribir Si, cuaquier otra cosa para No");
+						while(entradaTeclado.next().equalsIgnoreCase("Si")) {
 							System.out.println("Nombre del curso");
 							aux = entradaTeclado.next();
 							((Estudiante) estudiante).matricular(aux);
@@ -109,17 +91,17 @@ public class Main {
 			case "2":
 				System.out.println("¿El DNI de la persona?");
 				dni = entradaTeclado.next();
-				if(batoi.getPersonas().size() == 0) {
+				if(batoi.getPersonas().isEmpty()) {
 					System.out.println("No hay miembros activos");
 				} else {batoi.darBaja(dni);}
 				break;
 			case "3":
-				if(batoi.getPersonas().size() == 0) {
+				if(batoi.getPersonas().isEmpty()) {
 					System.out.println("No hay miembros activos");
 				} else {batoi.visualizar();}
 				break;
 			case "4":
-				if(batoi.getPersonas().size() == 0) {
+				if(batoi.getPersonas().isEmpty()) {
 					System.out.println("No hay miembros activos");
 				} else {batoi.visualizarSalario();}
 				break;

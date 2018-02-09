@@ -9,7 +9,7 @@ public class PersonalServicio extends Empleado{
 	}
 	
 	public void salario() {
-		if(this.estadoCivil.equals("Casado")) {
+		if(this.estadoCivil.equalsIgnoreCase("Casado") || this.estadoCivil.equalsIgnoreCase("Casada")) {
 			this.salario += (salario * 0.05);
 		}
 	}
