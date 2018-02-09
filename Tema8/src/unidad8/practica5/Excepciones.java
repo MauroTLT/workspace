@@ -26,14 +26,4 @@ public class Excepciones extends Exception {
 		}
 		return "Error del tipo: " + mensaje;
 	}
-	
-	public String toString(int kmsAntes) {
-		switch(valor){
-		case 1:
-			mensaje = "Kilometraje menor a " + kmsAntes;
-			break;
-		}
-		return "Error del tipo: " + mensaje;
-	}
-
 }

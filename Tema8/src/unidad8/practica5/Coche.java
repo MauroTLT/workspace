@@ -18,13 +18,13 @@ public class Coche {
 		for(int i = 0; i < lista.size() && !semaforo; i++) {
 			try{
 				if((lista.get(i).getKms() > reparacion.getKms())) {
-					throw new Excepciones(1);
+					throw new ExcepcionesKms(lista.get(i).getKms());
 				} else if(i == lista.size() - 1 && !semaforo) {
 					lista.add(reparacion);
 					semaforo = true;
 				}
-			} catch(Excepciones e) {
-				System.out.println(e.toString(lista.get(i).getKms()));
+			} catch(ExcepcionesKms e) {
+				System.out.println(e.toString());
 			}
 			
 		}
