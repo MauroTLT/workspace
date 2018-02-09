@@ -12,14 +12,4 @@ public class ExcepcionesKms extends Exception {
 		mensaje = "Kilometraje menor a " + kmsAntes;
 		return "Error del tipo: " + mensaje;
 	}
-	
-	public void setMensaje(String mensaje) {
-		this.mensaje = mensaje;
-	}
-	public int getKmsAntes() {
-		return kmsAntes;
-	}
-	public void setKmsAntes(int kmsAntes) {
-		this.kmsAntes = kmsAntes;
-	}
 }
