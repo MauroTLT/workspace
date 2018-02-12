@@ -1,0 +1,14 @@
+package pruebas;
+
+import java.util.ArrayList;
+
+public class copiaArrays {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> lista1 = new ArrayList<String>();
+		lista1.add("hola");
+		ArrayList<String> lista2 = new ArrayList<String>();
+	}
+
+}
