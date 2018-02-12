@@ -1,0 +1,25 @@
+package ejemplo;
+
+import javax.swing.*;
+
+public class Main extends JFrame {
+	
+	public static void main(String[] args) {
+		new Main();
+		new Main("Hola Jose");
+	}
+	
+	public Main() {
+		setTitle("Hola!!!");
+		//setSize(600, 400);
+		setVisible(true);
+		setResizable(false);
+		setState(1000);
+	}
+	
+	public Main(String mensaje) {
+		setTitle(mensaje);
+		setSize(600, 400);
+		setVisible(true);
+	}
+}

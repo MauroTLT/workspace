@@ -1,0 +1,32 @@
+package unidad10.practica1;
+
+import
+javax.swing.*;
+public
+class
+EjemploJFrame 
+extends
+JFrame {
+//el constuctor 
+public
+EjemploJFrame(){
+   setTitle(
+"Hola!!!"
+);
+//Pone un título a la ventana 
+   setSize(300,200);
+//método heredado que le da un tamaño a la ventana
+   setVisible(
+true
+);
+}
+public
+static
+void
+main(String[] 
+args
+) { 
+new
+EjemploJFrame();
+}
+}

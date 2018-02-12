@@ -1,0 +1,18 @@
+package unidad10.practica1;
+
+import javax.swing.*;
+
+public class Main extends JFrame {
+	// el constuctor
+	public Main() {
+		setTitle("Hola!!!");
+		// Pone un título a la ventana
+		setSize(600, 400);
+		// método heredado que le da un tamaño a la ventana
+		setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		new Main();
+	}
+}
