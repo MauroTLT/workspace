@@ -23,6 +23,10 @@ public class CentroDocente {
 		if(personas.isEmpty()) {
 			this.personas.add(persona);
 		}
+		
+		if(personas.size() >= 3) {
+			ordenarInv();
+		}
 	}
 	
 	public void darBaja(String dni) {
@@ -63,6 +67,29 @@ public class CentroDocente {
 				cont++;
 			} else if(personas.indexOf(i) == (personas.size() - 1) && !semaforo) {
 				System.out.println("No hay personas con salario que mostrar");
+			}
+		}
+	}
+	
+	public void ordenar() {
+		for(int i = 1; i < personas.size(); i++){
+			for(int j = 0;j < personas.size()-i;j++) {
+				if(personas.get(j).getNombre().compareToIgnoreCase(personas.get(j + 1).getNombre()) > 0) {  // 0 4 2 5
+					personas.add(j, personas.get(j + 1));													// 0 2 4 2 5
+					personas.remove(personas.lastIndexOf(personas.get(j)));									// 0 2 4 5
+					//personas.remove(personas.indexOf(personas.get(j + 2)));
+				}
+			}
+		}
+	}	
+	public void ordenarInv() {
+		for(int i = 1; i < personas.size(); i++){
+			for(int j = 0;j < personas.size()-i;j++) {
+				if(personas.get(j).getNombre().compareToIgnoreCase(personas.get(j + 1).getNombre()) < 0) {  // 0 4 2 5
+					personas.add(j, personas.get(j + 1));													// 0 2 4 2 5
+					personas.remove(personas.lastIndexOf(personas.get(j)));									// 0 2 4 5
+					//personas.remove(personas.indexOf(personas.get(j + 2)));
+				}
 			}
 		}
 	}

@@ -12,13 +12,19 @@ public class copiaArrays {
 		lista1.add("patata");
 		lista1.add("alcachofa");
 		System.out.println(lista1.toString());
-		ArrayList<String> lista2 = (ArrayList<String>) lista1.clone();
+		ArrayList<String> lista2 = new ArrayList<String>();
+		lista2.addAll(lista1);
 		lista2.add("1");
 		lista2.add("2");
 		lista2.add("3");
 		lista2.add("4");
 		System.out.println(lista2.toString());
-		lista1.remove("hola");
+		//lista1.remove("hola");
+		System.out.println(lista1.toString());
+		System.out.println(lista2.toString());
+		
+		lista1.add(1, lista1.get(1 + 1));
+		lista1.remove(lista1.lastIndexOf(lista1.get(1)));
 		System.out.println(lista1.toString());
 		System.out.println(lista2.toString());
 	}
