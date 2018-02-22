@@ -16,8 +16,6 @@ public class VentanaBase extends JFrame {
 				System.exit(0);
 			}
 		});
-
-		/* codigo JButton */
 	}
 
 	public static void main(String[] args) {

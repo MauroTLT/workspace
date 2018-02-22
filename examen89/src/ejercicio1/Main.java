@@ -23,11 +23,11 @@ public class Main {
 			while(!entradaTeclado.hasNextInt()) {
 				throw new ManejadorExcepcion(2);
 			}
+			denominador = entradaTeclado.nextInt();
 			try {
-				if(entradaTeclado.nextInt() == 0){
+				if(denominador == 0){
 					throw new ManejadorExcepcion(1);
 				}
-				denominador = entradaTeclado.nextInt();
 			} catch (ManejadorExcepcion e) {
 				System.out.println(e.toString());
 			}
@@ -37,7 +37,7 @@ public class Main {
 		} finally {
 			entradaTeclado.close();
 		}
-	}
+	} 
 
 	public static void met1(int numerador, int denominador) {
 		try {

@@ -24,7 +24,7 @@ public class Elipse extends Forma{
 
 	@Override
 	public double calcularAreaFigura() {
-		return (Math.PI * (this.radioMayor * this.radioMenor));
+		return (Math.PI * this.radioMayor * this.radioMenor);
 	}
 
 	@Override
