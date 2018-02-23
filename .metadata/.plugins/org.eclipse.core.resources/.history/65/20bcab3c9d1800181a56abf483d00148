@@ -1,0 +1,20 @@
+package prueba1;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Comprobador {
+	private JPanel panel;
+	private JButton boton;
+	private JTextField txt;
+	private JLabel texto;
+	
+	public Comprobador() {
+		this.texto = new JLabel("Numero");
+		this.txt = new JTextField(2);
+		this.boton = new JButton();
+	}
+	
+}

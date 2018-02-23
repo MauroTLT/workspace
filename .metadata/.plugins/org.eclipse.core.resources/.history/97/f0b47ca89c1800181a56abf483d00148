@@ -1,0 +1,10 @@
+package prueba1;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class Comprobador {
+	private final JPanel panel;
+	private final JButton boton;
+	
+}

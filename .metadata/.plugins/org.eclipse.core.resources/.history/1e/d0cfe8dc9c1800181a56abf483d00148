@@ -1,0 +1,12 @@
+package prueba1;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Comprobador {
+	private JPanel panel;
+	private JButton boton;
+	private JTextField txt;
+	
+}

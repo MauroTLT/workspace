@@ -1,0 +1,34 @@
+package prueba1;
+
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Comprobador {
+	private JPanel panel;
+	private JButton boton;
+	private JTextField txt;
+	private JLabel texto;
+	
+	public Comprobador() {
+		this.texto = new JLabel("Numero");
+		this.txt = new JTextField(2);
+		this.boton = new JButton("Comprobar");
+		this.panel = new JPanel();
+	}
+	
+	public void crear() {
+		this.txt.setFont(new Font("Courier", Font.PLAIN, 18));
+		this.panel.add(texto);
+		this.panel.add(txt);
+		this.panel.add(boton);
+	}
+	
+	public static void main(String[] args) {
+		new Comprobador().setVisible(true);
+	}
+	
+}
