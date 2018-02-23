@@ -1,5 +1,6 @@
 package prueba1;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
@@ -8,6 +9,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -43,16 +45,25 @@ public class Comprobador extends JFrame implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		double num = (int) Math.random() * 10 + 1;
+		String num = Integer.toString((int) (Math.random() * 10) + 1);
 		if(e.getSource() == boton) {
-			
+			if(txt.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "Escribe un numero para poder hacer la comprobación");
+			} else if(num.equals(txt.getText())) {
+				JOptionPane.showMessageDialog(null, "El " + num + " es Correcto, enhorabuena!");
+			} else {JOptionPane.showMessageDialog(null, "El " + txt.getText() + " es Incorrecto, era el " + num);}
 		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getSource() == boton) {
+			boton.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+		}
+		if(e.getSource() == txt) {
+			boton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+		}
 	}
 
 	@Override
@@ -70,7 +81,6 @@ public class Comprobador extends JFrame implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 }
