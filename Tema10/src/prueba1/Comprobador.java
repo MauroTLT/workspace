@@ -1,8 +1,11 @@
 package prueba1;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -14,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class Comprobador extends JFrame implements MouseListener{
+public class Comprobador extends JFrame implements MouseListener, KeyListener{
 	private JPanel panel;
 	private JButton boton;
 	private JTextField txt;
@@ -30,6 +33,8 @@ public class Comprobador extends JFrame implements MouseListener{
 	
 	public void crear() {
 		boton.addMouseListener(this);
+		panel.addMouseListener(this);
+		txt.addKeyListener(this);
 		this.txt.setFont(new Font("Courier", Font.PLAIN, 18));
 		this.panel.add(texto);
 		this.panel.add(txt);
@@ -45,6 +50,7 @@ public class Comprobador extends JFrame implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		random r = new random();
 		String num = Integer.toString((int) (Math.random() * 10) + 1);
 		if(e.getSource() == boton) {
 			if(txt.getText().equals("")) {
@@ -53,6 +59,9 @@ public class Comprobador extends JFrame implements MouseListener{
 				JOptionPane.showMessageDialog(null, "El " + num + " es Correcto, enhorabuena!");
 			} else {JOptionPane.showMessageDialog(null, "El " + txt.getText() + " es Incorrecto, era el " + num);}
 		}
+		if(e.getSource() == panel) {
+			panel.setBackground(new Color(r.aleatorioIntSeed(255), r.aleatorioIntSeed(255), r.aleatorioIntSeed(255)));
+		}
 	}
 
 	@Override
@@ -60,9 +69,6 @@ public class Comprobador extends JFrame implements MouseListener{
 		// TODO Auto-generated method stub
 		if(e.getSource() == boton) {
 			boton.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-		}
-		if(e.getSource() == txt) {
-			boton.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		}
 	}
 
@@ -81,6 +87,27 @@ public class Comprobador extends JFrame implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		char carac = e.getKeyChar();
+		if(((carac < '0') || (carac > '9')) && (carac != '\b')) {
+			e.consume();
+		}
 	}
 	
 }
