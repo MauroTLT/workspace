@@ -1,4 +1,4 @@
-package prueba1;
+package ejercicio1;
 
 import java.awt.Color;
 import java.awt.Cursor;
