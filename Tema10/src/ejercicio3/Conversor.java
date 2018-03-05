@@ -29,7 +29,7 @@ public class Conversor extends JFrame {
 		darFormato();
 	}
 	
-	public void darFormato() {
+	private void darFormato() {
 		this.euroDolar.addActionListener(eventListener);
 		this.dolarEuro.addActionListener(eventListener);
 		this.add(areaTxt, BorderLayout.NORTH);

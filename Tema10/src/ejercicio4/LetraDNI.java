@@ -17,14 +17,14 @@ public class LetraDNI extends JFrame {
 	private JLabel txt;
 	
 	public LetraDNI() {
-		eventListener = new EventListener(this);
+		this.eventListener = new EventListener(this);
 		this.areaTxt = new JTextField(10);
 		this.button = new JButton("Letra");
 		this.txt = new JLabel("Resultado", SwingConstants.CENTER);
 		darFormato();
 	}
 	
-	public void darFormato() {
+	private void darFormato() {
 		this.button.addActionListener(eventListener);
 		this.areaTxt.setPreferredSize(new Dimension(150, this.getHeight()));
 		this.add(areaTxt, BorderLayout.WEST);
