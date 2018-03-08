@@ -11,7 +11,6 @@ public class EventListener implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if(e.getSource() == this.ventana.getCuenta()) {
 			this.ventana.getTxt().setText("Estas en " + this.ventana.getCuenta().getText());
 		} else if(e.getSource() == this.ventana.getLista()) {

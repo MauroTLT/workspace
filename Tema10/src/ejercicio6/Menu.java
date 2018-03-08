@@ -50,8 +50,11 @@ public class Menu extends JFrame {
 		this.operar.add(vender);
 		this.cuenta.setPreferredSize(new Dimension(90, 20));
 		this.menu.add(cuenta);
+		this.operar.setPreferredSize(new Dimension(80, 20));
 		this.menu.add(operar);
+		this.lista.setPreferredSize(new Dimension(180, 20));
 		this.menu.add(lista);
+		this.salir.setPreferredSize(new Dimension(80, 20));
 		this.menu.add(salir);
 		this.add(menu, BorderLayout.NORTH);
 		this.add(panel, BorderLayout.CENTER);
@@ -131,7 +134,7 @@ public class Menu extends JFrame {
 
 	public static void main(String[] args) {
 		Menu frame = new Menu();
-		frame.setSize(510, 160);
+		frame.setSize(430, 160);
 		frame.setTitle("Menu");
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
