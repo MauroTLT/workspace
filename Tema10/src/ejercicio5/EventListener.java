@@ -32,8 +32,7 @@ public class EventListener implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Debe tener al menos un numero.");
 			} else if(!contieneMayuscula) {
 				JOptionPane.showMessageDialog(null, "Debe tener al menos una mayuscula.");
-			} else {JOptionPane.showMessageDialog(null, "Contraseña bien formada.");
-}
+			} else {JOptionPane.showMessageDialog(null, "Contraseña bien formada.");}
 		}
 	}
 

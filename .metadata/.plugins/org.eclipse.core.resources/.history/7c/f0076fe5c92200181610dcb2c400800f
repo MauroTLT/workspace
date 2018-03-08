@@ -1,0 +1,111 @@
+package ejercicio6;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+
+@SuppressWarnings("serial")
+public class Menu extends JFrame {
+	private JPanel panel;
+	private MouseAdapter mouseListener;
+	private JMenuBar menu;
+	private JMenu cuenta;
+	private JMenu operar;
+	private JMenu lista;
+	private JMenu salir;
+	private JMenuItem comprar;
+	private JMenuItem vender;
+	
+	public Menu() {
+		this.mouseListener = new MouseAdapter(this);
+		this.menu = new JMenuBar();
+		this.cuenta = new JMenu("Mi Cuenta");
+		this.operar = new JMenu("Operar");
+		this.lista = new JMenu("Listado Movimientos");
+		this.salir = new JMenu("Salir");
+		this.comprar = new JMenuItem("Comprar");
+		this.vender = new JMenuItem("Vender");
+		darFormato();
+	}
+
+	private void darFormato() {
+		this.operar.addMouseListener(mouseListener);
+		this.operar.add(comprar);
+		this.operar.add(vender);
+		this.menu.add(cuenta);
+		this.menu.add(operar);
+		this.menu.add(lista);
+		this.menu.add(salir);
+		this.add(menu, BorderLayout.NORTH);
+	}
+	
+	public JMenuBar getMenu() {
+		return menu;
+	}
+
+	public void setMenu(JMenuBar menu) {
+		this.menu = menu;
+	}
+
+	public JMenu getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(JMenu cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public JMenu getOperar() {
+		return operar;
+	}
+
+	public void setOperar(JMenu operar) {
+		this.operar = operar;
+	}
+
+	public JMenu getLista() {
+		return lista;
+	}
+
+	public void setLista(JMenu lista) {
+		this.lista = lista;
+	}
+
+	public JMenu getSalir() {
+		return salir;
+	}
+
+	public void setSalir(JMenu salir) {
+		this.salir = salir;
+	}
+
+	public JMenuItem getComprar() {
+		return comprar;
+	}
+
+	public void setComprar(JMenuItem comprar) {
+		this.comprar = comprar;
+	}
+
+	public JMenuItem getVender() {
+		return vender;
+	}
+
+	public void setVender(JMenuItem vender) {
+		this.vender = vender;
+	}
+	
+	public static void main(String[] args) {
+		Menu frame = new Menu();
+		frame.setSize(410, 160);
+		frame.setTitle("Menu");
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+	}
+
+}

@@ -1,0 +1,44 @@
+package ejercicio6;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class MouseAdapter implements MouseListener {
+	private Menu ventana;
+	
+	public MouseAdapter(Menu ventana){
+		this.ventana = ventana;
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		if(e.getSource() == this.ventana) {
+			
+		}
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

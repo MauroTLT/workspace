@@ -1,0 +1,58 @@
+package ejercicio6;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class MouseAdapter implements MouseListener {
+	private Menu ventana;
+	
+	public MouseAdapter(Menu ventana){
+		this.ventana = ventana;
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getSource() == this.ventana.getCuenta()) {
+			this.ventana.getTxt().setText("Estas en " + this.ventana.getCuenta().getText());
+		} else if(e.getSource() == this.ventana.getComprar()) {
+			this.ventana.getTxt().setText("Estas en " + this.ventana.getComprar().getText());
+		} else if(e.getSource() == this.ventana.getVender()) {
+			this.ventana.getTxt().setText("Estas en " + this.ventana.getVender().getText());
+		} else if(e.getSource() == this.ventana.getLista()) {
+			this.ventana.getTxt().setText("Estas en " + this.ventana.getLista().getText());
+		} else if(e.getSource() == this.ventana.getSalir()) {
+			this.ventana.getTxt().setText("Estas en " + this.ventana.getSalir().getText());
+		}
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		
+		if(e.getSource() == this.ventana.getOperar()) {
+			for(int i = 0; i < this.ventana.getOperar().getItemCount(); i++) {
+				this.ventana.getOperar().getItem(i).doClick();
+			}
+			
+		}
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

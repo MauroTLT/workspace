@@ -1,0 +1,47 @@
+package ejercicio6;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class Menu extends JFrame {
+	private JLabel cuenta, operar, lista, salir;
+	private JPanel cuentaC, operarC, listaC, salirC;
+	
+	public Menu() {
+		this.cuentaC = new JPanel();
+		this.operarC = new JPanel();
+		this.listaC = new JPanel();
+		this.salirC = new JPanel();
+		this.cuenta = new JLabel("Mi Cuenta");
+		this.operar = new JLabel("Operar");
+		this.lista = new JLabel("Listado Movimientos");
+		this.salir = new JLabel("Salir");
+		darFormato();
+	}
+	
+	private void darFormato() {
+		this.cuentaC.add(cuenta);
+		this.operarC.add(operar);
+		this.listaC.add(lista);
+		this.salirC.add(salir);
+		this.add(cuentaC, BorderLayout.NORTH);
+		this.add(operarC, BorderLayout.NORTH);
+		this.add(listaC, BorderLayout.NORTH);
+		this.add(salirC, BorderLayout.NORTH);
+	}
+	
+	public static void main(String[] args) {
+		Menu frame = new Menu();
+		frame.setSize(410, 160);
+		frame.setTitle("Menu");
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+	}
+
+}
