@@ -10,7 +10,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-
 @SuppressWarnings("serial")
 public class Menu extends JFrame {
 	private JPanel panel;

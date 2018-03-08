@@ -17,6 +17,8 @@ public class TestGridLayout extends JFrame {
 			}
 
 		}
+		JButton prueba = (JButton) container.getComponent(1);
+		System.out.println(prueba.getText());
 		frame.setSize(350, 250);
 		frame.setTitle("Prueba de BorderLayoutLayout");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
