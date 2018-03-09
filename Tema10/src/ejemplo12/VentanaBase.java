@@ -6,6 +6,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+@SuppressWarnings("serial")
 public class VentanaBase extends JFrame {
 	public VentanaBase() {
 		setTitle("Evento WindowClosing");
