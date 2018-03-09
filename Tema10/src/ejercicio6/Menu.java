@@ -1,6 +1,7 @@
 package ejercicio6;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -12,9 +13,8 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Menu extends JFrame {
-	private JPanel panel;
-	private JLabel txt;
-	private EventListener actionListener;
+	private JPanel panelC, panelL, panelS, panelCC, panelCV;
+	private JLabel txt, txt2, txt3, txt4, txt5;
 	private JMenuBar menu;
 	private JMenuItem cuenta;
 	private JMenu operar;
@@ -24,9 +24,16 @@ public class Menu extends JFrame {
 	private JMenuItem vender;
 	
 	public Menu() {
-		this.panel = new JPanel();
-		this.txt = new JLabel();
-		this.actionListener = new EventListener(this);
+		this.panelC = new JPanel();
+		this.panelL = new JPanel();
+		this.panelS = new JPanel();
+		this.panelCC = new JPanel();
+		this.panelCV = new JPanel();
+		this.txt = new JLabel("Estas en Salir");
+		this.txt2 = new JLabel("Estas en Cuenta");
+		this.txt3 = new JLabel("Estas en Lista Movimientos");
+		this.txt4 = new JLabel("Estas en Comprar");
+		this.txt5 = new JLabel("Estas en Vender");
 		this.menu = new JMenuBar();
 		this.cuenta = new JMenuItem("Mi Cuenta");
 		this.operar = new JMenu("Operar");
@@ -38,13 +45,11 @@ public class Menu extends JFrame {
 	}
 
 	private void darFormato() {
-		this.panel.add(txt);
-		this.operar.addActionListener(actionListener);
-		this.lista.addActionListener(actionListener);
-		this.cuenta.addActionListener(actionListener);
-		this.salir.addActionListener(actionListener);
-		this.comprar.addActionListener(actionListener);
-		this.vender.addActionListener(actionListener);
+		this.panelC.add(txt2);
+		this.panelL.add(txt3);
+		this.panelS.add(txt);
+		this.panelCC.add(txt4);
+		this.panelCV.add(txt5);
 		this.operar.add(comprar);
 		this.operar.add(vender);
 		this.cuenta.setPreferredSize(new Dimension(90, 20));
@@ -56,7 +61,16 @@ public class Menu extends JFrame {
 		this.salir.setPreferredSize(new Dimension(80, 20));
 		this.menu.add(salir);
 		this.add(menu, BorderLayout.NORTH);
-		this.add(panel, BorderLayout.CENTER);
+		this.panelC.setBackground(Color.YELLOW);
+		this.panelL.setBackground(Color.CYAN);
+		this.panelS.setBackground(Color.RED);
+		this.panelCC.setBackground(Color.GREEN);
+		this.panelCV.setBackground(Color.ORANGE);
+		this.setSize(430, 160);
+		this.setTitle("Menu");
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		this.setJMenuBar(menu);
 	}
 	
 	public JMenuBar getMenu() {
@@ -114,13 +128,29 @@ public class Menu extends JFrame {
 	public void setVender(JMenuItem vender) {
 		this.vender = vender;
 	}
-	
-	public JPanel getPanel() {
-		return panel;
+
+	public JPanel getPanelC() {
+		return panelC;
 	}
 
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
+	public void setPanelC(JPanel panelC) {
+		this.panelC = panelC;
+	}
+
+	public JPanel getPanelL() {
+		return panelL;
+	}
+
+	public void setPanelL(JPanel panelL) {
+		this.panelL = panelL;
+	}
+
+	public JPanel getPanelS() {
+		return panelS;
+	}
+
+	public void setPanelS(JPanel panelS) {
+		this.panelS = panelS;
 	}
 
 	public JLabel getTxt() {
@@ -131,12 +161,57 @@ public class Menu extends JFrame {
 		this.txt = txt;
 	}
 
+	public JLabel getTxt2() {
+		return txt2;
+	}
+
+	public void setTxt2(JLabel txt2) {
+		this.txt2 = txt2;
+	}
+
+	public JLabel getTxt3() {
+		return txt3;
+	}
+
+	public void setTxt3(JLabel txt3) {
+		this.txt3 = txt3;
+	}
+
+	public JPanel getPanelCC() {
+		return panelCC;
+	}
+
+	public void setPanelCC(JPanel panelCC) {
+		this.panelCC = panelCC;
+	}
+
+	public JPanel getPanelCV() {
+		return panelCV;
+	}
+
+	public void setPanelCV(JPanel panelCV) {
+		this.panelCV = panelCV;
+	}
+
+	public JLabel getTxt4() {
+		return txt4;
+	}
+
+	public void setTxt4(JLabel txt4) {
+		this.txt4 = txt4;
+	}
+
+	public JLabel getTxt5() {
+		return txt5;
+	}
+
+	public void setTxt5(JLabel txt5) {
+		this.txt5 = txt5;
+	}
+
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
-		Menu frame = new Menu();
-		frame.setSize(430, 160);
-		frame.setTitle("Menu");
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		EventListener frame = new EventListener();
 	}
 
 }

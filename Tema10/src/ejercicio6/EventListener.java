@@ -6,24 +6,34 @@ import java.awt.event.ActionListener;
 public class EventListener implements ActionListener {
 	private Menu ventana;
 	
-	public EventListener(Menu ventana) {
-		this.ventana = ventana;
+	public EventListener() {
+		this.ventana = new Menu();
+		setActions();
+	}
+	
+	private void setActions() {
+		this.ventana.getOperar().addActionListener(this);
+		this.ventana.getLista().addActionListener(this);
+		this.ventana.getCuenta().addActionListener(this);
+		this.ventana.getSalir().addActionListener(this);
+		this.ventana.getComprar().addActionListener(this);
+		this.ventana.getVender().addActionListener(this);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		if(e.getSource() == this.ventana.getCuenta()) {
-			this.ventana.getTxt().setText("Estas en " + this.ventana.getCuenta().getText());
+			this.ventana.setContentPane(this.ventana.getPanelC());
 		} else if(e.getSource() == this.ventana.getLista()) {
-			this.ventana.getTxt().setText("Estas en " + this.ventana.getLista().getText());
+			this.ventana.setContentPane(this.ventana.getPanelL());
 		} else if(e.getSource() == this.ventana.getSalir()) {
-			this.ventana.getTxt().setText("Estas en " + this.ventana.getSalir().getText());
-		} else if(e.getSource() == this.ventana.getOperar()) {
-			this.ventana.getTxt().setText("Estas en " + this.ventana.getOperar().getText());
+			this.ventana.setContentPane(this.ventana.getPanelS());
 		} else if(e.getSource() == this.ventana.getComprar()) {
-			this.ventana.getTxt().setText("Estas en " + this.ventana.getComprar().getText());
+			this.ventana.setContentPane(this.ventana.getPanelCC());
 		} else if(e.getSource() == this.ventana.getVender()) {
-			this.ventana.getTxt().setText("Estas en " + this.ventana.getVender().getText());
+			this.ventana.setContentPane(this.ventana.getPanelCV());
 		}
+		this.ventana.revalidate();
 	}
 
 }
