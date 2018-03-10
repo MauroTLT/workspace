@@ -5,7 +5,6 @@ import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class TestBoxLayout extends JFrame {
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		String[] opciones = { "Arriba", "Abajo", "Derecha", "Izquierda", "Todas las direcciones" };
 		//JComboBox<Object> cb = new JComboBox<Object>(opciones);

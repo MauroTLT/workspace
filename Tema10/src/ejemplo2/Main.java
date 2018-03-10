@@ -2,6 +2,7 @@ package ejemplo2;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class Main extends JFrame {
 	// el constuctor
 	public Main() {
