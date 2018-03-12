@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -15,12 +16,14 @@ public class RayaView extends JFrame {
 	private JLabel[][] tablero;
 	private Container mapa;
 	private JLabel titulo;
+	private JButton reset;
 	private GridLayout grid;
 	
 	public RayaView() {
 		this.tablero = new JLabel[3][3];
 		this.mapa = new Container();
 		this.titulo = new JLabel("Turno del Jugador 1");
+		this.reset = new JButton("Nueva Partida");
 		this.grid = new GridLayout(3, 3);
 		darFormato();
 	}
@@ -31,6 +34,7 @@ public class RayaView extends JFrame {
 		this.titulo.setFont(new Font("Tahoma", 0, 24));
 		this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		this.titulo.setBounds(100, 10, 300, 50);
+		this.reset.setBounds(150, 465, 200, 100);
 		this.mapa.setLayout(grid);
 		for (int i = 0; i < this.grid.getRows(); i++) {
 			for (int j = 0; j < this.grid.getColumns(); j++) {
@@ -42,8 +46,9 @@ public class RayaView extends JFrame {
 		}
 		this.mapa.setBounds(75, 100, 350, 350);
 		this.add(titulo);
+		this.add(reset);
 		this.add(mapa);
-		this.setSize(500, 500);
+		this.setSize(500, 600);
 		this.setLocationRelativeTo(null);
 		this.setTitle("Fire Emblem");
 		this.setVisible(true);
@@ -80,5 +85,13 @@ public class RayaView extends JFrame {
 
 	public void setGrid(GridLayout grid) {
 		this.grid = grid;
+	}
+
+	public JButton getReset() {
+		return reset;
+	}
+
+	public void setReset(JButton reset) {
+		this.reset = reset;
 	}
 }
