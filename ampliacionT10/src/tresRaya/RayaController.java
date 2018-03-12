@@ -31,13 +31,13 @@ public class RayaController implements MouseListener {
 		if(this.turno % 2 == 0) {
 			if(label.getIcon() == null) {
 				label.setIcon(x);
-				this.ventana.getTitulo().setText("Turno de Jugador 1");
+				this.ventana.getTitulo().setText("Turno de Jugador 2");
 				this.turno++;
 			}
 		} else {
 			if(label.getIcon() == null) {
 				label.setIcon(o);
-				this.ventana.getTitulo().setText("Turno de Jugador 2");
+				this.ventana.getTitulo().setText("Turno de Jugador 1");
 				this.turno++;
 			}
 		}
