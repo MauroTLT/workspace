@@ -25,7 +25,6 @@ public class Ajedrez extends JFrame {
 			for (int j = 1; j <= this.grid.getColumns(); j++) {
 				this.label = new JLabel();
 				this.label.setName(i + "" + j);
-				//this.label.setPreferredSize(new Dimension(65, 65));
 				if((i + j) % 2 != 0) {
 					this.label.setBackground(Color.BLACK);
 				} else {

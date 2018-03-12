@@ -1,0 +1,14 @@
+package tresRaya;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RayaController implements ActionListener {
+	private RayaView raya;
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

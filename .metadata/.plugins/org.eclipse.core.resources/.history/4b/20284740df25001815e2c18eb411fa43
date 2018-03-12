@@ -1,0 +1,9 @@
+package ejercicio8;
+
+public class TablaController {
+	private Tabla ventana;
+	
+	public TablaController() {
+		this.ventana = new Tabla();
+	}
+}

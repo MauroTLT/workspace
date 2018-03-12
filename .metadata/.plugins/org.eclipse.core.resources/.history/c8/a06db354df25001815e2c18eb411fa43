@@ -1,0 +1,50 @@
+package ejercicio8;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class TablaController implements MouseListener {
+	private Tabla ventana;
+	
+	public TablaController() {
+		this.setVentana(new Tabla());
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Tabla getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(Tabla ventana) {
+		this.ventana = ventana;
+	}
+}

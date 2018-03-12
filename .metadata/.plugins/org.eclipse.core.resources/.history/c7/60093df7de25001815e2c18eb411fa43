@@ -1,0 +1,52 @@
+package tresRaya;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class RayaView extends JFrame {
+	private JLabel[][] tablero;
+	private Container mapa;
+	private JLabel titulo;
+	private GridLayout grid;
+	
+	public RayaView() {
+		this.tablero = new JLabel[3][3];
+		this.mapa = new Container();
+		this.titulo = new JLabel("Turno del Jugador 1");
+		this.grid = new GridLayout(3, 3);
+		darFormato();
+	}
+
+	private void darFormato() {
+		this.setLayout(null);
+		this.titulo.setBorder(BorderFactory.createLoweredBevelBorder());
+		this.titulo.setFont(new Font("Tahoma", 0, 24));
+		this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		this.titulo.setBounds(100, 10, 300, 50);
+		this.mapa.setLayout(grid);
+		for (int i = 0; i < this.grid.getRows(); i++) {
+			for (int j = 0; j < this.grid.getColumns(); j++) {
+				this.tablero[i][j].setOpaque(true);
+				this.tablero[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				this.mapa.add(this.tablero[i][j]);
+			}
+		}
+		this.mapa.setBounds(50, 150, 400, 500);
+		this.add(titulo);
+		this.add(mapa);
+		this.setSize(500, 700);
+		this.setLocationRelativeTo(null);
+		this.setTitle("Fire Emblem");
+		this.setVisible(true);
+		
+	}
+}

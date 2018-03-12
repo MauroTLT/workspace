@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;ejercicio8.TablaController.ventana&apos; in &apos;ejercicio8.TablaController&apos;&#x0A;- Original project: &apos;Tema10&apos;&#x0A;- Original element: &apos;ejercicio8.TablaController.ventana&apos;&#x0A;- Getter method name: &apos;getVentana&apos;&#x0A;- Setter method name: &apos;setVentana&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;ventana&apos;" flags="589830" getter="getVentana" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;ejercicio8{TablaController.java[TablaController^ventana" insertion="5" setter="setVentana" stamp="1520850156822" version="1.0" visibility="1"/>
+</session>

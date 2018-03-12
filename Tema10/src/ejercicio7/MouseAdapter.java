@@ -22,7 +22,6 @@ public class MouseAdapter implements MouseListener {
 		for (int i = 0; i < this.ventana.getArray().size() - 1; i++) {
 			this.ventana.getArray().get(i).addMouseListener(this);
 		}
-		
 	}
 
 	@Override

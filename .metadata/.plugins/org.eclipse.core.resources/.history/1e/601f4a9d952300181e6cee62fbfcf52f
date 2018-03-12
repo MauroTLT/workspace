@@ -1,0 +1,48 @@
+package ejercicio6;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class EventListener implements ActionListener {
+	private Menu ventana;
+	
+	public EventListener() {
+		this.ventana = new Menu();
+	}
+	
+	public void setActions() {
+		this.ventana.getOperar().addActionListener(this);
+		this.ventana.getLista().addActionListener(this);
+		this.ventana.getCuenta().addActionListener(this);
+		this.ventana.getSalir().addActionListener(this);
+		this.comprar.addActionListener(actionListener);
+		this.vender.addActionListener(actionListener);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		this.ventana.remove(this.ventana.getPanelC());
+		this.ventana.remove(this.ventana.getPanelCC());
+		this.ventana.remove(this.ventana.getPanelCV());
+		this.ventana.remove(this.ventana.getPanelL());
+		this.ventana.remove(this.ventana.getPanelS());
+		
+		if(e.getSource() == this.ventana.getCuenta()) {
+			this.ventana.add(this.ventana.getPanelC(), BorderLayout.CENTER);
+			this.ventana.getTxt2().setText("Estas en " + this.ventana.getCuenta().getText());
+		} else if(e.getSource() == this.ventana.getLista()) {
+			this.ventana.add(this.ventana.getPanelL(), BorderLayout.CENTER);
+			this.ventana.getTxt3().setText("Estas en " + this.ventana.getLista().getText());
+		} else if(e.getSource() == this.ventana.getSalir()) {
+			this.ventana.add(this.ventana.getPanelS(), BorderLayout.CENTER);
+			this.ventana.getTxt().setText("Estas en " + this.ventana.getSalir().getText());
+		} else if(e.getSource() == this.ventana.getComprar()) {
+			this.ventana.add(this.ventana.getPanelCC(), BorderLayout.CENTER);
+			this.ventana.getTxt4().setText("Estas en " + this.ventana.getComprar().getText());
+		} else if(e.getSource() == this.ventana.getVender()) {
+			this.ventana.add(this.ventana.getPanelCV(), BorderLayout.CENTER);
+			this.ventana.getTxt5().setText("Estas en " + this.ventana.getVender().getText());
+		}
+	}
+
+}
