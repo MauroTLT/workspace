@@ -50,7 +50,7 @@ public class RayaView extends JFrame {
 		this.add(mapa);
 		this.setSize(500, 600);
 		this.setLocationRelativeTo(null);
-		this.setTitle("Fire Emblem");
+		this.setTitle("Tres en Raya");
 		this.setVisible(true);
 		
 	}
