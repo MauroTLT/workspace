@@ -790,35 +790,430 @@ public class RayaController implements MouseListener {
 						this.ventana.getTablero()[2][2].setIcon(o);
 						this.eleccion[1][1] = 2;
 						this.eleccion[1][2] = 2;
-					} else if(this.array[2][1] == "x") {
+					}
+				} else if(this.array[2][1] == "x") {
+					this.array[2][2] = "o";
+					this.ventana.getTablero()[2][2].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[2][2] == "x") {
+					this.array[2][1] = "o";
+					this.ventana.getTablero()[2][1].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 1;
+				}
+			} else if(fila == 0 && columna == 2) {
+				if(this.array[0][0] == "x") {
+					this.array[1][0] = "o";
+					this.ventana.getTablero()[1][0].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[0][1] == "x") {
+					aux = rng.aleatorioIntSeed(3);
+					if(aux == 1) {
 						this.array[2][2] = "o";
 						this.ventana.getTablero()[2][2].setIcon(o);
 						this.eleccion[1][1] = 2;
 						this.eleccion[1][2] = 2;
-					} else if(this.array[2][2] == "x") {
+					} else if(aux == 2) {
+						this.array[2][1] = "o";
+						this.ventana.getTablero()[2][1].setIcon(o);
+						this.eleccion[1][1] = 2;
+						this.eleccion[1][2] = 1;
+					} else if(aux == 3) {
+						this.array[1][1] = "o";
+						this.ventana.getTablero()[1][1].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 1;
+					}
+				} else if(this.array[1][0] == "x") {
+					this.array[0][0] = "o";
+					this.ventana.getTablero()[0][0].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[1][1] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[2][2] = "o";
+						this.ventana.getTablero()[2][2].setIcon(o);
+						this.eleccion[1][1] = 2;
+						this.eleccion[1][2] = 2;
+					} else if(aux == 2) {
+						this.array[0][0] = "o";
+						this.ventana.getTablero()[0][0].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 0;
+					}
+				} else if(this.array[1][2] == "x") {
+					aux = rng.aleatorioIntSeed(3);
+					if(aux == 1) {
+						this.array[0][0] = "o";
+						this.ventana.getTablero()[0][0].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 0;
+					} else if(aux == 2) {
+						this.array[1][0] = "o";
+						this.ventana.getTablero()[1][0].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 0;
+					} else if(aux == 3) {
+						this.array[1][1] = "o";
+						this.ventana.getTablero()[1][1].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 1;
+					}
+				} else if(this.array[2][1] == "x") {
+					this.array[2][2] = "o";
+					this.ventana.getTablero()[2][2].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[2][2] == "x") {
+					this.array[2][1] = "o";
+					this.ventana.getTablero()[2][1].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 1;
+				}
+			} else if(fila == 2 && columna == 2) {
+				if(this.array[0][0] == "x") {
+					this.array[1][0] = "o";
+					this.ventana.getTablero()[1][0].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[0][1] == "x") {
+					this.array[0][2] = "o";
+					this.ventana.getTablero()[0][2].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[0][2] == "x") {
+					this.array[1][1] = "o";
+					this.ventana.getTablero()[1][1].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 1;
+				} else if(this.array[1][0] == "x") {
+					this.array[0][0] = "o";
+					this.ventana.getTablero()[0][0].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[1][1] == "x") {
+					this.array[0][2] = "o";
+					this.ventana.getTablero()[0][2].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[1][2] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[1][0] = "o";
+						this.ventana.getTablero()[1][0].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 0;
+					} else if(aux == 2) {
+						this.array[1][1] = "o";
+						this.ventana.getTablero()[1][1].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 1;
+					}
+				} else if(this.array[2][1] == "x") {
+					this.array[1][2] = "o";
+					this.ventana.getTablero()[1][2].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 2;
+				}
+			} else if(fila == 1 && columna == 1) {
+				if(this.array[0][0] == "x") {
+					this.array[1][0] = "o";
+					this.ventana.getTablero()[1][0].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[0][1] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[0][0] = "o";
+						this.ventana.getTablero()[0][0].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 0;
+					} else if(aux == 2) {
+						this.array[0][2] = "o";
+						this.ventana.getTablero()[0][2].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 2;
+					}
+				} else if(this.array[0][2] == "x") {
+					aux = rng.aleatorioIntSeed(4);
+					if(aux == 1) {
+						this.array[0][1] = "o";
+						this.ventana.getTablero()[0][1].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 1;
+					} else if(aux == 2) {
+						this.array[1][0] = "o";
+						this.ventana.getTablero()[1][0].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 0;
+					} else if(aux == 3) {
+						this.array[1][2] = "o";
+						this.ventana.getTablero()[1][2].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 2;
+					} else if(aux == 4) {
 						this.array[2][1] = "o";
 						this.ventana.getTablero()[2][1].setIcon(o);
 						this.eleccion[1][1] = 2;
 						this.eleccion[1][2] = 1;
 					}
+				} else if(this.array[1][0] == "x") {
+					this.array[0][0] = "o";
+					this.ventana.getTablero()[0][0].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[1][2] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[2][1] = "o";
+						this.ventana.getTablero()[2][1].setIcon(o);
+						this.eleccion[1][1] = 2;
+						this.eleccion[1][2] = 1;
+					} else if(aux == 2) {
+						this.array[0][2] = "o";
+						this.ventana.getTablero()[0][2].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 2;
+					}
+				} else if(this.array[2][1] == "x") {
+					this.array[2][2] = "o";
+					this.ventana.getTablero()[2][2].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[2][2] == "x") {
+					this.array[2][1] = "o";
+					this.ventana.getTablero()[2][1].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 1;
 				}
-			} else if(fila == 0 && columna == 2) {
-				
-			} else if(fila == 2 && columna == 2) {
-				
-			} else if(fila == 1 && columna == 1) {
-				
 			}
 			this.eleccion[1][0] = 3;						//Fin opcion 3 (esquina abajo izquierda)
 		} else if(opcion == 4) {							//Comienzo opcion 4 (esquina abajo derecha)
 			if(fila == 0 && columna == 0) {
-				
+				if(this.array[0][1] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[2][0] = "o";
+						this.ventana.getTablero()[2][0].setIcon(o);
+						this.eleccion[1][1] = 2;
+						this.eleccion[1][2] = 0;
+					} else if(aux == 2) {
+						this.array[1][1] = "o";
+						this.ventana.getTablero()[1][1].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 1;
+					}	
+				} else if(this.array[0][2] == "x") {
+					this.array[1][2] = "o";
+					this.ventana.getTablero()[1][2].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[1][0] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[0][2] = "o";
+						this.ventana.getTablero()[0][2].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 2;
+					} else if(aux == 2) {
+						this.array[1][1] = "o";
+						this.ventana.getTablero()[1][1].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 1;
+					}	
+				} else if(this.array[1][1] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[0][2] = "o";
+						this.ventana.getTablero()[0][2].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 2;
+					} else if(aux == 2) {
+						this.array[2][0] = "o";
+						this.ventana.getTablero()[2][0].setIcon(o);
+						this.eleccion[1][1] = 2;
+						this.eleccion[1][2] = 0;
+					}
+				} else if(this.array[1][2] == "x") {
+					this.array[0][2] = "o";
+					this.ventana.getTablero()[0][2].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[2][0] == "x") {
+					this.array[2][1] = "o";
+					this.ventana.getTablero()[2][1].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 1;
+				} else if(this.array[2][1] == "x") {
+					this.array[2][0] = "o";
+					this.ventana.getTablero()[2][0].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 0;
+				}
 			} else if(fila == 0 && columna == 2) {
-				
+				if(this.array[0][0] == "x") {
+					this.array[1][1] = "o";
+					this.ventana.getTablero()[1][1].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 1;
+				} else if(this.array[0][1] == "x") {
+					this.array[1][1] = "o";
+					this.ventana.getTablero()[1][1].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 1;
+				} else if(this.array[1][0] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[0][0] = "o";
+						this.ventana.getTablero()[0][0].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 0;
+					} else if(aux == 2) {
+						this.array[1][1] = "o";
+						this.ventana.getTablero()[1][1].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 1;
+					}
+				} else if(this.array[1][1] == "x") {
+					this.array[0][0] = "o";
+					this.ventana.getTablero()[0][0].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[1][2] == "x") {
+					this.array[0][1] = "o";
+					this.ventana.getTablero()[0][1].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 1;
+				} else if(this.array[2][0] == "x") {
+					this.array[2][1] = "o";
+					this.ventana.getTablero()[2][1].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 1;
+				} else if(this.array[2][1] == "x") {
+					this.array[2][0] = "o";
+					this.ventana.getTablero()[2][0].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 0;
+				}
 			} else if(fila == 2 && columna == 0) {
-				
+				if(this.array[0][0] == "x") {
+					this.array[1][1] = "o";
+					this.ventana.getTablero()[1][1].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 1;
+				} else if(this.array[0][1] == "x") {
+					this.array[0][0] = "o";
+					this.ventana.getTablero()[0][0].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[0][2] == "x") {
+					this.array[1][2] = "o";
+					this.ventana.getTablero()[1][2].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[1][0] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[1][2] = "o";
+						this.ventana.getTablero()[1][2].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 2;
+					} else if(aux == 2) {
+						this.array[1][1] = "o";
+						this.ventana.getTablero()[1][1].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 1;
+					}
+				} else if(this.array[1][1] == "x") {
+					this.array[0][0] = "o";
+					this.ventana.getTablero()[0][0].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 0;
+				} else if(this.array[1][2] == "x") {
+					this.array[0][2] = "o";
+					this.ventana.getTablero()[0][2].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[2][1] == "x") {
+					this.array[1][0] = "o";
+					this.ventana.getTablero()[1][0].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 0;
+				}
 			} else if(fila == 1 && columna == 1) {
-				
+				if(this.array[0][0] == "x") {
+					aux = rng.aleatorioIntSeed(4);
+					if(aux == 1) {
+						this.array[0][1] = "o";
+						this.ventana.getTablero()[0][1].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 1;
+					} else if(aux == 2) {
+						this.array[1][0] = "o";
+						this.ventana.getTablero()[1][0].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 0;
+					} else if(aux == 3) {
+						this.array[1][2] = "o";
+						this.ventana.getTablero()[1][2].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 2;
+					} else if(aux == 4) {
+						this.array[2][1] = "o";
+						this.ventana.getTablero()[2][1].setIcon(o);
+						this.eleccion[1][1] = 2;
+						this.eleccion[1][2] = 1;
+					}
+				} else if(this.array[0][1] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[0][2] = "o";
+						this.ventana.getTablero()[0][2].setIcon(o);
+						this.eleccion[1][1] = 0;
+						this.eleccion[1][2] = 2;
+					} else if(aux == 2) {
+						this.array[1][2] = "o";
+						this.ventana.getTablero()[1][2].setIcon(o);
+						this.eleccion[1][1] = 1;
+						this.eleccion[1][2] = 2;
+					}
+				} else if(this.array[0][2] == "x") {
+					this.array[1][2] = "o";
+					this.ventana.getTablero()[1][2].setIcon(o);
+					this.eleccion[1][1] = 1;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[1][0] == "x") {
+					aux = rng.aleatorioIntSeed(2);
+					if(aux == 1) {
+						this.array[2][1] = "o";
+						this.ventana.getTablero()[2][1].setIcon(o);
+						this.eleccion[1][1] = 2;
+						this.eleccion[1][2] = 1;
+					} else if(aux == 2) {
+						this.array[2][0] = "o";
+						this.ventana.getTablero()[2][0].setIcon(o);
+						this.eleccion[1][1] = 2;
+						this.eleccion[1][2] = 0;
+					}
+				} else if(this.array[1][2] == "x") {
+					this.array[0][2] = "o";
+					this.ventana.getTablero()[0][2].setIcon(o);
+					this.eleccion[1][1] = 0;
+					this.eleccion[1][2] = 2;
+				} else if(this.array[2][0] == "x") {
+					this.array[2][1] = "o";
+					this.ventana.getTablero()[2][1].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 1;
+				} else if(this.array[2][1] == "x") {
+					this.array[2][0] = "o";
+					this.ventana.getTablero()[2][0].setIcon(o);
+					this.eleccion[1][1] = 2;
+					this.eleccion[1][2] = 0;
+				}
 			}
 			this.eleccion[1][0] = 4;						//Fin opcion 4 (esquina abajo derecha)
 		} else if(opcion == 5) {
