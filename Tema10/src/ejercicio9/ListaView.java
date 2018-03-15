@@ -20,11 +20,10 @@ public class ListaView extends JFrame{
 	private JButton agregar, eliminar, borrar;
 	private JLabel titulo, mensaje;
 	private JTextField areaTxt;
-	private JList<Object> lista;
-	private DefaultListModel<Object> model;
+	private JList<String> lista;
 	private JScrollPane scroll;
-	
-	public ListaView() {
+
+	public ListaView(DefaultListModel<String> model) {
 		this.contenedor = new Container();
 		this.agregar = new JButton("Agregar");
 		this.eliminar = new JButton("Eliminar");
@@ -32,13 +31,12 @@ public class ListaView extends JFrame{
 		this.titulo = new JLabel("JList");
 		this.mensaje = new JLabel();
 		this.areaTxt = new JTextField();
-		this.lista = new JList<Object>();
-		this.model = new DefaultListModel<Object>();
+		this.lista = new JList<String>(model);
 		this.scroll = new JScrollPane();
-		darFormato();
+		darFormato(model);
 	}
 
-	private void darFormato() {
+	private void darFormato(DefaultListModel<String> model) {
 		this.setContentPane(contenedor);
 		this.contenedor.setLayout(null);
 		this.agregar.setBounds(190, 80, 140, 30);
@@ -53,10 +51,6 @@ public class ListaView extends JFrame{
 		this.lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.scroll.setBounds(20, 135, 310, 90);
 	    this.scroll.setViewportView(lista);
-	    this.lista.setModel(model);
-	    this.model.addElement("Cristian David");
-	    this.model.addElement("Ana Milena");
-	    this.model.addElement("Miguel Angel");
 		this.contenedor.add(titulo);
 		this.contenedor.add(areaTxt);
 		this.contenedor.add(agregar);
@@ -128,20 +122,12 @@ public class ListaView extends JFrame{
 		this.areaTxt = areaTxt;
 	}
 
-	public JList<Object> getLista() {
+	public JList<String> getLista() {
 		return lista;
 	}
 
-	public void setLista(JList<Object> lista) {
+	public void setLista(JList<String> lista) {
 		this.lista = lista;
-	}
-
-	public DefaultListModel<Object> getModel() {
-		return model;
-	}
-
-	public void setModel(DefaultListModel<Object> model) {
-		this.model = model;
 	}
 
 	public JScrollPane getScroll() {

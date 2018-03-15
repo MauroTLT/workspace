@@ -10,6 +10,7 @@ public class TablaController implements MouseListener {
 	private Tabla ventana;
 	
 	public TablaController() {
+		
 		this.ventana = new Tabla();
 		setActions();
 	}
