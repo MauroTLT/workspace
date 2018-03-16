@@ -1,0 +1,14 @@
+package ejercicio9;
+
+import javax.swing.DefaultListModel;
+
+@SuppressWarnings("serial")
+public class ListaModel {
+	
+	public ListaModel() {
+		this.addElement("Cristian David");
+	    this.addElement("Ana Milena");
+	    this.addElement("Miguel Angel");
+	}
+
+}

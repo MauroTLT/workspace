@@ -1,0 +1,19 @@
+package ejercicio9;
+
+import javax.swing.DefaultListModel;
+
+public class ListaModel {
+	private DefaultListModel<String> model;
+	
+	public ListaModel() {
+		this.model = new DefaultListModel<String>();
+		darFormato();
+	}
+
+	private void darFormato() {
+		this.model.addElement("hola");
+		this.model.addElement("hola");
+		this.model.addElement("hola");
+	}
+
+}

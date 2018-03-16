@@ -3,24 +3,22 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import model.BoardModel;
 import model.SquareModel;
 import view.RayaView;
 
 public class RayaController implements MouseListener {
 	private String[][] array;
 	private RayaView ventana;
+	private BoardModel mapa;
 	private int turno;
-	private ImageIcon x;
-	private ImageIcon o;
 	
 	public RayaController() {
-		this.x = new ImageIcon(getClass().getResource("../resources/X.png"));
-		this.o = new ImageIcon(getClass().getResource("../resources/O.png"));
 		this.array = new String[3][3];
-		this.ventana = new RayaView();
+		this.mapa = new BoardModel();
+		this.ventana = new RayaView(mapa);
 		setActions();
 	}
 	
@@ -43,15 +41,15 @@ public class RayaController implements MouseListener {
 				for (int j = 0; j < 3; j++) {
 					if(label == this.ventana.getMapa().getCasillas()[i][j]) {
 						if(this.turno % 2 == 0) {
-							if(label.getIcon() == null) {
-								label.setIcon(this.x);
+							if(!label.isLlena()) {
+								label.setIcon(this.mapa.getJugadores()[0].getPieza()[0].getImage());
 								this.array[i][j] = "x";
 								this.ventana.getTitulo().setText("Turno de Jugador 2");
 								this.turno++;
 							}
 						} else {
-							if(label.getIcon() == null) {
-								label.setIcon(this.o);
+							if(!label.isLlena()) {
+								label.setIcon(this.mapa.getJugadores()[1].getPieza()[0].getImage());
 								this.array[i][j] = "o";
 								this.ventana.getTitulo().setText("Turno de Jugador 1");
 								this.turno++;

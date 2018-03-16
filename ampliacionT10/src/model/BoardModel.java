@@ -1,9 +1,8 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
-
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class BoardModel extends Container{
@@ -22,11 +21,12 @@ public class BoardModel extends Container{
 		for (int i = 0; i < casillas.length; i++) {
 			for (int j = 0; j < casillas[i].length; j++) {
 				this.casillas[i][j] = new SquareModel();
+				this.casillas[i][j].setBackground(Color.WHITE);
 				this.add(this.casillas[i][j]);
 			}
 		}
-		this.jugadores[0] = new PlayerModel(new ImageIcon(getClass().getResource("../resources/X.png")));
-		this.jugadores[1] = new PlayerModel(new ImageIcon(getClass().getResource("../resources/O.png")));
+		this.jugadores[0] = new PlayerModel("x");
+		this.jugadores[1] = new PlayerModel("o");
 	}
 
 	public SquareModel[][] getCasillas() {

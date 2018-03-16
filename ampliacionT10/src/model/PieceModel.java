@@ -2,11 +2,11 @@ package model;
 
 import javax.swing.ImageIcon;
 
-public class PieceModel {
+public abstract class PieceModel {
 	private ImageIcon image;
 	
-	public PieceModel(ImageIcon image) {
-		this.image = image;
+	public PieceModel(String text) {
+		this.image = new ImageIcon(getClass().getResource(text));
 	}
 
 	public ImageIcon getImage() {

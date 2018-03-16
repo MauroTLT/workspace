@@ -1,0 +1,30 @@
+package ejercicio9;
+
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
+
+public class ListaModel {
+	private DefaultListModel<String> model;
+	
+	public ListaModel() {
+		this.model = new DefaultListModel<String>();
+		darFormato();
+	}
+
+	private void darFormato() {
+		this.model.addElement("hola");
+		this.model.addElement("hola");
+		this.model.addElement("hola");
+
+	}
+	
+	public ArrayList<String> getDatos() {
+		return datos;
+	}
+
+	public void setDatos(ArrayList<String> datos) {
+		this.datos = datos;
+	}
+
+}

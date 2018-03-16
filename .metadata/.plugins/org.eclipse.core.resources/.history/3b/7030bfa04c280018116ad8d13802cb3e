@@ -1,0 +1,11 @@
+package ejercicio9;
+
+
+@SuppressWarnings("serial")
+public class ListaModel {
+	
+	public ListaModel() {
+		
+	}
+
+}

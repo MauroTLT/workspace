@@ -16,8 +16,8 @@ public class RayaView extends JFrame {
 	private JLabel titulo;
 	private JButton reset;
 	
-	public RayaView() {
-		this.mapa = new BoardModel();
+	public RayaView(BoardModel mapa) {
+		this.mapa = mapa;
 		this.titulo = new JLabel("Turno del Jugador 1");
 		this.reset = new JButton("Nueva Partida");
 		darFormato();
@@ -37,6 +37,7 @@ public class RayaView extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setTitle("Tres en Raya");
 		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
 

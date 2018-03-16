@@ -1,27 +1,25 @@
 package model;
 
-import javax.swing.ImageIcon;
-
 public class PlayerModel {
-	private PieceModel[] piezas;
+	private PieceModel[] pieza;
 	
-	public PlayerModel(ImageIcon image) {
-		this.piezas = new PieceModel[5];
-		darFormato(image);
-	}
-
-	private void darFormato(ImageIcon image) {
-		for (int i = 0; i < piezas.length; i++) {
-			this.piezas[i] = new PieceModel(image);
+	public PlayerModel(String pieza) {
+		this.pieza = new PieceModel[5];
+		for (int i = 0; i < this.pieza.length; i++) {
+			if (pieza.equals("x")) {
+				this.pieza[i] = new XModel();
+			} else {
+				this.pieza[i] = new OModel();
+			} 
 		}
-		
 	}
 
-	public PieceModel[] getPiezas() {
-		return piezas;
+	public PieceModel[] getPieza() {
+		return pieza;
 	}
 
-	public void setPiezas(PieceModel[] piezas) {
-		this.piezas = piezas;
+	public void setPiezas(PieceModel[] pieza) {
+		this.pieza = pieza;
 	}
+
 }
