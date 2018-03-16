@@ -1,0 +1,11 @@
+package model;
+
+import javax.swing.ImageIcon;
+
+public abstract class PieceModel {
+	private ImageIcon image;
+	
+	public PieceModel(ImageIcon image) {
+		this.image = image;
+	}
+}

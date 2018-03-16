@@ -1,0 +1,19 @@
+package model;
+
+import javax.swing.ImageIcon;
+
+public class OModel extends PieceModel {
+	private ImageIcon o;
+	
+	public OModel() {
+		thiso = new ImageIcon(getClass().getResource("../resources/cruz.jpg"));
+	}
+
+	public ImageIcon getX() {
+		return o;
+	}
+
+	public void setX(ImageIcon o) {
+		this.o = o;
+	}
+}

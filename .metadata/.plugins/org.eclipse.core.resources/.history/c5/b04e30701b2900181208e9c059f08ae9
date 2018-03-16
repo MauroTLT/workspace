@@ -1,0 +1,11 @@
+package model;
+
+import javax.swing.ImageIcon;
+
+public class XModel extends PieceModel {
+	
+	public XModel() {
+		super("../resources/cruz.jpg");
+	}
+	
+}

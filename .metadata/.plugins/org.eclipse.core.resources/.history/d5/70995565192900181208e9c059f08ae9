@@ -1,0 +1,21 @@
+package model;
+
+import javax.swing.ImageIcon;
+
+public class PieceModel {
+	private ImageIcon image;
+	
+	public PieceModel(ImageIcon image) {
+		if(image == newImageIcon(getClass().getResource("../resources/cruz.jpg"))) {
+			
+		}
+	}
+
+	public ImageIcon getImage() {
+		return image;
+	}
+
+	public void setImage(ImageIcon image) {
+		this.image = image;
+	}
+}

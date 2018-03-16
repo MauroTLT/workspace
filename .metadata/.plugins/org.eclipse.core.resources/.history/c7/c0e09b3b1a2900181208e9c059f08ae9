@@ -1,0 +1,18 @@
+package model;
+
+public class PlayerModel {
+	private PieceModel piezas;
+	
+	public PlayerModel() {
+		this.piezas = new XModel();
+	}
+
+	public PieceModel getPiezas() {
+		return piezas;
+	}
+
+	public void setPiezas(PieceModel piezas) {
+		this.piezas = piezas;
+	}
+
+}

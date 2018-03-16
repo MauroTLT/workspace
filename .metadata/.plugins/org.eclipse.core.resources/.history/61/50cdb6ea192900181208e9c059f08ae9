@@ -1,0 +1,20 @@
+package model;
+
+import javax.swing.ImageIcon;
+
+public class PlayerModel {
+	private PieceModel piezas;
+	
+	public PlayerModel(ImageIcon image) {
+		this.piezas = new PieceModel(image);
+	}
+
+	public PieceModel getPiezas() {
+		return piezas;
+	}
+
+	public void setPiezas(PieceModel piezas) {
+		this.piezas = piezas;
+	}
+
+}

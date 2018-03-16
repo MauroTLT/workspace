@@ -42,6 +42,7 @@ public class RayaController implements MouseListener {
 					if(label == this.ventana.getMapa().getCasillas()[i][j]) {
 						if(this.turno % 2 == 0) {
 							if(!label.isLlena()) {
+								label.setLlena(true);
 								label.setIcon(this.mapa.getJugadores()[0].getPieza()[0].getImage());
 								this.array[i][j] = "x";
 								this.ventana.getTitulo().setText("Turno de Jugador 2");
@@ -49,6 +50,7 @@ public class RayaController implements MouseListener {
 							}
 						} else {
 							if(!label.isLlena()) {
+								label.setLlena(true);
 								label.setIcon(this.mapa.getJugadores()[1].getPieza()[0].getImage());
 								this.array[i][j] = "o";
 								this.ventana.getTitulo().setText("Turno de Jugador 1");

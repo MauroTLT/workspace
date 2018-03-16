@@ -1,0 +1,24 @@
+package model;
+
+public class PlayerModel {
+	private PieceModel[] pieza;
+	
+	public PlayerModel(String pieza) {
+		for (int i = 0; i < this.pieza.length; i++) {
+			if (pieza.equals("x")) {
+				this.pieza[i] = new XModel();
+			} else {
+				this.pieza[i] = new OModel();
+			} 
+		}
+	}
+
+	public PieceModel[] getPieza() {
+		return pieza;
+	}
+
+	public void setPiezas(PieceModel[] pieza) {
+		this.pieza = pieza;
+	}
+
+}

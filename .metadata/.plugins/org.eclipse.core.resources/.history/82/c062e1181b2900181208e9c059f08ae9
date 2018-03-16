@@ -1,0 +1,12 @@
+package model;
+
+import javax.swing.ImageIcon;
+
+public class OModel extends PieceModel {
+	
+	public OModel() {
+		ImageIcon image = new ImageIcon(getClass().getResource("../resources/circulo.jpg"));
+		super(image);
+	}
+
+}

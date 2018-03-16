@@ -1,3 +1,8 @@
 1520847580294	Encapsulate field 'ventana'
 1520851597035	Encapsulate field 'turno'
 1520852266860	Delete element
+1521204732759	Encapsulate field 'piezas'
+1521205214474	Encapsulate field 'x'
+1521205229947	Copy compilation unit
+1521205637909	Encapsulate field 'image'
+1521207072801	Encapsulate field 'llena'

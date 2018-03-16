@@ -1,0 +1,20 @@
+package model;
+
+public class PlayerModel {
+	private PieceModel pieza;
+	
+	public PlayerModel(String pieza) {
+		if(pieza.equals("x")) {
+			this.pieza = new XModel();
+		}
+	}
+
+	public PieceModel getPieza() {
+		return pieza;
+	}
+
+	public void setPiezas(PieceModel pieza) {
+		this.pieza = pieza;
+	}
+
+}
