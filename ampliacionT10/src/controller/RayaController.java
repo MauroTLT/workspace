@@ -59,14 +59,18 @@ public class RayaController implements MouseListener {
 						}
 						if(this.turno == 9) {
 							this.ventana.getTitulo().setText("Partida Finalizada");
+							JOptionPane.showMessageDialog(null, "Empate");
+							reiniciar();
 						}
 					}
 				}
 			}
 			if(comprobarX()) {
+				this.ventana.getTitulo().setText("Partida Finalizada");
 				JOptionPane.showMessageDialog(null, "Jugador 1 es el ganador");
 				reiniciar();
 			} else if(comprobarY()) {
+				this.ventana.getTitulo().setText("Partida Finalizada");
 				JOptionPane.showMessageDialog(null, "Jugador 2 es el ganador");
 				reiniciar();
 			}
@@ -80,6 +84,7 @@ public class RayaController implements MouseListener {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				this.ventana.getMapa().getCasillas()[i][j].setIcon(null);
+				this.ventana.getMapa().getCasillas()[i][j].setLlena(false);
 				this.array[i][j] = null;
 			}
 		}
@@ -87,20 +92,36 @@ public class RayaController implements MouseListener {
 	
 	private boolean comprobarX() {
 		if(this.array[0][0] == "x" && this.array[1][0] == "x" && this.array[2][0] == "x") {
+			this.ventana.getMapa().getJugadores()[0].setPuntos(this.ventana.getMapa().getJugadores()[0].getPuntos() + 1);
+			this.ventana.getCont1().setText(Integer.toString(this.ventana.getMapa().getJugadores()[0].getPuntos()));
 			return true;
 		} else if(this.array[0][1] == "x" && this.array[1][1] == "x" && this.array[2][1] == "x") {
+			this.ventana.getMapa().getJugadores()[0].setPuntos(this.ventana.getMapa().getJugadores()[0].getPuntos() + 1);
+			this.ventana.getCont1().setText(Integer.toString(this.ventana.getMapa().getJugadores()[0].getPuntos()));
 			return true;
 		} else if(this.array[0][2] == "x" && this.array[1][2] == "x" && this.array[2][2] == "x") {
+			this.ventana.getMapa().getJugadores()[0].setPuntos(this.ventana.getMapa().getJugadores()[0].getPuntos() + 1);
+			this.ventana.getCont1().setText(Integer.toString(this.ventana.getMapa().getJugadores()[0].getPuntos()));
 			return true;
 		} else if(this.array[0][0] == "x" && this.array[0][1] == "x" && this.array[0][2] == "x") {
+			this.ventana.getMapa().getJugadores()[0].setPuntos(this.ventana.getMapa().getJugadores()[0].getPuntos() + 1);
+			this.ventana.getCont1().setText(Integer.toString(this.ventana.getMapa().getJugadores()[0].getPuntos()));
 			return true;
 		} else if(this.array[1][0] == "x" && this.array[1][1] == "x" && this.array[1][2] == "x") {
+			this.ventana.getMapa().getJugadores()[0].setPuntos(this.ventana.getMapa().getJugadores()[0].getPuntos() + 1);
+			this.ventana.getCont1().setText(Integer.toString(this.ventana.getMapa().getJugadores()[0].getPuntos()));
 			return true;
 		} else if(this.array[2][0] == "x" && this.array[2][1] == "x" && this.array[2][2] == "x") {
+			this.ventana.getMapa().getJugadores()[0].setPuntos(this.ventana.getMapa().getJugadores()[0].getPuntos() + 1);
+			this.ventana.getCont1().setText(Integer.toString(this.ventana.getMapa().getJugadores()[0].getPuntos()));
 			return true;
 		} else if(this.array[0][0] == "x" && this.array[1][1] == "x" && this.array[2][2] == "x") {
+			this.ventana.getMapa().getJugadores()[0].setPuntos(this.ventana.getMapa().getJugadores()[0].getPuntos() + 1);
+			this.ventana.getCont1().setText(Integer.toString(this.ventana.getMapa().getJugadores()[0].getPuntos()));
 			return true;
 		} else if(this.array[0][2] == "x" && this.array[1][1] == "x" && this.array[2][0] == "x") {
+			this.ventana.getMapa().getJugadores()[0].setPuntos(this.ventana.getMapa().getJugadores()[0].getPuntos() + 1);
+			this.ventana.getCont1().setText(Integer.toString(this.ventana.getMapa().getJugadores()[0].getPuntos()));
 			return true;
 		}
 		return false;
@@ -108,20 +129,36 @@ public class RayaController implements MouseListener {
 	
 	private boolean comprobarY() {
 		if(this.array[0][0] == "o" && this.array[1][0] == "o" && this.array[2][0] == "o") {
+			this.ventana.getMapa().getJugadores()[1].setPuntos(this.ventana.getMapa().getJugadores()[1].getPuntos() + 1);
+			this.ventana.getCont2().setText(Integer.toString(this.ventana.getMapa().getJugadores()[1].getPuntos()));
 			return true;
 		} else if(this.array[0][1] == "o" && this.array[1][1] == "o" && this.array[2][1] == "o") {
+			this.ventana.getMapa().getJugadores()[1].setPuntos(this.ventana.getMapa().getJugadores()[1].getPuntos() + 1);
+			this.ventana.getCont2().setText(Integer.toString(this.ventana.getMapa().getJugadores()[1].getPuntos()));
 			return true;
 		} else if(this.array[0][2] == "o" && this.array[1][2] == "o" && this.array[2][2] == "o") {
+			this.ventana.getMapa().getJugadores()[1].setPuntos(this.ventana.getMapa().getJugadores()[1].getPuntos() + 1);
+			this.ventana.getCont2().setText(Integer.toString(this.ventana.getMapa().getJugadores()[1].getPuntos()));
 			return true;
 		} else if(this.array[0][0] == "o" && this.array[0][1] == "o" && this.array[0][2] == "o") {
+			this.ventana.getMapa().getJugadores()[1].setPuntos(this.ventana.getMapa().getJugadores()[1].getPuntos() + 1);
+			this.ventana.getCont2().setText(Integer.toString(this.ventana.getMapa().getJugadores()[1].getPuntos()));
 			return true;
 		} else if(this.array[1][0] == "o" && this.array[1][1] == "o" && this.array[1][2] == "o") {
+			this.ventana.getMapa().getJugadores()[1].setPuntos(this.ventana.getMapa().getJugadores()[1].getPuntos() + 1);
+			this.ventana.getCont2().setText(Integer.toString(this.ventana.getMapa().getJugadores()[1].getPuntos()));
 			return true;
 		} else if(this.array[2][0] == "o" && this.array[2][1] == "o" && this.array[2][2] == "o") {
+			this.ventana.getMapa().getJugadores()[1].setPuntos(this.ventana.getMapa().getJugadores()[1].getPuntos() + 1);
+			this.ventana.getCont2().setText(Integer.toString(this.ventana.getMapa().getJugadores()[1].getPuntos()));
 			return true;
 		} else if(this.array[0][0] == "o" && this.array[1][1] == "o" && this.array[2][2] == "o") {
+			this.ventana.getMapa().getJugadores()[1].setPuntos(this.ventana.getMapa().getJugadores()[1].getPuntos() + 1);
+			this.ventana.getCont2().setText(Integer.toString(this.ventana.getMapa().getJugadores()[1].getPuntos()));
 			return true;
 		} else if(this.array[0][2] == "o" && this.array[1][1] == "o" && this.array[2][0] == "o") {
+			this.ventana.getMapa().getJugadores()[1].setPuntos(this.ventana.getMapa().getJugadores()[1].getPuntos() + 1);
+			this.ventana.getCont2().setText(Integer.toString(this.ventana.getMapa().getJugadores()[1].getPuntos()));
 			return true;
 		}
 		return false;

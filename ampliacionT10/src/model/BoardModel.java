@@ -17,7 +17,7 @@ public class BoardModel extends Container{
 
 	private void darFormato() {
 		this.setLayout(new GridLayout(3, 3));
-		this.setBounds(75, 100, 350, 350);
+		this.setBounds(275, 100, 350, 350);
 		for (int i = 0; i < casillas.length; i++) {
 			for (int j = 0; j < casillas[i].length; j++) {
 				this.casillas[i][j] = new SquareModel();

@@ -2,6 +2,7 @@ package model;
 
 public class PlayerModel {
 	private PieceModel[] pieza;
+	private int puntos;
 	
 	public PlayerModel(String pieza) {
 		this.pieza = new PieceModel[5];
@@ -20,6 +21,14 @@ public class PlayerModel {
 
 	public void setPiezas(PieceModel[] pieza) {
 		this.pieza = pieza;
+	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
 	}
 
 }
