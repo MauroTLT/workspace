@@ -45,7 +45,7 @@ public class RayaController implements MouseListener {
 								label.setLlena(true);
 								label.setIcon(this.mapa.getJugadores()[0].getPieza()[0].getImage());
 								this.array[i][j] = "x";
-								this.ventana.getTitulo().setText("Turno de Jugador 2");
+								this.ventana.getTitulo().setText("Turno de Jugador 2 (O)");
 								this.turno++;
 							}
 						} else {
@@ -53,7 +53,7 @@ public class RayaController implements MouseListener {
 								label.setLlena(true);
 								label.setIcon(this.mapa.getJugadores()[1].getPieza()[0].getImage());
 								this.array[i][j] = "o";
-								this.ventana.getTitulo().setText("Turno de Jugador 1");
+								this.ventana.getTitulo().setText("Turno de Jugador 1 (X)");
 								this.turno++;
 							}
 						}
@@ -67,11 +67,11 @@ public class RayaController implements MouseListener {
 			}
 			if(comprobarX()) {
 				this.ventana.getTitulo().setText("Partida Finalizada");
-				JOptionPane.showMessageDialog(null, "Jugador 1 es el ganador");
+				JOptionPane.showMessageDialog(null, "Jugador 1 (X) es el ganador");
 				reiniciar();
 			} else if(comprobarY()) {
 				this.ventana.getTitulo().setText("Partida Finalizada");
-				JOptionPane.showMessageDialog(null, "Jugador 2 es el ganador");
+				JOptionPane.showMessageDialog(null, "Jugador 2 (O) es el ganador");
 				reiniciar();
 			}
 			this.ventana.revalidate();
@@ -80,7 +80,7 @@ public class RayaController implements MouseListener {
 	
 	private void reiniciar() {
 		this.turno = 0;
-		this.ventana.getTitulo().setText("Turno de Jugador 1");
+		this.ventana.getTitulo().setText("Turno de Jugador 1 (X)");
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				this.ventana.getMapa().getCasillas()[i][j].setIcon(null);

@@ -20,9 +20,9 @@ public class RayaView extends JFrame {
 	
 	public RayaView(BoardModel mapa) {
 		this.mapa = mapa;
-		this.titulo = new JLabel("Turno del Jugador 1");
-		this.player1 = new JLabel("Jugador 1");
-		this.player2 = new JLabel("Jugador 2");
+		this.titulo = new JLabel("Turno del Jugador 1 (X)");
+		this.player1 = new JLabel("Jugador 1 (X)");
+		this.player2 = new JLabel("Jugador 2 (O)");
 		this.cont1 = new JLabel("0");
 		this.cont2 = new JLabel("0");
 		this.reset = new JButton("Nueva Partida");
