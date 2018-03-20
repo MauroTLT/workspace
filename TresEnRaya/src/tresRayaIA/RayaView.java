@@ -52,6 +52,7 @@ public class RayaView extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setTitle("Tres en Raya con IA");
 		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public JLabel[][] getTablero() {

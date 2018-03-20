@@ -49,7 +49,7 @@ public class RayaController implements MouseListener {
 							this.array[i][j] = "x";
 							this.ventana.getTitulo().setText("Turno de Jugador 1");
 							if(this.turno == 0) {
-								IA1(label);
+								IA1();
 							} else if(this.turno == 1) {
 								IA2();
 							} else if(this.turno == 2) {
@@ -76,7 +76,7 @@ public class RayaController implements MouseListener {
 		}
 	}
 	
-	private void IA1(JLabel label) {
+	private void IA1() {
 		int aux = rng.aleatorioIntSeed(4);
 		if(this.array[0][0] == "x") { 						// Principio Esquinas
 			if(aux == 1) {
