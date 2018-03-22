@@ -1,7 +1,10 @@
 package tresRaya;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -13,7 +16,7 @@ public class RayaController implements MouseListener {
 	private int turno;
 	private ImageIcon x;
 	private ImageIcon o;
-	
+
 	public RayaController() {
 		this.x = new ImageIcon(getClass().getResource("../resources/X.png"));
 		this.o = new ImageIcon(getClass().getResource("../resources/O.png"));
@@ -21,7 +24,7 @@ public class RayaController implements MouseListener {
 		this.ventana = new RayaView();
 		setActions();
 	}
-	
+
 	private void setActions() {
 		this.ventana.getReset().addMouseListener(this);
 		for (int i = 0; i < this.ventana.getTablero().length; i++) {
@@ -31,47 +34,62 @@ public class RayaController implements MouseListener {
 		}
 	}
 
+	public void play() {
+		try {
+			URL url = getClass().getResource("p.mp3");
+			AudioClip clip = Applet.newAudioClip(url);
+			System.out.println("end1");
+			Thread.sleep(1000);
+			clip.play();
+			System.out.println("end3");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getSource() == this.ventana.getReset()) {
+		play();
+		if (e.getSource() == this.ventana.getReset()) {
 			reiniciar();
 		} else {
-			JLabel label = (JLabel)e.getSource();
+			JLabel label = (JLabel) e.getSource();
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 3; j++) {
-					if(label == this.ventana.getTablero()[i][j]) {
-						if(this.turno % 2 == 0) {
-							if(label.getIcon() == null) {
+					if (label == this.ventana.getTablero()[i][j]) {
+						if (this.turno % 2 == 0) {
+							if (label.getIcon() == null) {
 								label.setIcon(this.x);
 								this.array[i][j] = "x";
 								this.ventana.getTitulo().setText("Turno de Jugador 2");
 								this.turno++;
 							}
 						} else {
-							if(label.getIcon() == null) {
+							if (label.getIcon() == null) {
 								label.setIcon(this.o);
 								this.array[i][j] = "o";
 								this.ventana.getTitulo().setText("Turno de Jugador 1");
 								this.turno++;
 							}
 						}
-						if(this.turno == 9) {
+						if (this.turno == 9) {
 							this.ventana.getTitulo().setText("Partida Finalizada");
 						}
 					}
 				}
 			}
-			if(comprobarX()) {
+			if (comprobarX()) {
 				JOptionPane.showMessageDialog(null, "Jugador 1 es el ganador");
 				reiniciar();
-			} else if(comprobarY()) {
+			} else if (comprobarY()) {
 				JOptionPane.showMessageDialog(null, "Jugador 2 es el ganador");
 				reiniciar();
 			}
 			this.ventana.revalidate();
 		}
 	}
-	
+
 	private void reiniciar() {
 		this.turno = 0;
 		this.ventana.getTitulo().setText("Turno de Jugador 1");
@@ -82,44 +100,44 @@ public class RayaController implements MouseListener {
 			}
 		}
 	}
-	
+
 	private boolean comprobarX() {
-		if(this.array[0][0] == "x" && this.array[1][0] == "x" && this.array[2][0] == "x") {
+		if (this.array[0][0] == "x" && this.array[1][0] == "x" && this.array[2][0] == "x") {
 			return true;
-		} else if(this.array[0][1] == "x" && this.array[1][1] == "x" && this.array[2][1] == "x") {
+		} else if (this.array[0][1] == "x" && this.array[1][1] == "x" && this.array[2][1] == "x") {
 			return true;
-		} else if(this.array[0][2] == "x" && this.array[1][2] == "x" && this.array[2][2] == "x") {
+		} else if (this.array[0][2] == "x" && this.array[1][2] == "x" && this.array[2][2] == "x") {
 			return true;
-		} else if(this.array[0][0] == "x" && this.array[0][1] == "x" && this.array[0][2] == "x") {
+		} else if (this.array[0][0] == "x" && this.array[0][1] == "x" && this.array[0][2] == "x") {
 			return true;
-		} else if(this.array[1][0] == "x" && this.array[1][1] == "x" && this.array[1][2] == "x") {
+		} else if (this.array[1][0] == "x" && this.array[1][1] == "x" && this.array[1][2] == "x") {
 			return true;
-		} else if(this.array[2][0] == "x" && this.array[2][1] == "x" && this.array[2][2] == "x") {
+		} else if (this.array[2][0] == "x" && this.array[2][1] == "x" && this.array[2][2] == "x") {
 			return true;
-		} else if(this.array[0][0] == "x" && this.array[1][1] == "x" && this.array[2][2] == "x") {
+		} else if (this.array[0][0] == "x" && this.array[1][1] == "x" && this.array[2][2] == "x") {
 			return true;
-		} else if(this.array[0][2] == "x" && this.array[1][1] == "x" && this.array[2][0] == "x") {
+		} else if (this.array[0][2] == "x" && this.array[1][1] == "x" && this.array[2][0] == "x") {
 			return true;
 		}
 		return false;
 	}
-	
+
 	private boolean comprobarY() {
-		if(this.array[0][0] == "o" && this.array[1][0] == "o" && this.array[2][0] == "o") {
+		if (this.array[0][0] == "o" && this.array[1][0] == "o" && this.array[2][0] == "o") {
 			return true;
-		} else if(this.array[0][1] == "o" && this.array[1][1] == "o" && this.array[2][1] == "o") {
+		} else if (this.array[0][1] == "o" && this.array[1][1] == "o" && this.array[2][1] == "o") {
 			return true;
-		} else if(this.array[0][2] == "o" && this.array[1][2] == "o" && this.array[2][2] == "o") {
+		} else if (this.array[0][2] == "o" && this.array[1][2] == "o" && this.array[2][2] == "o") {
 			return true;
-		} else if(this.array[0][0] == "o" && this.array[0][1] == "o" && this.array[0][2] == "o") {
+		} else if (this.array[0][0] == "o" && this.array[0][1] == "o" && this.array[0][2] == "o") {
 			return true;
-		} else if(this.array[1][0] == "o" && this.array[1][1] == "o" && this.array[1][2] == "o") {
+		} else if (this.array[1][0] == "o" && this.array[1][1] == "o" && this.array[1][2] == "o") {
 			return true;
-		} else if(this.array[2][0] == "o" && this.array[2][1] == "o" && this.array[2][2] == "o") {
+		} else if (this.array[2][0] == "o" && this.array[2][1] == "o" && this.array[2][2] == "o") {
 			return true;
-		} else if(this.array[0][0] == "o" && this.array[1][1] == "o" && this.array[2][2] == "o") {
+		} else if (this.array[0][0] == "o" && this.array[1][1] == "o" && this.array[2][2] == "o") {
 			return true;
-		} else if(this.array[0][2] == "o" && this.array[1][1] == "o" && this.array[2][0] == "o") {
+		} else if (this.array[0][2] == "o" && this.array[1][1] == "o" && this.array[2][0] == "o") {
 			return true;
 		}
 		return false;
@@ -128,27 +146,27 @@ public class RayaController implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-				
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	public RayaView getVentana() {
 		return ventana;
 	}
