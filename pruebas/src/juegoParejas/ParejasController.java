@@ -29,23 +29,29 @@ public class ParejasController implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		CasillaModel label = (CasillaModel) e.getSource();
 		if(primera == null) {
-			primera = label;
-			label.setBackground(label.getColor());
-		} else if(primera != null) {
-			if(label.getColor() == primera.getColor()) {
+			if(label.getBackground() == Color.WHITE) {
+				primera = label;
 				label.setBackground(label.getColor());
-				primera = null;
-				aux++;
-			} else {
-				label.setBackground(label.getColor());
-				JOptionPane.showMessageDialog(null, "Error");
-				label.setBackground(Color.WHITE);
-				primera.setBackground(Color.WHITE);
-				primera = null;
 			}
-			if(aux == 8) {
-				JOptionPane.showMessageDialog(null, "Has ganado");
-				System.exit(0);
+		} else if(primera != null) {
+			if(primera != label){
+				if(label.getColor() == primera.getColor()) {
+					label.setBackground(label.getColor());
+					primera = null;
+					aux++;
+				} else {
+					if(label.getBackground() == Color.WHITE){
+						label.setBackground(label.getColor());
+						JOptionPane.showMessageDialog(null, "Error");
+						label.setBackground(Color.WHITE);
+						primera.setBackground(Color.WHITE);
+						primera = null;
+					}
+				}
+				if(aux == 8) {
+					JOptionPane.showMessageDialog(null, "Has ganado");
+					System.exit(0);
+				}
 			}
 		}
 		

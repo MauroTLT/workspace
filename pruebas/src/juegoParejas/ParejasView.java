@@ -34,8 +34,8 @@ public class ParejasView extends JFrame{
 		this.add(tablero);
 
 		this.setTitle("Encontrar Parejas");
-		this.setLocationRelativeTo(null);
 		this.setSize(500, 500);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
