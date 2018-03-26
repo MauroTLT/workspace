@@ -30,7 +30,12 @@ public class IMCController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		double aux = 0.0;
 		if(e.getSource() == this.ventana.getCalcular()) {
-			aux = Double.parseDouble(this.ventana.getMasaTxt().getText()) / (Math.pow(Double.parseDouble(this.ventana.getAlturaTxt().getText()), 2));
+			
+			this.modelo.setMasa(Double.parseDouble(this.ventana.getMasaTxt().getText()));
+			this.modelo.setAltura(Double.parseDouble(this.ventana.getAlturaTxt().getText()));
+			
+			aux = this.modelo.getMasa() / (Math.pow(this.modelo.getAltura(), 2));
+			
 			this.ventana.getCalculo().setText(""+aux);
 			if(aux < 18.5) {
 				this.ventana.getTexto().setText(this.modelo.getArray()[0]);

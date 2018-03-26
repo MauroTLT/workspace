@@ -8,29 +8,33 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Models.TableroModel;
 
 @SuppressWarnings("serial")
 public class SupervivienteEnBatoiView extends JFrame {
-	
+	private JOptionPane pane;
 	private TableroModel modelo;
 	private JButton[][] botones;
+	private JButton boton;
 	
 	public SupervivienteEnBatoiView(TableroModel modelo) {
+		this.pane = new JOptionPane();
 		this.modelo = modelo;
-		this.botones = new JButton[3][5];
+		this.botones = new JButton[modelo.getFILA()][modelo.getCOLUMNA()];
+		this.boton = new JButton();
 		darFormato();
 	}
 
 	private void darFormato() {
-		this.setLayout(new GridLayout(3,5));
+		this.setLayout(new GridLayout(modelo.getFILA(), modelo.getCOLUMNA()));
 		for (int i = 0; i < botones.length; i++) {
 			for (int j = 0; j < botones[i].length; j++) {
-				JButton button = new JButton();
-				button.setName(this.modelo.getCasillas()[i][j].getTipo());
-				this.botones[i][j] = button;
-				this.add(button);
+				boton = new JButton();
+				boton.setName(this.modelo.getCasillas()[i][j].getTipo());
+				this.botones[i][j] = boton;
+				this.add(boton);
 			}
 		}
 		this.setTitle("SupervivienteEnBatoi");
@@ -54,6 +58,22 @@ public class SupervivienteEnBatoiView extends JFrame {
 
 	public void setModelo(TableroModel modelo) {
 		this.modelo = modelo;
+	}
+
+	public JOptionPane getPane() {
+		return pane;
+	}
+
+	public void setPane(JOptionPane pane) {
+		this.pane = pane;
+	}
+
+	public JButton getBoton() {
+		return boton;
+	}
+
+	public void setBoton(JButton boton) {
+		this.boton = boton;
 	}
 
 }
