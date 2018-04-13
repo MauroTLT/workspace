@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;IMC_Model.IMCModel.array&apos; in &apos;IMC_Model.IMCModel&apos;&#x0A;- Original project: &apos;examen10_1&apos;&#x0A;- Original element: &apos;IMC_Model.IMCModel.array&apos;&#x0A;- Getter method name: &apos;getArray&apos;&#x0A;- Setter method name: &apos;setArray&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;array&apos;" flags="589830" getter="getArray" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;IMC_Model{IMCModel.java[IMCModel^array" insertion="0" setter="setArray" stamp="1522049618386" version="1.0" visibility="1"/>
+</session>

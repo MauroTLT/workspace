@@ -1,0 +1,34 @@
+package FireEmblemGraphic;
+
+import java.awt.Container;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+@SuppressWarnings("serial")
+public class DialogoView extends JDialog {
+	private Container pane;
+	
+	public DialogoView(JLabel[][] pane) {
+		for (int i = 0; i < pane.length; i++) {
+			for (int j = 0; j < pane.length; j++) {
+				this.pane.add(pane[i][j]);
+			}
+		}
+		this.setContentPane(this.pane);
+		this.setSize(500, 630);
+		this.setTitle("Elegir Casilla");
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+	}
+
+	public Container getPane() {
+		return pane;
+	}
+
+	public void setPane(Container pane) {
+		this.pane = pane;
+	}
+}

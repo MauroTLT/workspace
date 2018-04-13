@@ -1,0 +1,52 @@
+package FireEmblemGraphic;
+
+import java.awt.Container;
+import java.awt.GridLayout;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+
+@SuppressWarnings("serial")
+public class DialogoView extends JDialog {
+	private Container pane;
+	private JLabel[][] tablero;
+	
+	public DialogoView(JLabel[][] tablero) {
+		this.pane = new Container();
+		this.pane.setLayout(new GridLayout(8,6));
+		this.tablero = new JLabel[8][6];
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
+				JLabel label = new JLabel();
+				label.setBackground(tablero[i][j].getBackground());
+				label.setIcon(tablero[i][j].getIcon());
+				label.setBorder(tablero[i][j].getBorder());
+				label.setOpaque(true);
+				this.tablero[i][j] = label;
+				this.pane.add(label);
+			}
+		}
+		this.setContentPane(this.pane);
+		this.setSize(450, 630);
+		this.setTitle("Elegir Casilla");
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setVisible(false);
+	}
+
+	public Container getPane() {
+		return pane;
+	}
+
+	public void setPane(Container pane) {
+		this.pane = pane;
+	}
+
+	public JLabel[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(JLabel[][] tablero) {
+		this.tablero = tablero;
+	}
+}

@@ -1,0 +1,48 @@
+package FireEmblemGraphic;
+
+public class TableroModel {
+	private final Arma espada = new Arma("Espada", null, null);
+	private final Arma lanza = new Arma("Lanza", espada, null);
+	private final Arma hacha = new Arma("Hacha", lanza, espada);
+	private static Jugador j1;
+	private static Jugador j2;
+	private Casilla[][] tablero;
+	
+	public TableroModel() {
+		this.tablero = new Casilla[][] {
+			{new Planicie(), new Planicie(), new Planicie(), new Planicie(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Planicie(), new Mountain(), new Arboleda(), new Planicie()},
+			{new Planicie(), new Arboleda(), new Mountain(), new Mountain(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Mountain(), new Mountain(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Mountain(), new Mountain(), new Arboleda(), new Planicie()},
+			{new Planicie(), new Arboleda(), new Mountain(), new Mountain(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Mountain(), new Arboleda(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Planicie(), new Planicie(), new Planicie(), new Arboleda()}};
+		darFormato();
+	}
+
+	private void darFormato() {
+		this.espada.setVentaja(hacha);
+		this.espada.setDesventaja(lanza);
+		this.lanza.setDesventaja(hacha);
+		
+		this.tablero[0][0].setPersonaje(new Volador("Maxim","../resources/maxim.png", lanza, 40, 25, 25));
+		this.tablero[1][0].setPersonaje(new Infanteria("Selan", "../resources/selan.png", espada, 40, 30, 20));
+		this.tablero[7][0].setPersonaje(new Infanteria("Lexis", "../resources/lexis.png", espada, 50, 40, 5));
+		this.tablero[6][0].setPersonaje(new Caballeria("Arty", "../resources/arty.png", hacha, 45, 30, 15));
+
+		this.tablero[1][5].setPersonaje(new Volador("tia", "../resources/tia.png", hacha, 40, 20, 25));
+		this.tablero[2][5].setPersonaje(new Volador("Dekar", "../resources/dekar.png", hacha, 40, 20, 25));
+		this.tablero[5][5].setPersonaje(new Infanteria("Guy", "../resources/guy.png", lanza, 50, 40, 5));
+		this.tablero[6][5].setPersonaje(new Caballeria("Alen", "../resources/alen.png", espada, 45, 30, 15));
+	}
+
+	public Casilla[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(Casilla[][] tablero) {
+		this.tablero = tablero;
+	}
+
+}

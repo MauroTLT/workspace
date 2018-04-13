@@ -1,0 +1,14 @@
+package FireEmblemGraphic;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		Main programa = new Main();
+		programa.inici();
+	}
+	
+	private void inici() {		
+		new TableroController();
+	}
+
+}

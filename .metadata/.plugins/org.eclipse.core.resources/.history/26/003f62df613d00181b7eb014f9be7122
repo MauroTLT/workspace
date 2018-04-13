@@ -1,0 +1,56 @@
+package FireEmblemGraphic;
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+
+@SuppressWarnings("serial")
+public class Casilla {
+	private String ruta;
+	private boolean ocupado;
+	private Personaje personaje;
+	
+	public Casilla(String nombre, boolean ocupado, Color color) {
+		this.ocupado = ocupado;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public boolean isOcupado() {
+		return ocupado;
+	}
+
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
+	}
+
+	public Personaje getPersonaje() {
+		return personaje;
+	}
+
+	public void setPersonaje(Personaje personaje) {
+		this.personaje = personaje;
+	}
+}

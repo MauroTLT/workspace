@@ -1,0 +1,9 @@
+package FireEmblemGraphic;
+
+public class Mountain extends Casilla{
+
+	public Mountain(int fila, int columna) {
+		super("ruta", fila, columna);
+	}
+
+}

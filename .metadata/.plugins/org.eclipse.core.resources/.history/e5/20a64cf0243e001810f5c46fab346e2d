@@ -1,0 +1,13 @@
+package FireEmblemGraphic;
+
+public class Planicie extends Casilla {
+
+	public Planicie(int fila, int columna) {
+		super("ruta", fila, columna);
+	}
+
+	@Override
+	public String toString() {
+		return "Planicie [Fila: " + super.getFila() + " Columna: " + super.getColumna() + "]";
+	}
+}

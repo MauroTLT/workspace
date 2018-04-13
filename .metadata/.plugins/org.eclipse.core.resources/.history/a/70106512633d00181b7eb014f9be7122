@@ -1,0 +1,9 @@
+package FireEmblemGraphic;
+
+public class Arboleda {
+
+	public Arboleda() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

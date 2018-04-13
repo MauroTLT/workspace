@@ -1,0 +1,21 @@
+package FireEmblemGraphic;
+
+public class Caballeria extends Personaje{
+
+	public Caballeria(String nombre, String ruta, Arma arma, int hp, int atk, int def) {
+		super(nombre, ruta, arma, hp, atk, def, 4);
+	}
+
+	@Override
+	public void mover(TableroView ventana) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mover(TableroView ventana, int fila, int columna) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

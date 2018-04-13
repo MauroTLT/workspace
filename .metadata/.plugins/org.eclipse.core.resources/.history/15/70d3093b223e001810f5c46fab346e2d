@@ -1,0 +1,16 @@
+package FireEmblemGraphic;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		Main programa = new Main();
+		programa.inici();
+	}
+	
+	private void inici() {		
+		TableroController tablero = new TableroController();
+		tablero.getVentana().getTitulo().setText("Turno de : " + j1.getNombre());
+		
+	}
+
+}

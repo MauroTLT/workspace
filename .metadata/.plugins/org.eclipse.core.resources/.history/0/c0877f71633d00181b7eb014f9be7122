@@ -1,0 +1,9 @@
+package FireEmblemGraphic;
+
+public class TableroModel {
+
+	public TableroModel() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

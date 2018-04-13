@@ -1,0 +1,19 @@
+import java.io.*;
+
+public class ejercicio1 {
+	public static void main(String[] args) {
+		System.out.println("Volcando a fichero de texto...");
+		try {
+			BufferedWriter ficheroSalida = new BufferedWriter(new FileWriter(new File("fichero.txt")));
+			ficheroSalida.write("Hola");
+			ficheroSalida.newLine();
+			ficheroSalida.write("Este es");
+			ficheroSalida.write(" un fichero de texto");
+			ficheroSalida.newLine();
+			ficheroSalida.close();
+		} catch (IOException errorDeFichero) {
+			System.out.println("Ha habido problemas: " + errorDeFichero.getMessage());
+		}
+		System.out.println("Volcado Finalizado");
+	}
+}

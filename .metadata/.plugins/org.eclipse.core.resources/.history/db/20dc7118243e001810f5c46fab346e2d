@@ -1,0 +1,9 @@
+package FireEmblemGraphic;
+
+public class Arboleda extends Casilla {
+
+	public Arboleda(int fila, int columna) {
+		super("ruta", fila, columna);
+	}
+
+}

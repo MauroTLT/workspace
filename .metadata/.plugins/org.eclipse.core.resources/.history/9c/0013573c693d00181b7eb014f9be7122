@@ -1,0 +1,11 @@
+package FireEmblemGraphic;
+
+import java.util.Scanner;
+
+public class Infanteria extends Personaje {
+
+	public Infanteria(String nombre, Arma arma, int hp, int atk, int def, Casilla casilla) {
+		super(nombre, "Infanteria", arma, hp, atk, def, casilla, 2);
+	}
+
+}

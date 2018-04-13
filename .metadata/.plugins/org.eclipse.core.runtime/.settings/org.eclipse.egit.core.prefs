@@ -1,5 +1,5 @@
-GitRepositoriesView.GitDirectories=/home/mati/workspace/.git\:/home/mati/git/workspace-casa/.git\:
-GitRepositoriesView.GitDirectories.relative=.git\:/home/mati/git/workspace-casa/.git\:
+GitRepositoriesView.GitDirectories=/home/mati/workspace/.git\:/home/mati/git/workspace-casa/.git\:/home/mati/git/ProyectoProg/.git\:
+GitRepositoriesView.GitDirectories.relative=.git\:/home/mati/git/workspace-casa/.git\:/home/mati/git/ProyectoProg/.git\:
 RepositorySearchDialogDeepSearch=false
 RepositorySearchDialogSearchPath=/home/mati/git/Programacion
 eclipse.preferences.version=1

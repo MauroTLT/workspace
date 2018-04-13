@@ -1,0 +1,47 @@
+package FireEmblemGraphic;
+
+public abstract class Casilla {
+	private String ruta;
+	private int fila;
+	private int columna;
+	private Personaje personaje;
+	
+	public Casilla(String ruta, int fila, int columna) {
+		this.ruta = ruta;
+		this.fila = fila;
+		this.columna = columna;
+		this.personaje = null;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public int getFila() {
+		return fila;
+	}
+
+	public void setFila(int fila) {
+		this.fila = fila;
+	}
+
+	public int getColumna() {
+		return columna;
+	}
+
+	public void setColumna(int columna) {
+		this.columna = columna;
+	}
+
+	public Personaje getPersonaje() {
+		return personaje;
+	}
+
+	public void setPersonaje(Personaje personaje) {
+		this.personaje = personaje;
+	}
+}

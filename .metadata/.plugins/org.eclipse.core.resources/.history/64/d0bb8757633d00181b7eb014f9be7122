@@ -1,0 +1,9 @@
+package FireEmblemGraphic;
+
+public class Planicie extends Casilla {
+
+	public Planicie() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

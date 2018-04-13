@@ -1,0 +1,22 @@
+package FireEmblemGraphic;
+
+public class Main {
+	static Jugador j1 = new Jugador("Mauro");
+	static Jugador j2 = new Jugador("Topo");
+	
+	public static void main(String[] args) {
+		Main programa = new Main();
+		programa.inici();
+	}
+	
+	private void inici() {		
+		//j1.aniadir(p1); j1.aniadir(p2); j1.aniadir(p3); j1.aniadir(p4);
+		//j2.aniadir(p5); j2.aniadir(p6); j2.aniadir(p7); j2.aniadir(p8);
+		String[][] content = new String[9][5];
+		//setContent(content);
+		TableroController tablero = new TableroController();
+		tablero.getVentana().getTitulo().setText("Turno de : " + j1.getNombre());
+		
+	}
+
+}

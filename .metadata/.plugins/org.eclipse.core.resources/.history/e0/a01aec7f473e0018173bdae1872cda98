@@ -1,0 +1,321 @@
+package FireEmblemGraphic;
+
+import java.util.Scanner;
+
+public abstract class Personaje {
+	protected String nombre;
+	protected String ruta;
+	protected Arma arma;
+	protected int hp;
+	protected int atk;
+	protected int def;
+	protected int pasos;
+	protected Casilla casilla;
+	
+	public Personaje(String nombre, String ruta, Arma arma, int hp, int atk, int def, int pasos, Casilla casilla) {
+		this.nombre = nombre;
+		this.ruta = ruta;
+		this.arma = arma;
+		this.hp = hp;
+		this.atk = atk;
+		this.def = def;
+		this.pasos = pasos;
+		this.casilla = casilla;
+	}
+	
+	public abstract Casilla mover(TableroView ventana, int key, int movimientos);
+
+	public void atacar() {
+		public void atacar(Scanner entradaTeclado, Tablero tablero) {
+			Personaje enemy;
+			System.out.println("\nElija la direccion (arriba, abajo, izquierda, derecha) o cancelar");
+			switch (entradaTeclado.next()) {
+			case "arriba":
+				if(this.casilla.getFila() - 1 < 0 || !(tablero.getMapa()[this.casilla.getFila() - 1][this.casilla.getColumna()].isOcupado())) {
+					System.out.println("Blandiste tu arma con orgullo, pero no habia nadie delante tuya, lo cual hizo que quedaras bastante patetico.\nPor suerte no habia nadie cerca para verte.");
+					this.atacar(entradaTeclado, tablero);
+				} else {
+					enemy = tablero.getMapa()[this.casilla.getFila() - 1][this.casilla.getColumna()].getPersonaje();
+					this.batalla(enemy);
+					System.out.println("¿Todavia quieres atacar?\nEscribir Si para atacar, cualquier otra cosa se considerará como No");
+					if(entradaTeclado.next().equalsIgnoreCase("Si")) {
+						if(this.arma.getVentaja().equals(enemy.getArma())) {
+							enemy.setHp(enemy.getHp() - ((int) Math.abs((this.atk + (this.atk * this.arma.getPorcentaje())) - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs((enemy.getAtk() - (enemy.getAtk() * enemy.getArma().getPorcentaje())) - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						} else if(this.arma.getDesventaja().equals(enemy.getArma())){
+							enemy.setHp(enemy.getHp() - ((int) Math.abs((this.atk - (this.atk * this.arma.getPorcentaje())) - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs((enemy.getAtk() + (enemy.getAtk() * enemy.getArma().getPorcentaje())) - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						} else {
+							enemy.setHp(enemy.getHp() - ((int) Math.abs(this.atk - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs(enemy.getAtk() - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						}
+					} else {
+						System.out.println("Cancelando ataque");
+						this.atacar(entradaTeclado, tablero);
+					}
+				}
+				break;
+			case "abajo":
+				if(this.casilla.getFila() + 1 > 7 || !(tablero.getMapa()[this.casilla.getFila() + 1][this.casilla.getColumna()].isOcupado())) {
+					System.out.println("Blandiste tu arma con orgullo, pero no habia nadie delante tuya, lo cual hizo que quedaras bastante patetico.\nPor suerte no habia nadie cerca para verte.");
+					this.atacar(entradaTeclado, tablero);
+				} else {
+					enemy = tablero.getMapa()[this.casilla.getFila() + 1][this.casilla.getColumna()].getPersonaje();
+					this.batalla(enemy);
+					System.out.println("¿Todavia quieres atacar?\nEscribir Si para atacar, cualquier otra cosa se considerará como No");
+					if(entradaTeclado.next().equalsIgnoreCase("Si")) {
+						if(this.arma.getVentaja().equals(enemy.getArma())) {
+							enemy.setHp(enemy.getHp() - ((int) Math.abs((this.atk + (this.atk * this.arma.getPorcentaje())) - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs((enemy.getAtk() - (enemy.getAtk() * enemy.getArma().getPorcentaje())) - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						} else if(this.arma.getDesventaja().equals(enemy.getArma())){
+							enemy.setHp(enemy.getHp() - ((int) Math.abs((this.atk - (this.atk * this.arma.getPorcentaje())) - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs((enemy.getAtk() + (enemy.getAtk() * enemy.getArma().getPorcentaje())) - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						} else {
+							enemy.setHp(enemy.getHp() - ((int) Math.abs(this.atk - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs(enemy.getAtk() - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						}
+					} else {
+						System.out.println("Cancelando ataque");
+						this.atacar(entradaTeclado, tablero);
+					}
+				}
+				break;
+			case "izquierda":
+				if(this.casilla.getColumna() - 1 < 0 || !(tablero.getMapa()[this.casilla.getFila()][this.casilla.getColumna() - 1].isOcupado())) {
+					System.out.println("Blandiste tu arma con orgullo, pero no habia nadie delante tuya, lo cual hizo que quedaras bastante patetico.\nPor suerte no habia nadie cerca para verte.");
+					this.atacar(entradaTeclado, tablero);
+				} else {
+					enemy = tablero.getMapa()[this.casilla.getFila()][this.casilla.getColumna() - 1].getPersonaje();
+					this.batalla(enemy);
+					System.out.println("¿Todavia quieres atacar?\nEscribir Si para atacar, cualquier otra cosa se considerará como No");
+					if(entradaTeclado.next().equalsIgnoreCase("Si")) {
+						if(this.arma.getVentaja().equals(enemy.getArma())) {
+							enemy.setHp(enemy.getHp() - ((int) Math.abs((this.atk + (this.atk * this.arma.getPorcentaje())) - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs((enemy.getAtk() - (enemy.getAtk() * enemy.getArma().getPorcentaje())) - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						} else if(this.arma.getDesventaja().equals(enemy.getArma())){
+							enemy.setHp(enemy.getHp() - ((int) Math.abs((this.atk - (this.atk * this.arma.getPorcentaje())) - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs((enemy.getAtk() + (enemy.getAtk() * enemy.getArma().getPorcentaje())) - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						} else {
+							enemy.setHp(enemy.getHp() - ((int) Math.abs(this.atk - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs(enemy.getAtk() - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						}
+					} else {
+						System.out.println("Cancelando ataque");
+						this.atacar(entradaTeclado, tablero);
+					}
+				}
+				break;
+			case "derecha":
+				if(this.casilla.getColumna() + 1 > 5 || !(tablero.getMapa()[this.casilla.getFila()][this.casilla.getColumna() + 1].isOcupado())) {
+					System.out.println("Blandiste tu arma con orgullo, pero no habia nadie delante tuya, lo cual hizo que quedaras bastante patetico.\nPor suerte no habia nadie cerca para verte.");
+					this.atacar(entradaTeclado, tablero);
+				} else {
+					enemy = tablero.getMapa()[this.casilla.getFila()][this.casilla.getColumna() + 1].getPersonaje();
+					this.batalla(enemy);
+					System.out.println("¿Todavia quieres atacar?\nEscribir Si para atacar, cualquier otra cosa se considerará como No");
+					if(entradaTeclado.next().equalsIgnoreCase("Si")) {
+						if(this.arma.getVentaja().equals(enemy.getArma())) {
+							enemy.setHp(enemy.getHp() - ((int) Math.abs((this.atk + (this.atk * this.arma.getPorcentaje())) - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs((enemy.getAtk() - (enemy.getAtk() * enemy.getArma().getPorcentaje())) - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						} else if(this.arma.getDesventaja().equals(enemy.getArma())){
+							enemy.setHp(enemy.getHp() - ((int) Math.abs((this.atk - (this.atk * this.arma.getPorcentaje())) - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs((enemy.getAtk() + (enemy.getAtk() * enemy.getArma().getPorcentaje())) - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						} else {
+							enemy.setHp(enemy.getHp() - ((int) Math.abs(this.atk - enemy.getDef())));
+							if(enemy.getHp() != 0) {
+								this.setHp(this.hp - ((int) Math.abs(enemy.getAtk() - this.def)));
+								if(this.hp == 0) {
+									this.getCasilla().setPersonaje(null);
+									this.setCasilla(null);
+								}
+							} else {
+								enemy.getCasilla().setPersonaje(null);
+								enemy.setCasilla(null);
+							}
+						}
+					} else {
+						System.out.println("Cancelando ataque");
+						this.atacar(entradaTeclado, tablero);
+					}
+				}
+				break;
+			case "cancelar":
+				System.out.println("Volviendo atras");
+				break;
+			default:
+				System.out.println("Ninguna opcion seleccionada, prueba otra vez");
+				this.atacar(entradaTeclado, tablero);
+			}
+		}
+	}
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public Arma getArma() {
+		return arma;
+	}
+
+	public void setArma(Arma arma) {
+		this.arma = arma;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		if(hp < 0) {
+			this.hp = 0;
+		} else {this.hp = hp;}
+	}
+
+	public int getAtk() {
+		return atk;
+	}
+
+	public void setAtk(int atk) {
+		this.atk = atk;
+	}
+
+	public int getDef() {
+		return def;
+	}
+
+	public void setDef(int def) {
+		this.def = def;
+	}
+
+	public int getPasos() {
+		return pasos;
+	}
+
+	public void setPasos(int pasos) {
+		this.pasos = pasos;
+	}
+
+	public Casilla getCasilla() {
+		return casilla;
+	}
+
+	public void setCasilla(Casilla casilla) {
+		this.casilla = casilla;
+	}
+
+	@Override
+	public String toString() {
+		return "Personaje [Nombre=" + nombre + ", Arma=" + arma.getNombre() + ", HP=" + hp + ", ATK=" + atk + ", DEF=" + def + ", Pasos=" + pasos + "]";
+	}
+	
+}

@@ -1,0 +1,100 @@
+package FireEmblemGraphic;
+
+import FireEmblem.Casilla;
+
+public class Infanteria extends Personaje {
+
+	public Infanteria(String nombre, String ruta, Arma arma, int hp, int atk, int def) {
+		super(nombre, ruta, arma, hp, atk, def, 2);
+	}
+
+	@Override
+	public void mover(TableroView ventana, int fila, int columna) {
+		int movimientos = 0;
+		int fila = this.casilla.getFila();
+		int columna = this.casilla.getColumna();
+		Casilla aux;
+		while (movimientos < this.getPasos()) {
+			System.out.println("\nElija la direccion (arriba, abajo, izquierda, derecha, parar)");
+			switch (entradaTeclado.next()) {
+			case "arriba":
+				if(fila - 1 < 0) {
+					System.out.println("Casilla Inalcanzable");
+				} else {
+					aux = tablero.getMapa()[fila - 1][columna];
+					if (aux.isOcupado()) {
+						System.out.println("Esta casilla ya esta ocupada por: " + aux.getPersonaje().getNombre());
+					} else if(aux.getSimbolo().equals("■")) {
+						System.out.println("La infanteria no puede atravesar montañas");
+					} else {
+						fila--;
+						movimientos++;
+					}
+				}
+				break;
+			case "abajo":
+				if(fila + 1 > 7) {
+					System.out.println("Casilla Inalcanzable");
+				} else {
+					aux = tablero.getMapa()[fila + 1][columna];
+					if (aux.isOcupado()) {
+						System.out.println("Esta casilla ya esta ocupada por: " + aux.getPersonaje().getNombre());
+					} else if(aux.getSimbolo().equals("■")) {
+						System.out.println("La infanteria no puede atravesar montañas");
+					} else {
+						fila++;
+						movimientos++;
+					}
+				}
+				break;
+			case "izquierda":
+				if(columna - 1 < 0) {
+					System.out.println("Casilla Inalcanzable");
+				} else {
+					aux = tablero.getMapa()[fila][columna - 1];
+					if (aux.isOcupado()) {
+						System.out.println("Esta casilla ya esta ocupada por: " + aux.getPersonaje().getNombre());
+					} else if(aux.getSimbolo().equals("■")) {
+						System.out.println("La infanteria no puede atravesar montañas");
+					} else {
+						columna--;
+						movimientos++;
+					}
+				}
+				break;
+			case "derecha":
+				if(columna + 1 > 5) {
+					System.out.println("Casilla Inalcanzable");
+				} else {
+					aux = tablero.getMapa()[fila][columna + 1];
+					if (aux.isOcupado()) {
+						System.out.println("Esta casilla ya esta ocupada por: " + aux.getPersonaje().getNombre());
+					} else if(aux.getSimbolo().equals("■")) {
+						System.out.println("La infanteria no puede atravesar montañas");
+					} else {
+						columna++;
+						movimientos++;
+					}
+				}
+				break;
+			case "parar":
+				this.casilla.setPersonaje(null);
+				this.casilla = null;
+				this.setCasilla(tablero.getMapa()[fila][columna]);
+				tablero.getMapa()[fila][columna].setPersonaje(this);
+				movimientos = this.getPasos() + 1; // Añado + 1 como comprobacion de que a elegido la opcion parar y asi no repite la sentencia de la linea 91
+				break;
+			default:
+				System.out.println("Ninguna opcion seleccionada, prueba otra vez");
+			}
+		}
+		if (movimientos == this.getPasos()) {
+			this.casilla.setPersonaje(null);
+			this.casilla = null;
+			this.setCasilla(tablero.getMapa()[fila][columna]);
+			tablero.getMapa()[fila][columna].setPersonaje(this);
+		}
+		
+	}
+
+}

@@ -1,0 +1,54 @@
+package FireEmblemGraphic;
+
+import java.awt.Color;
+
+import javax.swing.ImageIcon;
+
+public class Main {
+	static Jugador j1 = new Jugador("Mauro");
+	static Jugador j2 = new Jugador("Topo");
+	
+	public static void main(String[] args) {
+		Main programa = new Main();
+		programa.inici();
+	}
+	
+	private void inici() {		
+		//j1.aniadir(p1); j1.aniadir(p2); j1.aniadir(p3); j1.aniadir(p4);
+		//j2.aniadir(p5); j2.aniadir(p6); j2.aniadir(p7); j2.aniadir(p8);
+		String[][] content = new String[9][5];
+		setContent(content);
+		TableroController tablero = new TableroController();
+		tablero.getVentana().getTitulo().setText("Turno de : " + j1.getNombre());
+		
+	}
+	
+	public void setContent(String[][] content) {
+		int j = 0;
+		int k = 0;
+		for (int i = 0; i < content.length; i++) {
+			if(i < 4) {
+				content[i][0] = j1.getPersonajes()[j].getNombre();
+				content[i][1] = j1.getPersonajes()[j].getArma().getNombre();
+				content[i][2] = Integer.toString(j1.getPersonajes()[j].getHp());
+				content[i][3] = Integer.toString(j1.getPersonajes()[j].getAtk());
+				content[i][4] = Integer.toString(j1.getPersonajes()[j].getDef());
+				j++;
+			} else if(i == 4) {
+				content[i][0] = "";
+				content[i][1] = "";
+				content[i][2] = "";
+				content[i][3] = "";
+				content[i][4] = "";
+			} else {
+				content[i][0] = j2.getPersonajes()[k].getNombre();
+				content[i][1] = j2.getPersonajes()[k].getArma().getNombre();
+				content[i][2] = Integer.toString(j2.getPersonajes()[k].getHp());
+				content[i][3] = Integer.toString(j2.getPersonajes()[k].getAtk());
+				content[i][4] = Integer.toString(j2.getPersonajes()[k].getDef());
+				k++;
+			}
+		}
+	}
+
+}

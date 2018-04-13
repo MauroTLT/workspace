@@ -1,0 +1,49 @@
+package FireEmblemGraphic;
+
+public class TableroModel {
+	private final Arma espada = new Arma("Espada", null, null);
+	private final Arma lanza = new Arma("Lanza", espada, null);
+	private final Arma hacha = new Arma("Hacha", lanza, espada);
+	private Casilla[][] tablero;
+	
+	public TableroModel() {
+		this.tablero = new Casilla[][] {
+			{new Planicie(), new Planicie(), new Planicie(), new Planicie(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Planicie(), new Mountain(), new Arboleda(), new Planicie()},
+			{new Planicie(), new Arboleda(), new Mountain(), new Mountain(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Mountain(), new Mountain(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Mountain(), new Mountain(), new Arboleda(), new Planicie()},
+			{new Planicie(), new Arboleda(), new Mountain(), new Mountain(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Mountain(), new Arboleda(), new Planicie(), new Planicie()},
+			{new Planicie(), new Planicie(), new Planicie(), new Planicie(), new Planicie(), new Arboleda()}};
+		darFormato();
+	}
+
+	private void darFormato() {
+		this.tablero[0][0].setPersonaje(new Volador("Maxim","ruta", lanza, 40, 25, 25));
+		this.tablero[1][0].setPersonaje(new Infanteria("Selan", "ruta", espada, 40, 30, 20));
+		this.tablero[7][0].setPersonaje(new Infanteria("Lexis", "ruta", espada, 50, 40, 5));
+		this.tablero[6][0].setPersonaje(new Caballeria("Arty", "ruta", hacha, 45, 30, 15));
+
+		this.tablero[1][5].setPersonaje(new Volador("Dekar", "ruta", hacha, 40, 20, 25));
+		this.tablero[2][5].setPersonaje(new Volador("Dekar", "ruta", hacha, 40, 20, 25));
+		this.tablero[5][5].setPersonaje(new Infanteria("Guy", "ruta", lanza, 50, 40, 5));
+		this.tablero[6][5].setPersonaje(new Caballeria("Alen", "ruta", espada, 45, 30, 15));
+		
+		
+		
+		Personaje p5 = new Volador("Dekar", hacha, 40, 20, 25);
+		Personaje p6 = new Volador("Dekar", hacha, 40, 20, 25);
+		Personaje p7 = new Infanteria("Guy", lanza, 50, 40, 5);
+		Personaje p8 = new Caballeria("Alen", espada, 45, 30, 15);
+	}
+
+	public Casilla[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(Casilla[][] tablero) {
+		this.tablero = tablero;
+	}
+
+}

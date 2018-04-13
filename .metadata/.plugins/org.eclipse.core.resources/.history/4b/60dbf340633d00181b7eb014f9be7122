@@ -1,0 +1,9 @@
+package FireEmblemGraphic;
+
+public class Mountain {
+
+	public Mountain() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

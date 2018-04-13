@@ -1,0 +1,129 @@
+package FireEmblemGraphic;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class TableroView extends JFrame {
+	private TableroModel modelo;
+	private GridLayout grid;
+	private Container mapa;
+	private JLabel[][] tablero;
+	private JLabel titulo;
+	private JButton mover, personaje, casilla;
+	
+	public TableroView(TableroModel modelo) {
+		this.setModelo(modelo);
+		this.grid = new GridLayout(8, 6);
+		this.tablero = new JLabel[8][6];
+		this.titulo = new JLabel("Turno de : ");
+		this.mover = new JButton("Mover");
+		this.personaje = new JButton("Ver Personajes");
+		this.casilla = new JButton("Ver Casilla");
+		this.mapa = new Container();
+		
+		
+		/*
+		 * Traer el JDialog aqui y pasarle el tablero para que se genere el solo el contenedor
+		 */
+		
+		
+		darFormato();
+	}
+	
+	private void darFormato() {
+		this.titulo.setBorder(BorderFactory.createLoweredBevelBorder());
+		this.titulo.setFont(new Font("Tahoma", 0, 24));
+		this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		this.titulo.setBounds(100, 10, 300, 50);
+		this.mover.setBounds(50, 75, 100, 75);
+		this.personaje.setBounds(150, 75, 150, 75);
+		this.casilla.setBounds(300, 75, 150, 75);
+	
+		this.mapa.setBounds(50, 150, 400, 500);
+		this.setLayout(null);
+		this.mapa.setLayout(grid);
+		for (int i = 0; i < this.grid.getRows(); i++) {
+			for (int j = 0; j < this.grid.getColumns(); j++) {
+				JLabel label = new JLabel();
+				label.setOpaque(true);
+				label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				this.mapa.add(this.tablero[i][j]);
+			}
+		}
+		this.add(titulo);
+		this.add(mover);
+		this.add(personaje);
+		this.add(casilla);
+		this.add(mapa);
+		this.setSize(500, 700);
+		this.setLocationRelativeTo(null);
+		this.setTitle("Fire Emblem");
+		this.setVisible(true);
+	}
+
+	public TableroModel getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(TableroModel modelo) {
+		this.modelo = modelo;
+	}
+
+	public GridLayout getGrid() {
+		return grid;
+	}
+
+	public void setGrid(GridLayout grid) {
+		this.grid = grid;
+	}
+
+	public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JButton getMover() {
+		return mover;
+	}
+
+	public void setMover(JButton mover) {
+		this.mover = mover;
+	}
+
+	public JButton getPersonaje() {
+		return personaje;
+	}
+
+	public void setPersonaje(JButton personaje) {
+		this.personaje = personaje;
+	}
+
+	public JButton getCasilla() {
+		return casilla;
+	}
+
+	public void setCasilla(JButton casilla) {
+		this.casilla = casilla;
+	}
+
+	public Container getMapa() {
+		return mapa;
+	}
+
+	public void setMapa(Container mapa) {
+		this.mapa = mapa;
+	}
+
+}

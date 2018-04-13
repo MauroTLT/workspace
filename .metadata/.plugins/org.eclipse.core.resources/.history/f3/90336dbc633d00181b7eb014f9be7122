@@ -1,0 +1,25 @@
+package FireEmblemGraphic;
+
+public class TableroModel {
+	
+	private Casilla[][] tablero;
+	
+	public TableroModel() {
+		this.tablero = new Casilla[8][6];
+		darFormato();
+	}
+
+	private void darFormato() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Casilla[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(Casilla[][] tablero) {
+		this.tablero = tablero;
+	}
+
+}

@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class ejercicio1 {
+	public static void main(String[] args) {
+		Scanner entradaTeclado = new Scanner(System.in);
+		String texto = "";
+		try {
+			BufferedWriter ficheroSalida = new BufferedWriter(new FileWriter(new File("fichero.txt")));
+			while(!texto.equals("Fin")) {
+				System.out.println("Escribe un texto a añadir: ");
+				texto = entradaTeclado.nextLine();
+				if(!texto.equals("Fin")) {
+					ficheroSalida.write(texto);
+				}
+				entradaTeclado.next();
+				ficheroSalida.newLine();
+				System.out.println("Volcado Finalizado");
+			}
+			ficheroSalida.close();
+		} catch (IOException errorDeFichero) {
+			System.out.println("Ha habido problemas: " + errorDeFichero.getMessage());
+		}
+		
+		
+	}
+}
