@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;sword.gif&apos; to &apos;FireEmblem/src/resources&apos;&#x0A;- Original project: &apos;BatoiKiller_V.1&apos;&#x0A;- Destination element: &apos;FireEmblem/src/resources&apos;&#x0A;- Original element: &apos;sword.gif&apos;" description="Copy file" destination="=FireEmblem/src&lt;resources" element1="src/resources/extras/sword.gif" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1523614415469" units="0" version="1.0"/>
+</session>

@@ -22,6 +22,5 @@ public class ejercicio6 {
 		} catch (Exception errorDeFichero) {
 			System.out.println("Ha habido problemas: " + errorDeFichero.getMessage());
 		}
-		
 	}
 }

@@ -1,0 +1,154 @@
+package FireEmblemGraphic;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class TableroView extends JFrame {
+	private TableroModel modelo;
+	private GridLayout grid;
+	private Container mapa;
+	private JButton[][] tablero;
+	private JLabel titulo, info;
+	private JButton personaje, casilla;
+	
+	public TableroView(TableroModel modelo) {
+		this.modelo = modelo;
+		this.grid = new GridLayout(8, 6);
+		this.tablero = new JButton[8][6];
+		this.titulo = new JLabel("Turno de : ");
+		this.info = new JLabel();
+		this.personaje = new JButton("Ver Personajes");
+		this.casilla = new JButton("Ver Casilla");
+		this.mapa = new Container();	
+		darFormato();
+	}
+	
+	private void darFormato() {
+		this.titulo.setBorder(BorderFactory.createLoweredBevelBorder());
+		this.titulo.setFont(new Font("Tahoma", 0, 24));
+		this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		this.titulo.setBackground(Color.lightGray);
+		this.titulo.setOpaque(true);
+		this.titulo.setBounds(100, 10, 300, 50);
+		this.info.setBorder(BorderFactory.createLoweredBevelBorder());
+		this.info.setFont(new Font("Tahoma", 0, 18));
+		this.info.setHorizontalAlignment(SwingConstants.CENTER);
+		this.info.setBackground(Color.lightGray);
+		this.info.setOpaque(true);
+		this.info.setBounds(50, 660, 400, 50);
+		
+		this.personaje.setBounds(90, 75, 150, 75);
+		this.casilla.setBounds(260, 75, 150, 75);
+
+		this.mapa.setBounds(50, 150, 400, 500);
+		this.setLayout(null);
+		this.mapa.setLayout(grid);
+		for (int i = 0; i < this.grid.getRows(); i++) {
+			for (int j = 0; j < this.grid.getColumns(); j++) {
+				JButton label = new JButton();
+				label.setOpaque(true);
+				label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				if(this.modelo.getTablero()[i][j] instanceof Arboleda) {
+					label.setBackground(Color.GREEN);
+				} else if(this.modelo.getTablero()[i][j] instanceof Mountain) {
+					label.setBackground(Color.ORANGE);
+				} else {
+					label.setBackground(Color.gray);
+				}
+				if(this.modelo.getTablero()[i][j].getPersonaje() != null) {
+					label.setIcon(new ImageIcon(getClass().getResource(this.modelo.getTablero()[i][j].getPersonaje().getRuta())));
+				}
+				this.tablero[i][j] = label;
+				this.mapa.add(label);
+			}
+		}
+		this.add(titulo);
+		this.add(info);
+		this.add(personaje);
+		this.add(casilla);
+		this.add(mapa);
+		this.titulo.setText("Turno de : " + modelo.getJ1().getNombre());
+		
+		this.setSize(500, 760);
+		this.setLocationRelativeTo(null);
+		this.setTitle("Fire Emblem");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
+		this.setVisible(true);
+	}
+
+	public JButton[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(JButton[][] tablero) {
+		this.tablero = tablero;
+	}
+
+	public TableroModel getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(TableroModel modelo) {
+		this.modelo = modelo;
+	}
+
+	public GridLayout getGrid() {
+		return grid;
+	}
+
+	public void setGrid(GridLayout grid) {
+		this.grid = grid;
+	}
+
+	public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JLabel getInfo() {
+		return info;
+	}
+
+	public void setInfo(JLabel info) {
+		this.info = info;
+	}
+
+	public JButton getPersonaje() {
+		return personaje;
+	}
+
+	public void setPersonaje(JButton personaje) {
+		this.personaje = personaje;
+	}
+
+	public JButton getCasilla() {
+		return casilla;
+	}
+
+	public void setCasilla(JButton casilla) {
+		this.casilla = casilla;
+	}
+
+	public Container getMapa() {
+		return mapa;
+	}
+
+	public void setMapa(Container mapa) {
+		this.mapa = mapa;
+	}
+
+}

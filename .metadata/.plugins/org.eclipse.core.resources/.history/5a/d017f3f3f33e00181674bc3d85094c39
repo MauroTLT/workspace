@@ -1,0 +1,156 @@
+package FireEmblemGraphic;
+
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+
+@SuppressWarnings("serial")
+public class BatallaView extends JDialog {
+	
+	private static boolean combate = false;
+	private JLabel personaje, enemy, vidaP, vidaPT, vidaE, vidaET, danoP, danoPT, danoE, danoET;
+	private JButton aceptar, cancelar;
+	
+	public BatallaView() {
+		this.personaje = new JLabel();
+		this.enemy = new JLabel();
+		this.vidaP = new JLabel();
+		this.vidaE = new JLabel();
+		this.danoP = new JLabel();
+		this.danoE = new JLabel();
+		this.vidaPT = new JLabel("Vida:");
+		this.vidaET = new JLabel("Vida:");
+		this.danoPT = new JLabel("Daño:");
+		this.danoET = new JLabel("Daño:");
+		this.aceptar = new JButton("Aceptar");
+		this.cancelar = new JButton("Cancelar");
+		darFormato();
+	}
+
+	private void darFormato() {
+		this.setContentPane(new JLabel(new ImageIcon(getClass().getResource("../resources/bg.jpg"))));
+		this.setLayout(null);
+		
+		this.personaje.setBounds(50,150,100,100);
+		this.add(personaje);
+		
+		this.enemy.setBounds(475,150,100,100);
+		this.add(enemy);
+		
+		this.vidaPT.setFont(new Font("Tahoma", Font.BOLD, 18));
+		this.vidaPT.setBounds(50,100,75,25);
+		this.add(vidaPT);
+		this.vidaP.setFont(new Font("Tahoma", Font.BOLD, 18));
+		this.vidaP.setBounds(125,100,25,25);
+		this.add(vidaP);
+		
+		this.vidaE.setFont(new Font("Tahoma", Font.BOLD, 18));
+		this.vidaE.setBounds(475,100,100,25);
+		this.add(vidaE);
+		
+		this.danoP.setFont(new Font("Tahoma", Font.BOLD, 18));
+		this.danoP.setBounds(50,275,100,25);
+		this.add(danoP);
+		
+		this.danoE.setFont(new Font("Tahoma", Font.BOLD, 18));
+		this.danoE.setBounds(475,275,100,25);
+		this.add(danoE);
+		
+		this.aceptar.setBounds(200,300,100,50);
+		this.add(aceptar);
+		
+		this.cancelar.setBounds(325,300,100,50);
+		this.add(cancelar);
+		
+		this.setSize(630, 450);
+		this.setTitle("Batalla");
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setVisible(true);
+		
+	}
+
+	public JLabel getPersonaje() {
+		return personaje;
+	}
+
+	public void setPersonaje(JLabel personaje) {
+		this.personaje = personaje;
+	}
+
+	public JLabel getEnemy() {
+		return enemy;
+	}
+
+	public void setEnemy(JLabel enemy) {
+		this.enemy = enemy;
+	}
+
+	public JLabel getVidaP() {
+		return vidaP;
+	}
+
+	public void setVidaP(JLabel vidaP) {
+		this.vidaP = vidaP;
+	}
+
+	public JLabel getVidaE() {
+		return vidaE;
+	}
+
+	public void setVidaE(JLabel vidaE) {
+		this.vidaE = vidaE;
+	}
+
+	public JLabel getDanoP() {
+		return danoP;
+	}
+
+	public void setDanoP(JLabel danoP) {
+		this.danoP = danoP;
+	}
+
+	public JLabel getDanoE() {
+		return danoE;
+	}
+
+	public void setDanoE(JLabel danoE) {
+		this.danoE = danoE;
+	}
+
+	public JButton getAceptar() {
+		return aceptar;
+	}
+
+	public void setAceptar(JButton aceptar) {
+		this.aceptar = aceptar;
+	}
+
+	public JButton getCancelar() {
+		return cancelar;
+	}
+
+	public void setCancelar(JButton cancelar) {
+		this.cancelar = cancelar;
+	}
+
+	public static boolean isCombate() {
+		return combate;
+	}
+
+	public void setCombate(boolean combate) {
+		BatallaView.combate = combate;
+	}
+
+	public void setImagenP(String ruta) {
+		this.personaje.setIcon(new ImageIcon(getClass().getResource(ruta)));
+	}
+	public void setImagenE(String ruta) {
+		this.enemy.setIcon(new ImageIcon(getClass().getResource(ruta)));	
+	}
+
+}
