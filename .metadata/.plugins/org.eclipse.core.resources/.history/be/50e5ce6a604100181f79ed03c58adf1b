@@ -1,0 +1,22 @@
+package Controller;
+
+import java.io.BufferedReader;
+
+import Vista.HistorialView;
+
+public class HistorialController {
+	private HistorialView ventana;
+	private BufferedReader ficheroEntrada;
+	
+	public HistorialController() {
+		this.ventana = new HistorialView();
+	}
+
+	public HistorialView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(HistorialView ventana) {
+		this.ventana = ventana;
+	}
+}

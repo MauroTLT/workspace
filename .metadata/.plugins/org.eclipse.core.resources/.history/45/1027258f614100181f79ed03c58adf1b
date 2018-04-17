@@ -1,0 +1,38 @@
+package Vista;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import javax.swing.BoxLayout;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+
+@SuppressWarnings("serial")
+public class HistorialView extends JDialog {
+	private JScrollPane scroll;
+	
+	public HistorialView(BufferedReader ficheroEntrada) {
+		this.scroll = new JScrollPane();
+		darFormato(ficheroEntrada);
+	}
+
+	private void darFormato(BufferedReader ficheroEntrada) {
+		String linea = null;
+		new BoxLayout(this, BoxLayout.Y_AXIS);
+		this.add(scroll);
+		try {
+			while ((linea = ficheroEntrada.readLine()) != null) {
+				this.add(new JLabel(linea));
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(400, 300);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+	}
+}

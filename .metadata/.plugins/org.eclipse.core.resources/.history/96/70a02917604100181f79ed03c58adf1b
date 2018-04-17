@@ -1,0 +1,19 @@
+package Controller;
+
+import Vista.HistorialView;
+
+public class HistorialController {
+	private HistorialView ventana;
+	
+	public HistorialController() {
+		this.ventana = new HistorialView();
+	}
+
+	public HistorialView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(HistorialView ventana) {
+		this.ventana = ventana;
+	}
+}
