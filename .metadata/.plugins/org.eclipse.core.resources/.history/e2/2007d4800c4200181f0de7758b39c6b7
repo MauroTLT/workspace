@@ -1,0 +1,317 @@
+package FireEmblemGraphic;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import resources.Sip;
+
+public class TableroController implements MouseListener, KeyListener {
+	
+	private static final Sip player = new Sip();
+	private static BatallaController batalla;
+	private TableroView ventana;
+	private TableroModel modelo;
+	private DialogoController dialog;
+	
+	private int turno = 0;
+	private int movimientos = 0;
+	private boolean quieto = false;
+	private Casilla aux = null;
+	private Personaje aux2 = null;
+	
+	public TableroController() {
+		this.modelo = new TableroModel();
+		this.ventana = new TableroView(modelo);
+		this.dialog = null;
+		setActions();
+	}
+	
+	private void setActions() {
+		for (int i = 0; i < this.ventana.getTablero().length; i++) {
+			for (int j = 0; j < this.ventana.getTablero()[i].length; j++) {
+				this.ventana.getTablero()[i][j].addMouseListener(this);
+				this.ventana.getTablero()[i][j].addKeyListener(this);
+				
+			}
+		}
+		this.ventana.getPersonaje().addMouseListener(this);
+		this.ventana.getCasilla().addMouseListener(this);
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (!this.quieto) {
+			if (movimientos == 0) {
+				for (int i = 0; i < this.ventana.getTablero().length; i++) {
+					for (int j = 0; j < this.ventana.getTablero()[i].length; j++) {
+						if (e.getSource() == this.ventana.getTablero()[i][j]) {
+							for (int k = 0; k < this.modelo.getJ1().getPersonajes().length; k++) {
+								if (this.modelo.getTablero()[i][j]
+										.getPersonaje() == this.modelo.getJ1().getPersonajes()[k]) {
+									//Personaje de jugador 1
+									if (this.turno % 2 == 0) {
+										//turno correcto
+										aux = this.modelo.getTablero()[i][j];
+										aux2 = this.modelo.getTablero()[i][j].getPersonaje();
+										this.ventana.getInfo().setText(
+												aux2.getNombre() + " tiene " + aux2.getPasos() + " Movimientos");
+									}
+								} else if (this.modelo.getTablero()[i][j]
+										.getPersonaje() == this.modelo.getJ2().getPersonajes()[k]) {
+									//Personaje de jugador 2
+									if (this.turno % 2 != 0) {
+										//turno correcto
+										aux = this.modelo.getTablero()[i][j];
+										aux2 = this.modelo.getTablero()[i][j].getPersonaje();
+										this.ventana.getInfo().setText(
+												aux2.getNombre() + " tiene " + aux2.getPasos() + " Movimientos");
+									}
+								}
+							}
+						}
+					}
+				} 
+			} 
+		} else {
+			for (int i = 0; i < this.ventana.getTablero().length; i++) {
+				for (int j = 0; j < this.ventana.getTablero()[i].length; j++) {
+					if (e.getSource() == this.ventana.getTablero()[i][j]) {
+						try {
+							if(this.modelo.getTablero()[i+1][j] == this.aux && this.modelo.getTablero()[i][j].getPersonaje() != null) {
+								System.out.println("adios1");
+								aux.getPersonaje().atacar(ventana, this.modelo.getTablero()[i][j]);
+								this.aux = null;
+								this.quieto = false;
+								this.movimientos = 0;
+								this.turno++;
+								this.ventana.getInfo().setText("");
+							}
+						} catch (Exception e1) {
+							System.out.println("error");
+						}
+						try {
+							if (this.modelo.getTablero()[i - 1][j] == this.aux && this.modelo.getTablero()[i][j].getPersonaje() != null) {
+								System.out.println("adios2");
+								aux.getPersonaje().atacar(ventana, this.modelo.getTablero()[i][j]);
+								this.aux = null;
+								this.quieto = false;
+								this.movimientos = 0;
+								this.turno++;
+								this.ventana.getInfo().setText("");
+							} 
+						} catch (Exception e2) {
+							System.out.println("error2");
+						}
+						try {
+							if(this.modelo.getTablero()[i][j+1] == this.aux && this.modelo.getTablero()[i][j].getPersonaje() != null) {
+								System.out.println("adios3");
+								aux.getPersonaje().atacar(ventana, this.modelo.getTablero()[i][j]);
+								this.aux = null;
+								this.quieto = false;
+								this.movimientos = 0;
+								this.turno++;
+								this.ventana.getInfo().setText("");
+							}
+						} catch (Exception e3) {
+							System.out.println("error3");
+						}
+						try {
+							if(this.modelo.getTablero()[i][j-1] == this.aux && this.modelo.getTablero()[i][j].getPersonaje() != null) {
+								System.out.println("adios4");
+								aux.getPersonaje().atacar(ventana, this.modelo.getTablero()[i][j]);
+								this.aux = null;
+								this.quieto = false;
+								this.movimientos = 0;
+								this.turno++;
+								this.ventana.getInfo().setText("");
+							}
+						} catch (Exception e4) {
+							System.out.println("error");
+						}
+						if(turno % 2 == 0) {
+							ventana.getTitulo().setText("Turno de : " + modelo.getJ1().getNombre());
+						} else {
+							ventana.getTitulo().setText("Turno de : " + modelo.getJ2().getNombre());
+						}
+						System.out.println("fin");
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {	
+		if(e.getSource() == this.ventana.getPersonaje()) {
+			//JDialog cuadroDialogo = new JDialog(this.ventana, true);
+			JFrame cuadroDialogo = new JFrame();
+			JTable table = new JTable(setContent(), new String[]{"Nombre", "Arma", "HP", "ATK", "DEF"});
+			cuadroDialogo.add(new JScrollPane(table));
+			table.setDefaultEditor(Object.class, null);
+			cuadroDialogo.setSize(400, 195);
+			cuadroDialogo.setTitle("Visualización de Personajes");
+			cuadroDialogo.setResizable(false);
+			cuadroDialogo.setLocationRelativeTo(null);
+			cuadroDialogo.setVisible(true);
+			player.play("paj.au");
+		} else if(e.getSource() == this.ventana.getCasilla()) {
+			//this.dialog.getVentana().setVisible(true);
+			new DialogoController(this.ventana.getTablero(), this.modelo);
+		}
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent k) {
+		if(k.getKeyCode() == '\n') {
+			if (!quieto) {
+				//this.aux = null;
+				this.quieto = true;
+				this.movimientos = 0;
+				this.turno++;
+				this.ventana.getInfo().setText("");
+			} else {
+				this.aux = null;
+				this.quieto = false;
+				this.movimientos = 0;
+				this.turno++;
+				this.ventana.getInfo().setText("");
+			}
+		} else if(this.aux != null && this.movimientos != this.aux2.getPasos()) {
+			Casilla anterior = this.aux;
+			aux = this.aux.getPersonaje().mover(this.ventana, k.getKeyCode(), movimientos);
+			System.out.println(aux);
+			if(this.aux != null && this.aux != anterior) {
+				movimientos++;
+				this.ventana.getInfo().setText(aux2.getNombre() + " tiene " + (aux2.getPasos()-movimientos) + " Movimientos más");
+			}
+			if(this.aux2.getPasos() == this.movimientos) {
+				//this.aux = null;
+				this.ventana.getInfo().setText("Selecciona la casilla a la que atacar o pulsa enter para acabar");
+				this.quieto = true;
+			}
+		} else {k.consume();}
+		if(turno % 2 == 0) {
+			ventana.getTitulo().setText("Turno de : " + modelo.getJ1().getNombre());
+		} else {
+			ventana.getTitulo().setText("Turno de : " + modelo.getJ2().getNombre());
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent k) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent k) {
+
+	}
+	
+	public String[][] setContent() {
+		String[][] content = new String[9][5];
+		int j = 0;
+		int k = 0;
+		for (int i = 0; i < content.length; i++) {
+			if(i < 4) {
+				content[i][0] = this.modelo.getJ1().getPersonajes()[j].getNombre();
+				content[i][1] = this.modelo.getJ1().getPersonajes()[j].getArma().getNombre();
+				content[i][2] = Integer.toString(this.modelo.getJ1().getPersonajes()[j].getHp());
+				content[i][3] = Integer.toString(this.modelo.getJ1().getPersonajes()[j].getAtk());
+				content[i][4] = Integer.toString(this.modelo.getJ1().getPersonajes()[j].getDef());
+				j++;
+			} else if(i == 4) {
+				content[i][0] = "";
+				content[i][1] = "";
+				content[i][2] = "";
+				content[i][3] = "";
+				content[i][4] = "";
+			} else {
+				content[i][0] = this.modelo.getJ2().getPersonajes()[k].getNombre();
+				content[i][1] = this.modelo.getJ2().getPersonajes()[k].getArma().getNombre();
+				content[i][2] = Integer.toString(this.modelo.getJ2().getPersonajes()[k].getHp());
+				content[i][3] = Integer.toString(this.modelo.getJ2().getPersonajes()[k].getAtk());
+				content[i][4] = Integer.toString(this.modelo.getJ2().getPersonajes()[k].getDef());
+				k++;
+			}
+		}
+		return content;
+	}
+
+	public TableroView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(TableroView ventana) {
+		this.ventana = ventana;
+	}
+
+	public DialogoController getDialog() {
+		return dialog;
+	}
+
+	public void setDialog(DialogoController dialog) {
+		this.dialog = dialog;
+	}
+
+	public int getTurno() {
+		return turno;
+	}
+
+	public void setTurno(int turno) {
+		this.turno = turno;
+	}
+
+	public int getMovimientos() {
+		return movimientos;
+	}
+
+	public void setMovimientos(int movimientos) {
+		this.movimientos = movimientos;
+	}
+
+	public static void crearBatalla(Personaje tu,Personaje enemy) {
+		batalla = new BatallaController(tu, enemy);
+		batalla.getVentana().setImagenP(tu.getRuta());
+		batalla.getVentana().setImagenE(enemy.getRuta());
+		batalla.getVentana().getVidaP().setText("" + tu.getHp());
+		batalla.getVentana().getVidaE().setText("" + enemy.getHp());
+		if(tu.arma.getVentaja().equals(enemy.getArma())) {
+			batalla.getVentana().getDanoP().setText("" + ((int) Math.abs((tu.atk + (tu.atk * tu.arma.getPorcentaje())) - enemy.getDef())));
+			batalla.getVentana().getDanoE().setText("" + ((int) Math.abs((enemy.getAtk() - (enemy.getAtk() * enemy.getArma().getPorcentaje())) - tu.def)));
+		} else if(tu.arma.getDesventaja().equals(enemy.getArma())) {
+			batalla.getVentana().getDanoP().setText("" + ((int) Math.abs((tu.atk - (tu.atk * tu.arma.getPorcentaje())) - enemy.getDef())));
+			batalla.getVentana().getDanoE().setText("" + ((int) Math.abs((enemy.getAtk() + (enemy.getAtk() * enemy.getArma().getPorcentaje())) - tu.def)));
+		} else {
+			batalla.getVentana().getDanoP().setText("" + ((int) Math.abs(tu.atk - enemy.getDef())));
+			batalla.getVentana().getDanoE().setText("" + ((int) Math.abs(enemy.getAtk() - tu.def)));
+		}
+		
+	}
+
+}

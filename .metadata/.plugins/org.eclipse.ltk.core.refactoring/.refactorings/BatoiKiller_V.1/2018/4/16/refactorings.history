@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Sip.java&apos; to &apos;FireEmblem/src/resources&apos;&#x0A;- Original project: &apos;BatoiKiller_V.1&apos;&#x0A;- Destination element: &apos;FireEmblem/src/resources&apos;&#x0A;- Original element: &apos;resources.Sip.java&apos;" description="Copy compilation unit" destination="=FireEmblem/src&lt;resources" element1="/src&lt;resources{Sip.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1523946584149" units="1" version="1.0"/>
+</session>
