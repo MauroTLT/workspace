@@ -1,9 +1,0 @@
-package FireEmblemGraphic;
-
-public class Caballeria extends Personaje{
-
-	public Caballeria(String nombre, String ruta, Arma arma, int hp, int atk, int def, Casilla casilla) {
-		super(nombre, ruta, arma, hp, atk, def, casilla, 4);
-	}
-
-}

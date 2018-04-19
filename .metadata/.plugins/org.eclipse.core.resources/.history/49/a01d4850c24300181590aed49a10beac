@@ -1,0 +1,31 @@
+package Controller;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import View.ElecView;
+
+public class ElecController implements ActionListener{
+	
+	private ElecView ventana;
+	
+	public ElecController() {
+		this.ventana = new ElecView();
+		while(ventana.isShowing()) {System.out.print("");}
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ElecView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(ElecView ventana) {
+		this.ventana = ventana;
+	}
+
+}

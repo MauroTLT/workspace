@@ -1,0 +1,14 @@
+package Controller;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
+public class FicheroController {
+	BufferedWriter ficheroSalida;
+
+	public FicheroController() {
+		this.ficheroSalida = ficheroSalida = new BufferedWriter(new FileWriter(new File("historial.txt"), true));
+	}
+	
+}

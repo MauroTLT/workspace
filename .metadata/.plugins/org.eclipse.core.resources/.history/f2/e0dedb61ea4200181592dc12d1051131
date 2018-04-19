@@ -1,0 +1,72 @@
+package ejer4;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+abstract class EmpleadoBase {
+	public void add(EmpleadoBase empleado) {
+	}
+
+	public EmpleadoBase getChild(int i) {
+		return null;
+	}
+
+	public void remove(EmpleadoBase empleado) {
+	}
+
+	public abstract void print();
+}
+
+class Comercial extends EmpleadoBase {
+	// NO SOBREESCRIBIREMOS LOS METODOS DE add,getChild y remove porque es un
+	// elemento HOJA
+	private String nombre;
+	private String puesto;
+
+	public Comercial(String nombre, String puesto) {
+		this.nombre = nombre;
+		this.puesto = puesto;
+	}
+
+	public void print() {
+		System.out.println("Nombre = " + this.nombre);
+		System.out.println("Puesto = " + this.puesto);
+		System.out.println("");
+	}
+}
+
+class Directivo extends EmpleadoBase {
+	private String nombre;
+	private double salario;
+	List<Empleado> empleados = new ArrayList<Empleado>();
+
+	public Manager(String nombre, double salario) {
+		this.nombre = nombre;
+		this.salario = salario;
+	}
+
+	public void add(Empleado empleado) {
+		empleados.add(empleado);
+	}
+
+	public Empleado getChild(int i) {
+		return empleados.get(i);
+	}
+
+	public void print() {
+		System.out.println("");
+		System.out.println("Nombre = " + this.nombre);
+		System.out.println("Salario = " + this.salario);
+		System.out.println("Empleados a su cargo:");
+		Iterator<Empleado> empleadosIterator = empleados.iterator();
+		while (empleadosIterator.hasNext()) {
+			Empleado empleado = empleadosIterator.next();
+			empleado.print();
+		}
+	}
+
+	public void remove(Empleado empleado) {
+		empleados.remove(empleado);
+	}
+}

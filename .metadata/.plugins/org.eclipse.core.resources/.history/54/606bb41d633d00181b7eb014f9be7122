@@ -1,9 +1,0 @@
-package FireEmblemGraphic;
-
-public class Arboleda extends Casilla {
-
-	public Arboleda() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

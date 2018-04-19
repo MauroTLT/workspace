@@ -1,0 +1,154 @@
+package Controller;
+
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import View.TitleView;
+
+public class TitleController implements KeyListener, MouseListener{
+	private boolean semaforo = false;
+	private TitleView ventana;
+	
+	public TitleController() {
+		this.ventana = new TitleView();
+		this.ventana.addMouseListener(this);
+		this.ventana.addKeyListener(this);
+		this.ventana.getNuevo().addMouseListener(this);
+		this.ventana.getSalir().addMouseListener(this);
+		try {
+			Thread.sleep(1000);
+			while(this.ventana.getTitulo().getLocation().getY() <= 200) {
+				this.ventana.getTitulo().setLocation(120, (int) (this.ventana.getTitulo().getLocation().getY()+5));
+				Thread.sleep(45);
+			}
+			Thread.sleep(1500);
+			this.ventana.getPulsa().setVisible(true);
+			System.out.println(this.ventana.getPulsa().getForeground().getAlpha());
+			while(!semaforo) {
+				while(this.ventana.getPulsa().getForeground().getAlpha() < 250 && !semaforo) { // al reves > 0 | -15 y cambiar a 255 en el primer foreground // del derecho < 255 | +15 y cambiar a 0 en el primer foreground
+					this.ventana.getPulsa()
+							.setForeground(new Color(this.ventana.getPulsa().getForeground().getRed(),
+									this.ventana.getPulsa().getForeground().getGreen(),
+									this.ventana.getPulsa().getForeground().getBlue(),
+									this.ventana.getPulsa().getForeground().getAlpha() + 10));
+					Thread.sleep(150);
+				}
+				while(this.ventana.getPulsa().getForeground().getAlpha() > 90 && !semaforo) { // al reves > 0 | -15 y cambiar a 255 en el primer foreground // del derecho < 255 | +15 y cambiar a 0 en el primer foreground
+					this.ventana.getPulsa()
+							.setForeground(new Color(this.ventana.getPulsa().getForeground().getRed(),
+									this.ventana.getPulsa().getForeground().getGreen(),
+									this.ventana.getPulsa().getForeground().getBlue(),
+									this.ventana.getPulsa().getForeground().getAlpha() - 10));
+					Thread.sleep(150);
+				}
+			}
+			System.out.println("fin");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		while(ventana.isShowing()) {System.out.print("");}
+	}
+
+	public TitleView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(TitleView ventana) {
+		this.ventana = ventana;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (this.ventana.getPulsa().isVisible()) {
+			this.semaforo = true;
+			this.ventana.getPulsa().setVisible(false);
+			this.ventana.crearOpciones();
+		} else if(e.getKeyCode() == KeyEvent.VK_UP) {
+			this.ventana.changeOption(2);
+		} else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			this.ventana.changeOption(1);
+		} else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if(this.ventana.getLt1().isVisible()) {
+				this.ventana.dispose();
+			} else if(this.ventana.getLt2().isVisible()) {
+				System.exit(0);
+			}
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (this.ventana.getPulsa().isVisible()) {
+			this.semaforo = true;
+			this.ventana.getPulsa().setVisible(false);
+			this.ventana.crearOpciones();
+		} else if(e.getSource() == this.ventana.getNuevo()) {
+			this.ventana.dispose();
+		} else if(e.getSource() == this.ventana.getSalir()) {
+			System.exit(0);
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image image = toolkit.getImage("icons/handwriting.gif");
+		Cursor c = toolkit.createCustomCursor(image , new Point(this.ventana.getX(), 
+		           mainPane.getY()), "img");
+		mainPane.setCursor (c);
+		if(e.getSource() == this.ventana.getNuevo()) {
+			this.ventana.getNuevo().setCursor(new Cursor(Cursor.HAND_CURSOR));
+			this.ventana.changeOption(2);
+		} else if(e.getSource() == this.ventana.getSalir()) {
+			this.ventana.getSalir().setCursor(new Cursor(Cursor.HAND_CURSOR));
+			this.ventana.changeOption(1);
+		}
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean isSemaforo() {
+		return semaforo;
+	}
+
+	public void setSemaforo(boolean semaforo) {
+		this.semaforo = semaforo;
+	}
+
+}

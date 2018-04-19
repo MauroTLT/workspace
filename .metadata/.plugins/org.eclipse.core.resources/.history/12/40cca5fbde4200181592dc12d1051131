@@ -1,0 +1,5 @@
+package EjemploUso;
+
+public class LogSingleton {
+
+}

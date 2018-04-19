@@ -2,10 +2,6 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -18,9 +14,11 @@ public class ControlerIMC implements ActionListener{
 	private final static Calendar c = new GregorianCalendar();
 	private ModeloIMC modelo;
 	private VistaIMC vista;
+	private FicheroController fichero;
 	private final float PESO_BAJO=18.5F,PESO_NORMAL=24.9F, SOBREPESO=29.9F, OBESIDAD1=34.9F,OBESIDAD2=39.9F;
 	
 	public ControlerIMC(){
+		fichero = new FicheroController();
 		modelo = new ModeloIMC();
 		vista = new VistaIMC(modelo.getTextoAltura(), modelo.getTextoMasa());
 		initControler();
@@ -33,10 +31,8 @@ public class ControlerIMC implements ActionListener{
 	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		BufferedWriter ficheroSalida = null;
 		JButton source = (JButton)e.getSource();
 		try{
-			ficheroSalida = new BufferedWriter(new FileWriter(new File("historial.txt"), true));
 			if(source.getText().equals("Calcular")){
 				String texto = "";
 				Double res= Double.parseDouble(vista.getTextMasa().getText())/Math.pow(Double.parseDouble(vista.getTextAltura().getText()), 2);
@@ -62,8 +58,7 @@ public class ControlerIMC implements ActionListener{
 					texto = "Obesidad 3";
 					vista.getLabelTextRes().setText("Obesidad 3");
 				}
-				ficheroSalida.write(Integer.toString(c.get(Calendar.DATE)) + "/" + Integer.toString(c.get(Calendar.MONTH)) + "/" + Integer.toString(c.get(Calendar.YEAR)) + " " + res + " " + texto);
-				ficheroSalida.newLine();
+				fichero.excribir(Integer.toString(c.get(Calendar.DATE)) + "/" + Integer.toString(c.get(Calendar.MONTH)) + "/" + Integer.toString(c.get(Calendar.YEAR)) + " " + res + " " + texto);
 			} else if(source.getText().equals("Limpiar")) {
 				vista.getLabelResNumero().setText("");
 				vista.getTextAltura().setText("");
@@ -72,8 +67,7 @@ public class ControlerIMC implements ActionListener{
 			} else {
 				new HistorialController();
 			}
-			ficheroSalida.close();
-		}catch(NumberFormatException | IOException e1){
+		}catch(NumberFormatException e1){
 			e1.printStackTrace();
 			vista.getMensaje().showMessageDialog(null, "Datos no validos");
 			

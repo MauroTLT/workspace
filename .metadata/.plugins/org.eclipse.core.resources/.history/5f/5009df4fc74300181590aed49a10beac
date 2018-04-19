@@ -1,0 +1,25 @@
+package Controller;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+import Vista.HistorialView;
+
+public class HistorialController {
+	private FicheroController fichero;
+	private HistorialView ventana;
+	
+	public HistorialController() {
+		this.ventana = new HistorialView(fichero);
+	}
+
+	public HistorialView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(HistorialView ventana) {
+		this.ventana = ventana;
+	}
+}

@@ -1,0 +1,85 @@
+package Controller;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import View.TitleView;
+
+public class TitleController implements KeyListener, MouseListener{
+
+	private TitleView ventana;
+	
+	public TitleController() {
+		this.ventana = new TitleView();
+		this.ventana.addMouseListener(this);
+		this.ventana.addKeyListener(this);
+		this.ventana.getNuevo().addMouseListener(this);
+		this.ventana.getSalir().addMouseListener(this);
+		while(ventana.isShowing()) {System.out.print("");}
+	}
+
+	public TitleView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(TitleView ventana) {
+		this.ventana = ventana;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		this.ventana.dispose();
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (this.ventana.getPulsa().isVisible()) {
+			this.ventana.getPulsa().setVisible(false);
+			this.ventana.crearOpciones();
+		} else if(e.getSource() == this.ventana.getNuevo()) {
+			this.ventana.dispose();
+		} else if(e.getSource() == this.ventana.getNuevo()) {
+			System.exit(0);
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

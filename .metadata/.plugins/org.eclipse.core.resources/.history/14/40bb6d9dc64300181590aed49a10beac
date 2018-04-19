@@ -1,0 +1,12 @@
+package Controller;
+
+import java.io.BufferedWriter;
+
+public class FicheroController {
+	BufferedWriter ficheroSalida;
+
+	public FicheroController(BufferedWriter ficheroSalida) {
+		this.ficheroSalida = ficheroSalida;
+	}
+	
+}

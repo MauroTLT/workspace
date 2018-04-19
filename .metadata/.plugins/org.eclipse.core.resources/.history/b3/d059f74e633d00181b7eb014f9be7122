@@ -1,9 +1,0 @@
-package FireEmblemGraphic;
-
-public class Planicie {
-
-	public Planicie() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
