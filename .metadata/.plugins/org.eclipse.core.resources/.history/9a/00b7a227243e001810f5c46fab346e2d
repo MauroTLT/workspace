@@ -1,9 +1,0 @@
-package FireEmblemGraphic;
-
-public class Planicie extends Casilla {
-
-	public Planicie(int fila, int columna) {
-		super("ruta", fila, columna);
-	}
-
-}

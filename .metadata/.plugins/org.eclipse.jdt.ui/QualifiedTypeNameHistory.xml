@@ -37,4 +37,11 @@
 <fullyQualifiedTypeName name="javax.swing.JPanel"/>
 <fullyQualifiedTypeName name="javax.swing.BoxLayout"/>
 <fullyQualifiedTypeName name="resources.Sip"/>
+<fullyQualifiedTypeName name="java.awt.Toolkit"/>
+<fullyQualifiedTypeName name="java.awt.Point"/>
+<fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
+<fullyQualifiedTypeName name="Controller.FicheroController"/>
+<fullyQualifiedTypeName name="Estrategia.Estrategia"/>
 </qualifiedTypeNameHistroy>

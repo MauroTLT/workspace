@@ -1,0 +1,9 @@
+package ejer3;
+
+public class HablaAleman {
+
+	public HablaAleman() {
+		System.out.println("Hallo Jose");
+	}
+
+}

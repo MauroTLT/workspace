@@ -1,0 +1,11 @@
+package ejer3;
+
+public class HablaAleman implements Estrategia{
+
+	@Override
+	public void saludar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}System.out.println("Hallo Jose");

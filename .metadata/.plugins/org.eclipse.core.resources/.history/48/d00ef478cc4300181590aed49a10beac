@@ -1,0 +1,9 @@
+package ejer3;
+
+public class HablaAleman implements Estrategia{
+
+	public HablaAleman() {
+		System.out.println("Hallo Jose");
+	}
+
+}

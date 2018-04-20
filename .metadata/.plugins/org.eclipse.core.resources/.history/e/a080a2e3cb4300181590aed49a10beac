@@ -1,0 +1,9 @@
+package ejer3;
+
+public class HablaFrances {
+
+	public HablaFrances() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

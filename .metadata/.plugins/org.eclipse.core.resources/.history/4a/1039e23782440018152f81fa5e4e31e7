@@ -1,0 +1,59 @@
+package Controller;
+
+import Model.Protagonista;
+import Model.TableroModel;
+import View.BatoiKillerView;
+
+public class BatoiKillerController {
+
+	private TableroModel modelo;
+	private TitleController title;
+	private ElecController elec;
+	private BatoiKillerView ventana;
+	
+	public BatoiKillerController() {
+		this.title = new TitleController();
+		this.elec = new ElecController();
+		this.modelo = new TableroModel(elec.getVentana().getDificultad());
+		
+		this.modelo.getCasillas()[5][5].getPersonajes()[1].setRuta(elec.getVentana().getRuta());
+		if (elec.getVentana().getNombreTxt().getText().length() > 1) {
+			Protagonista.setNombre(elec.getVentana().getNombreTxt().getText());
+		}
+		this.ventana = new BatoiKillerView(modelo);
+		System.out.println(Protagonista.getNombre());
+	}
+
+	public TitleController getTitle() {
+		return title;
+	}
+
+	public void setTitle(TitleController title) {
+		this.title = title;
+	}
+
+	public ElecController getElec() {
+		return elec;
+	}
+
+	public void setElec(ElecController elec) {
+		this.elec = elec;
+	}
+
+	public TableroModel getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(TableroModel modelo) {
+		this.modelo = modelo;
+	}
+
+	public BatoiKillerView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(BatoiKillerView ventana) {
+		this.ventana = ventana;
+	}
+
+}

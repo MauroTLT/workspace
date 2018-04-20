@@ -1,0 +1,17 @@
+package ejer3;
+
+public class Maquina {
+	
+	private Estrategia estrategia;
+
+	public void saludar() {
+		estrategia.saludar();
+		
+	}
+
+	public void setEstrategia(Estrategia hablaFrances) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

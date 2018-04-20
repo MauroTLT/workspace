@@ -1,0 +1,5 @@
+package ejer3;
+
+public interface Estrategia {
+
+}

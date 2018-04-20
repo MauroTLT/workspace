@@ -1,0 +1,19 @@
+package ejer3;
+
+public class Maquina {
+
+	public Maquina() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void saludar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setEstrategia(HablaFrances hablaFrances) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
