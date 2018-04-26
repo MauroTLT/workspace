@@ -1,0 +1,15 @@
+package Model;
+
+import java.util.ArrayList;
+
+public class ListaModel {
+	ArrayList<String> lista;
+	
+	public ListaModel() {
+		lista = new ArrayList<String>();
+		this.lista.add("Cristian David");
+		this.lista.add("Ana Milena");
+		this.lista.add("Miguel Angel");
+	}
+
+}

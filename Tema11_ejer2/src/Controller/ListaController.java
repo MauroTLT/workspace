@@ -15,6 +15,7 @@ public class ListaController implements ActionListener {
 	public ListaController() {
 		this.fichero = new FicheroController();
 		this.model = new ListaModel(fichero);
+		this.fichero.leer(model.getLista());
 		this.ventana = new ListaView(model);
 		setActions();
 	}
@@ -33,18 +34,26 @@ public class ListaController implements ActionListener {
 				this.model.getLista().add(this.ventana.getAreaTxt().getText());
 				this.ventana.aniadir(model);
 				this.fichero.excribir(this.ventana.getAreaTxt().getText());
+				try {
+					this.fichero.getFicheroSalida().close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				this.ventana.getAreaTxt().setText("");
 				this.ventana.getMensaje().setText("Se agregó un nuevo elemento.");
 			} else {this.ventana.getMensaje().setText("Debe escribir algo para poder agregar.");}
 		} else if(e.getSource() == this.ventana.getEliminar()) {
 			if(this.ventana.getLista().getSelectedIndex() != -1) {
 				this.fichero.borrar(this.ventana.getModelo().getElementAt(this.ventana.getLista().getSelectedIndex()));
-				this.ventana.getModelo().removeElementAt(((this.ventana.getLista().getSelectedIndex())));
+				this.model.getLista().remove(this.ventana.getLista().getSelectedIndex());
+				this.ventana.getModelo().removeElementAt(this.ventana.getLista().getSelectedIndex());
 				this.ventana.getMensaje().setText("Se eliminó un elemento.");
 			} else {this.ventana.getMensaje().setText("Ningun elemento seleccionado.");}
 		} else {
 			this.model.getLista().clear();
 			this.ventana.getModelo().clear();
+			this.fichero.borrarTodo();
 		}
 	}
 

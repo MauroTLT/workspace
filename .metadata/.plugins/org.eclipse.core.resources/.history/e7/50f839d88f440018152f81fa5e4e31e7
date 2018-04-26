@@ -1,0 +1,73 @@
+package Controller;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import Model.ListaModel;
+import View.ListaView;
+
+public class ListaController implements ActionListener {
+	private ListaView ventana;
+	private ListaModel model;
+	private FicheroController fichero;
+	
+	public ListaController() {
+		this.model = new ListaModel();
+		this.ventana = new ListaView(model);
+		this.fichero = new FicheroController();
+		setActions();
+	}
+
+	private void setActions() {
+		this.ventana.getAgregar().addActionListener(this);
+		this.ventana.getEliminar().addActionListener(this);
+		this.ventana.getBorrar().addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == this.ventana.getAgregar()) {
+			if(!this.ventana.getAreaTxt().getText().isEmpty()) {
+				this.model.getLista().add(this.ventana.getAreaTxt().getText());
+				this.ventana.aniadir(model);
+				this.fichero.excribir(this.ventana.getAreaTxt().getText());
+				this.ventana.getAreaTxt().setText("");
+				this.ventana.getMensaje().setText("Se agregó un nuevo elemento.");
+			} else {this.ventana.getMensaje().setText("Debe escribir algo para poder agregar.");}
+		} else if(e.getSource() == this.ventana.getEliminar()) {
+			if(this.ventana.getLista().getSelectedIndex() != -1) {
+				this.ventana.getModelo().removeElementAt(((this.ventana.getLista().getSelectedIndex())));
+				
+				this.fichero.borrar(this.ventana.getModelo().getElementAt(this.ventana.getLista().getSelectedIndex()));
+				
+				this.ventana.getMensaje().setText("Se eliminó un elemento.");
+			} else {this.ventana.getMensaje().setText("Ningun elemento seleccionado.");}
+		} else {
+			this.model.getLista().clear();
+			this.ventana.getModelo().clear();
+		}
+	}
+
+	private void escribir() {
+		for (int i = 0; i < this.model.getLista().size(); i++) {
+			this.fichero.excribir(this.model.getLista().get(i));
+		}	
+	}
+
+	public ListaModel getModel() {
+		return model;
+	}
+
+	public void setModel(ListaModel model) {
+		this.model = model;
+	}
+
+	public FicheroController getFichero() {
+		return fichero;
+	}
+
+	public void setFichero(FicheroController fichero) {
+		this.fichero = fichero;
+	}
+
+}

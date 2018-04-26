@@ -16,7 +16,6 @@
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
 <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.swing.DefaultListModel"/>
 <fullyQualifiedTypeName name="model.BoardModel"/>
 <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
@@ -44,4 +43,9 @@
 <fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
 <fullyQualifiedTypeName name="Controller.FicheroController"/>
 <fullyQualifiedTypeName name="Estrategia.Estrategia"/>
+<fullyQualifiedTypeName name="Model.Protagonista"/>
+<fullyQualifiedTypeName name="View.ListaView"/>
+<fullyQualifiedTypeName name="Model.ListaModel"/>
+<fullyQualifiedTypeName name="Controller.ListaController"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

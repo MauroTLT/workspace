@@ -1,0 +1,16 @@
+package Model;
+
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
+
+@SuppressWarnings("serial")
+public class ListaModel {
+	ArrayList<String> lista;
+	public ListaModel() {
+		this.addElement("Cristian David");
+		this.addElement("Ana Milena");
+		this.addElement("Miguel Angel");
+	}
+
+}

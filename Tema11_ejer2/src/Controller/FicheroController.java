@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class FicheroController {
 	private BufferedWriter ficheroSalida;
@@ -24,7 +25,6 @@ public class FicheroController {
 		try {
 			ficheroSalida.write(texto);
 			ficheroSalida.newLine();
-			ficheroSalida.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,24 +33,31 @@ public class FicheroController {
 	}
 	
 	public void borrar(String cambio) {
+		ArrayList<String> array = new ArrayList<String>();
+		String linea = "";
 		try {
-			File inputFile = new File("historial.txt");
-			File tempFile = new File("historial2.txt");
-		
-			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-			BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
-			String lineToRemove = "bbb";
-			String currentLine;
-
-		while((currentLine = reader.readLine()) != null) {
-		    String trimmedLine = currentLine.trim();
-		    if(trimmedLine.equals(lineToRemove)) continue;
-		    writer.write(currentLine + System.getProperty("line.separator"));
+			while ((linea = ficheroEntrada.readLine()) != null) {
+				array.add(linea);
+			}
+			ficheroSalida = new BufferedWriter(new FileWriter(new File("historial.txt"), false));
+			for (int i = 0; i < array.size(); i++) {
+				if(!array.get(i).contains(cambio)) {
+					excribir(array.get(i));
+				}
+			}
+			ficheroSalida.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		writer.close(); 
-		reader.close();
-		boolean successful = tempFile.renameTo(inputFile);
+		
+	}
+	
+	public void borrarTodo() {
+		try {
+			ficheroSalida = new BufferedWriter(new FileWriter(new File("historial.txt"), false));
+			ficheroSalida.write("");
+			ficheroSalida.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,6 +75,18 @@ public class FicheroController {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public void leer(ArrayList<String> array) {
+		String linea = "";
+		try {
+			while ((linea = ficheroEntrada.readLine()) != null) {
+				array.add(linea);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public BufferedWriter getFicheroSalida() {

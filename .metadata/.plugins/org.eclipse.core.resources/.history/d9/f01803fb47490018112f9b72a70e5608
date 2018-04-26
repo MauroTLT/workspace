@@ -1,0 +1,74 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.DefaultListModel;
+
+public class ControladorFichero {
+
+	private File archivo;
+	private BufferedReader br;
+	private FileWriter fw;
+	private DefaultListModel<String>lista;
+	public ControladorFichero(String archivo, DefaultListModel<String> lista){
+		this.archivo=new File(archivo);
+		this.lista=lista;
+		datosIniciales();
+		
+	}
+	private void datosIniciales(){
+		String texto="";
+		try{
+			br=new BufferedReader(new FileReader(archivo));
+			do{
+				texto=br.readLine();
+				lista.addElement(texto);
+			}while(texto !=null);
+			br.close();
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	public void guardarInformacion(String info){
+		
+		try {
+			fw=new FileWriter(archivo,true);
+			fw.write(info+"\n");
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void borrarArchivo(){
+		try {
+			fw=new FileWriter(archivo);
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void borrarLinea(String string){
+		try {
+			borrarArchivo();
+			fw=new FileWriter(archivo,true);
+			for (int i = 0; i < lista.size(); i++) {
+				if (lista.get(i).contains(string)) {
+					fw.write(lista.get(i) + "\n");
+				}
+			}
+			fw.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
