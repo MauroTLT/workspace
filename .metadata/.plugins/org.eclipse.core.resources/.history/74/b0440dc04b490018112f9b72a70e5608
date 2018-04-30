@@ -1,0 +1,9 @@
+package ejer1;
+
+public class FachadaCalculadoraOps {
+
+	public FachadaCalculadoraOps() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

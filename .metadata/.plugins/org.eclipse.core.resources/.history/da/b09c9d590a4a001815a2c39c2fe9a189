@@ -1,0 +1,22 @@
+package Controller;
+
+import Model.Casilla;
+import View.BatallaView;
+
+public class BatallaController {
+	
+	private BatallaView ventana;
+
+	public BatallaController(Casilla casilla) {
+		this.ventana = new BatallaView(casilla);
+	}
+
+	public BatallaView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(BatallaView ventana) {
+		this.ventana = ventana;
+	}
+	
+}

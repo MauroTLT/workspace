@@ -6,6 +6,7 @@
 	<item value="387" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_x"/>
 	<item value="0" key="org.eclipse.jdt.uiformatter_pagemodify_dialog.preferred_y"/>
 	<item value="1" key="org.eclipse.jdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
+	<item value="/home/mati/Descargas/mysql-connector-java_8.0.11-1ubuntu16.04_all/usr/share/java" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="0" key="org.eclipse.jdt.uiformatter_page.white_space.java_view.inner"/>
 	<item value="filter_imports;" key="filters_last_used"/>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">

@@ -1,0 +1,19 @@
+
+public class conexionBase {
+
+	public conexionBase() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void conectar() {
+		try {
+			try {
+				Class.forName("com.mysql.jdbc.driver");
+			} catch (ClassNotFoundException e) {
+				// TODO: handle exception
+			}
+		} catch (Exception e1) {
+			// TODO: handle exception
+		}
+	}
+}

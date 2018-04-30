@@ -1,0 +1,19 @@
+import java.sql.Connection;
+
+public class conexionBase {
+	
+	public void conectar() {
+		try {
+			
+			Connection conexion = null;
+			
+			try {
+				Class.forName("com.mysql.jdbc.driver");
+			} catch (ClassNotFoundException e) {
+				
+			}
+		} catch (Exception e1) {
+			
+		}
+	}
+}

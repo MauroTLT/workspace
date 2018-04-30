@@ -1,0 +1,20 @@
+package Model;
+
+import Controller.BatallaController;
+
+public class Combate extends Evento {
+	
+	private BatallaController batalla;
+	private static Combate combateSingleton = new Combate();
+	
+	public static Combate getInstance() {
+		return combateSingleton;
+	}
+	
+	public void combate(Casilla casilla) {
+		batalla = new BatallaController(casilla);
+		while(casilla.getPersonajes()[0].getEnergia() > 0 && casilla.getPersonajes()[1].getEnergia() > 0) {
+			batalla.getVentana().lanzar();
+		}
+	}
+}

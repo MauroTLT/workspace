@@ -1,0 +1,31 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class conexionBase {
+	
+	public void conectar() {
+		try {
+			
+			Connection conexion = null;
+			boolean valid = false;
+			
+			try {
+				Class.forName("com.mysql.jdbc.driver");
+			} catch (ClassNotFoundException e) {
+				
+			}
+			
+			conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/local","m","1234");
+			valid=conexion.isValid(5000);
+			System.out.println(valid ? "OK" : "FAIL");
+			
+		} catch (java.sql.SQLException sql) {
+			System.out.println("Error" + sql);
+		}
+	}
+	
+	public static void main(String[] args) {
+		conexionBase conexion = new conexionBase();
+		conexion.conectar();
+	}
+}

@@ -1,9 +1,0 @@
-package ejer3;
-
-public class Maquina {
-
-	public Maquina() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -1,0 +1,14 @@
+package Model;
+
+public class Combate extends Evento {
+
+	private static Combate combateSingleton = new Combate();
+	
+	public Combate() {
+		
+	}
+	
+	public static Combate getInstance() {
+		return combateSingleton;
+	}
+}

@@ -1,7 +1,0 @@
-package EjemploUso;
-
-public class Main {
-	public static void main(String[] args) {
-		LogSingleton.getInstance().log("Probando....");
-	}
-}

@@ -1,0 +1,10 @@
+package Model;
+
+public class Combate extends Evento {
+
+	private static Combate combateSingleton = new Combate();
+	
+	public Combate() {
+		
+	}
+}

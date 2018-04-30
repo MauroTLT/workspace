@@ -1,0 +1,23 @@
+package Model;
+
+import View.BatallaView;
+
+public class Combate extends Evento {
+	
+	//private BatallaView batalla;
+	private static Combate combateSingleton = new Combate();
+	
+	public static Combate getInstance() {
+		return combateSingleton;
+	}
+	
+	public void combate(Casilla casilla) {
+		System.out.println(casilla.getEdificio().getRuta());
+		BatallaView batalla = new BatallaView(casilla);
+		batalla.repaint();
+		batalla.revalidate();
+		/*while(casilla.getPersonajes()[0].getEnergia() > 0 && casilla.getPersonajes()[1].getEnergia() > 0) {
+			batalla.lanzar();
+		}*/
+	}
+}

@@ -1,9 +1,0 @@
-package Controller;
-
-public class HistorialController {
-	private HistorialView ventana;
-	
-	public HistorialController() {
-		this.ventana = new HistorialView();
-	}
-}

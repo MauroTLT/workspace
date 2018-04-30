@@ -1,9 +1,0 @@
-package ejer3;
-
-public class HablaEspanyol {
-
-	public HablaEspanyol() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
