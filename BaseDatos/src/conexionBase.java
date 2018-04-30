@@ -10,7 +10,7 @@ public class conexionBase {
 		Connection conexion = null;
 		boolean valid = false;
 		try {
-			conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/m_sakila?useSSL=false&useLegacyDateTimeCode=false&serverTimezone=UTC","m","1234");
+			conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/m_prueba?useSSL=false&useLegacyDateTimeCode=false&serverTimezone=UTC","m","1234");
 			valid=conexion.isValid(5000);
 			System.out.println(valid ? "OK" : "FAIL");
 			
@@ -36,11 +36,11 @@ public class conexionBase {
 				System.out.println(exp);
 			}
 			
+			stmt.close();
+			connect.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 }
