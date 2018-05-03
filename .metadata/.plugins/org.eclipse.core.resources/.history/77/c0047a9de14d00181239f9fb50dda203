@@ -1,0 +1,77 @@
+package Model;
+
+public class Personaje {
+	
+	private static Personaje personaje = new Personaje();
+	private static boolean[] artefactos = new boolean[4];
+	private static int piso, zona, fila, columna;
+	private static boolean balsa = true;
+
+	public Personaje() {
+		Personaje.piso = 0;
+		Personaje.zona = 0;
+		Personaje.fila = 3;
+		Personaje.columna = 4;
+	}
+	
+	public static Personaje getInstance() {
+		return personaje;
+	}
+
+	public static Personaje getPersonaje() {
+		return personaje;
+	}
+
+	public static void setPersonaje(Personaje personaje) {
+		Personaje.personaje = personaje;
+	}
+
+	public static boolean[] getArtefactos() {
+		return artefactos;
+	}
+
+	public static void setArtefactos(boolean[] artefactos) {
+		Personaje.artefactos = artefactos;
+	}
+
+	public static int getPiso() {
+		return piso;
+	}
+
+	public static void setPiso(int piso) {
+		Personaje.piso = piso;
+	}
+
+	public static int getZona() {
+		return zona;
+	}
+
+	public static void setZona(int zona) {
+		Personaje.zona = zona;
+	}
+
+	public static int getFila() {
+		return fila;
+	}
+
+	public static void setFila(int fila) {
+		Personaje.fila = fila;
+	}
+
+	public static int getColumna() {
+		return columna;
+	}
+
+	public static void setColumna(int columna) {
+		Personaje.columna = columna;
+	}
+
+	public static boolean isBalsa() {
+		return balsa;
+	}
+
+	public static void setBalsa(boolean balsa) {
+		Personaje.balsa = balsa;
+	}
+
+}

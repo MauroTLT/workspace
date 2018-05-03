@@ -1,0 +1,8 @@
+package Ejercicio1;
+
+public interface CensoDAO {
+	
+	public void insertPersona();
+	public Persona consulta(int dni);
+	public void modify();
+}

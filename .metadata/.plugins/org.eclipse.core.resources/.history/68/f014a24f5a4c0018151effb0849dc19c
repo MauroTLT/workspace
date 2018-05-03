@@ -1,0 +1,9 @@
+package Ejercicio1;
+
+import java.util.ArrayList;
+
+public interface CensoDAO {
+	
+	public void insertPersona();
+	public ArrayList<Persona> select();
+}

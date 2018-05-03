@@ -1,0 +1,9 @@
+package Ejercicio1;
+
+public class UsuarioModel {
+
+	public UsuarioModel() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

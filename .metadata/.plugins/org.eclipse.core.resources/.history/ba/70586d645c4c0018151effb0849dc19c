@@ -1,0 +1,13 @@
+package Ejercicio1;
+
+public class UsuarioModel {
+	
+	private UsuarioModel usuario = new UsuarioModel("","");
+	private String username, password;
+	
+	public UsuarioModel(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+}

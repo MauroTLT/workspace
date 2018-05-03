@@ -15,12 +15,13 @@ public class FachadaCalculadoraOps extends Operacion {
 	}
 	
 	@Override
-	protected void calcula(double a, double b) {
-		if(operacion.equals("-")) {
-			this.resultado = a-b;
-		} else {
-			this.resultado = a+b;
-		}
+	protected void calculaSuma(double a, double b) {
+		this.resultado = a+b;
+	}
+	
+	@Override
+	protected void calculaResta(double a, double b) {
+		this.resultado = a-b;
 	}
 
 }

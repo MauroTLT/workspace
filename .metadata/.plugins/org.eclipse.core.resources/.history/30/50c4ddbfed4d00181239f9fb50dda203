@@ -1,0 +1,11 @@
+package ejer2;
+
+public abstract class Comprobador {
+	protected Comprobador sucesor;
+
+	public Comprobador getSucesor() {
+		return sucesor;
+	}
+
+	public abstract void manejarPeticion(String texto);
+}

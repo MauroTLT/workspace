@@ -1,0 +1,344 @@
+package Controller;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import Model.Bloque;
+import Model.Boton;
+import Model.Model;
+import Model.Personaje;
+import Model.Puerta;
+import Model.Tierra;
+import Model.Warp;
+import View.View;
+
+public class Controller implements KeyListener {
+
+	private Model modelo;
+	private View ventana;
+
+	public Controller() {
+		this.modelo = new Model();
+		this.ventana = new View(modelo);
+		this.ventana.addKeyListener(this);
+		/*
+		 * try { Thread.sleep(2000); } catch (InterruptedException e) {  catch block e.printStackTrace(); }
+		 * this.ventana.rellenarMapa(modelo.getCasillas()[1][15]);
+		 * this.ventana.revalidate();
+		 */
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() >=37 && e.getKeyCode() <= 40) {
+			mover(e.getKeyCode());
+		} else if(e.getKeyCode() == 32) {
+			
+		}
+	}
+
+	private void mover(int elec) {
+		switch(elec) {
+		case 37://Izquierda
+			if(Personaje.getColumna()==0) {
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setZona(Personaje.getZona()-1);
+				Personaje.setColumna(8);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else {
+				if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-1] instanceof Bloque) {
+					push(elec);
+					abrirD2();
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-1] instanceof Boton) {
+					boton(((Boton)this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-1]).getId());
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+					Personaje.setColumna(Personaje.getColumna() - 1);
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-1] instanceof Warp){
+					warp(((Warp)this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-1]).getId());
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-1].isPasable()) {
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+					Personaje.setColumna(Personaje.getColumna() - 1);
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+				}
+			}
+			break;
+		case 38://Arriba
+			if(Personaje.getFila()==0) {
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setZona(Personaje.getZona()-6);
+				Personaje.setFila(6);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else {
+				if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-1][Personaje.getColumna()] instanceof Bloque) {
+					push(elec);
+					abrirD2();
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-1][Personaje.getColumna()] instanceof Boton) {
+					boton(((Boton)this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-1][Personaje.getColumna()]).getId());
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+					Personaje.setFila(Personaje.getFila() - 1);
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-1][Personaje.getColumna()] instanceof Warp){
+					warp(((Warp)this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-1][Personaje.getColumna()]).getId());
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-1][Personaje.getColumna()].isPasable()) {
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+					Personaje.setFila(Personaje.getFila() - 1);
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+				}
+			}
+			break;
+		case 39://Derecha
+			if(Personaje.getColumna()==8) {
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setZona(Personaje.getZona()+1);
+				Personaje.setColumna(0);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else {
+				if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+1] instanceof Bloque) {
+					push(elec);
+					abrirD2();
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+1] instanceof Boton) {
+					boton(((Boton)this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+1]).getId());
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+					Personaje.setColumna(Personaje.getColumna() + 1);
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+1] instanceof Warp){
+					warp(((Warp)this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+1]).getId());
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+1].isPasable()) {
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+					Personaje.setColumna(Personaje.getColumna() + 1);
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+				}
+			}
+			break;
+		case 40://Abajo
+			if(Personaje.getFila()==6) {
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setZona(Personaje.getZona()+6);
+				Personaje.setFila(0);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else {
+				if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+1][Personaje.getColumna()] instanceof Bloque) {
+					push(elec);
+					abrirD2();
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+1][Personaje.getColumna()] instanceof Boton) {
+					boton(((Boton)this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+1][Personaje.getColumna()]).getId());
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+					Personaje.setFila(Personaje.getFila()+1);
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+1][Personaje.getColumna()] instanceof Warp){
+					warp(((Warp)this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+1][Personaje.getColumna()]).getId());
+				} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+1][Personaje.getColumna()].isPasable()) {
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+					Personaje.setFila(Personaje.getFila()+1);
+					this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+				}
+			}
+			break;
+		}
+		this.ventana.rellenarMapa(modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()], elec);
+		this.ventana.revalidate();
+		
+	}
+	
+	private void abrirD2() {
+		if(this.modelo.getCasillas()[1][13][5][1] instanceof Bloque && this.modelo.getCasillas()[1][13][4][2] instanceof Bloque && this.modelo.getCasillas()[1][13][3][3] instanceof Bloque && this.modelo.getCasillas()[1][13][2][4] instanceof Bloque && this.modelo.getCasillas()[1][13][3][4] instanceof Bloque && this.modelo.getCasillas()[1][13][3][5] instanceof Bloque && this.modelo.getCasillas()[1][13][4][6] instanceof Bloque && this.modelo.getCasillas()[1][13][5][7] instanceof Bloque && this.modelo.getCasillas()[1][13][4][4] instanceof Bloque && this.modelo.getCasillas()[1][13][5][4] instanceof Bloque) {
+			this.modelo.getCasillas()[1][13][0][4] = new Tierra();
+		} else {this.modelo.getCasillas()[1][13][0][4] = new Puerta();}
+		
+	}
+
+	private void push(int elec) {
+		switch(elec) {
+		case 37:
+			if((Personaje.getColumna() - 2) < 1) {
+			} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-2].isPasable()) {
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-2] = new Bloque();
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()-1] = new Tierra();
+				Personaje.setColumna(Personaje.getColumna()-1);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		case 38:
+			if((Personaje.getFila() - 2) < 1) {
+			} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-2][Personaje.getColumna()].isPasable()) {
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-2][Personaje.getColumna()] = new Bloque();
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()-1][Personaje.getColumna()] = new Tierra();
+				Personaje.setFila(Personaje.getFila()-1);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		case 39:
+			if((Personaje.getColumna() + 2) > 7) {
+			} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+2].isPasable()) {
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+2] = new Bloque();
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()+1] = new Tierra();
+				Personaje.setColumna(Personaje.getColumna()+1);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		case 40:
+			if((Personaje.getFila() + 2) > 5) {
+			} else if(this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+2][Personaje.getColumna()].isPasable()) {
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+2][Personaje.getColumna()] = new Bloque();
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()+1][Personaje.getColumna()] = new Tierra();
+				Personaje.setFila(Personaje.getFila()+1);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		}
+	}
+
+	private void boton(String id) {
+		switch(id) {
+		case "A":
+			this.modelo.getCasillas()[1][17][3][0] = new Tierra();
+			this.modelo.getCasillas()[1][22][1][2] = new Tierra();
+			break;
+		case "B":
+			this.modelo.getCasillas()[1][16][0][4] = new Tierra();
+			this.modelo.getCasillas()[1][22][1][6] = new Tierra();
+			break;
+		case "C":
+			this.modelo.getCasillas()[2][23][6][4] = new Tierra();
+			this.modelo.getCasillas()[2][17][2][4] = new Tierra();
+			break;
+		}
+		
+	}
+
+	private void warp(String id) {
+		switch(id) {
+		case "1":
+			if(Personaje.getZona() == 7) { //Entrada
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(1);
+				Personaje.setZona(28);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else { //Salida
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(0);
+				Personaje.setZona(7);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		case "2":
+			if(Personaje.getZona() == 28) { //Entrada
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(1);
+				Personaje.setZona(25);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else { //Salida
+				//Borrado de Emergencia
+				for(int aux = 1; aux < this.modelo.getCasillas()[1][13].length - 1; aux++){
+					for(int aux2 = 1; aux2 < this.modelo.getCasillas()[1][13][aux].length - 1; aux2++) {
+						this.modelo.getCasillas()[1][13][aux][aux2] = new Tierra();
+					}
+				}
+				this.modelo.getCasillas()[1][13][2][3] = new Bloque(); this.modelo.getCasillas()[1][13][3][4] = new Bloque(); this.modelo.getCasillas()[1][13][3][5] = new Bloque(); this.modelo.getCasillas()[1][13][4][2] = new Bloque(); this.modelo.getCasillas()[1][13][4][3] = new Bloque(); this.modelo.getCasillas()[1][13][4][5] = new Bloque(); this.modelo.getCasillas()[1][13][4][6] = new Bloque(); this.modelo.getCasillas()[1][13][5][1] = new Bloque(); this.modelo.getCasillas()[1][13][5][4] = new Bloque(); this.modelo.getCasillas()[1][13][5][6] = new Bloque();
+				for(int aux2 = 1; aux2 < this.modelo.getCasillas()[1][19][3].length - 1; aux2++) {
+					this.modelo.getCasillas()[1][19][3][aux2] = new Tierra(); this.modelo.getCasillas()[1][19][5][aux2] = new Tierra();;
+				}
+				this.modelo.getCasillas()[1][19][1][1] = new Tierra(); this.modelo.getCasillas()[1][19][2][1] = new Tierra(); this.modelo.getCasillas()[1][19][3][1] = new Tierra(); this.modelo.getCasillas()[1][19][1][7] = new Tierra(); this.modelo.getCasillas()[1][19][2][7] = new Tierra(); this.modelo.getCasillas()[1][19][3][7] = new Tierra();
+				this.modelo.getCasillas()[1][19][2][1] = new Bloque(); this.modelo.getCasillas()[1][19][2][7] = new Bloque(); this.modelo.getCasillas()[1][19][5][2] = new Bloque(); this.modelo.getCasillas()[1][19][5][6] = new Bloque(); this.modelo.getCasillas()[1][19][3][4] = new Bloque();
+				
+				//Fin Borrado de Emergencia
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(0);
+				Personaje.setZona(28);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		case "3":
+			if(Personaje.getZona() == 24) { //Entrada
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(2);
+				Personaje.setZona(28);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else { //Salida
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(0);
+				Personaje.setZona(24);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		case "4":
+			if(Personaje.getZona() == 5) { //Entrada
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(2);
+				Personaje.setZona(25);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else { //Salida
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(0);
+				Personaje.setZona(5);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		case "5":
+			if(Personaje.getZona() == 15) { //Entrada
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(1);
+				Personaje.setZona(29);
+				Personaje.setFila(4);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			} else { //Salida
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(null);
+				Personaje.setPiso(1);
+				Personaje.setZona(15);
+				Personaje.setFila(2);
+				Personaje.setColumna(4);
+				this.modelo.getCasillas()[Personaje.getPiso()][Personaje.getZona()][Personaje.getFila()][Personaje.getColumna()].setPersonaje(Personaje.getInstance());
+			}
+			break;
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public Model getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(Model modelo) {
+		this.modelo = modelo;
+	}
+
+	public View getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(View ventana) {
+		this.ventana = ventana;
+	}
+}

@@ -1,0 +1,50 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class updateTable {
+
+	public static void main(String[] args) {
+		conexionBase conexion = new conexionBase();
+		Connection connect = conexion.conectar();
+		
+		Statement stmt;
+		ResultSet result;
+		try {
+			stmt = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+		
+			result = stmt.executeQuery("select nombre from Alumnos");
+			result.beforeFirst();
+			result.updateString("nombre","manolito");
+			result.updateRow();
+			while(result.next()) {
+				System.out.print(result.getInt("id")+" ");
+				System.out.print(result.getString("nombre")+" ");
+				System.out.print(result.getString("sexo")+" ");
+				System.out.print(result.getString("date")+" ");
+				System.out.println();
+			}
+			
+			
+			stmt.executeUpdate("UPDATE m_prueba.Alumnos SET Alumnos.sexo = 'M' WHERE id = 2");
+			
+			result = stmt.executeQuery("select * from Alumnos");
+			System.out.println("\nUPDATE COMPLETE");
+			while(result.next()) {
+				System.out.print(result.getInt("id")+" ");
+				System.out.print(result.getString("nombre")+" ");
+				System.out.print(result.getString("sexo")+" ");
+				System.out.print(result.getString("date")+" ");
+				System.out.println();
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

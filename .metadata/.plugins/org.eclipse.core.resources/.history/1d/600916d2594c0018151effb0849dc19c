@@ -1,0 +1,13 @@
+package Ejercicio1;
+
+import java.util.ArrayList;
+
+public class CensoModel {
+
+	private ArrayList<Persona> personas;
+	
+	public CensoModel() {
+		
+	}
+
+}

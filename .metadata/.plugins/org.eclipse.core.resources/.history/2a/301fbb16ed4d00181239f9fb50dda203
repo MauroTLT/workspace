@@ -1,0 +1,10 @@
+package ejer2;
+
+public class Comprobador {
+	protected Comprobador sucesor;
+
+	public Comprobador getSucesor() {
+		return sucesor;
+	}
+
+}

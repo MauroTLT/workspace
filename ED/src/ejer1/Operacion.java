@@ -6,7 +6,11 @@ public abstract class Operacion {
 
 	public final void realizaOperacion(double a, double b) {
 		muestraOperacion(a, b);
-		calcula(a, b);
+		if (operacion.equals("+")) {
+			calculaSuma(a, b);
+		} else if(operacion.equals("-")) {
+			calculaResta(a, b);
+		}
 		muestraResultado();
 	}
 
@@ -18,5 +22,7 @@ public abstract class Operacion {
 		LoggingSingleton.getInstance().log("El resultado es " + resultado);
 	}
 
-	protected abstract void calcula(double a, double b);
+	protected abstract void calculaSuma(double a, double b);
+
+	protected abstract void calculaResta(double a, double b);
 }

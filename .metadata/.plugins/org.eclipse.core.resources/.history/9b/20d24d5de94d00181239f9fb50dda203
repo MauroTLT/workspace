@@ -1,0 +1,13 @@
+package Fachada;
+
+class FachadaCalculadora {
+	public int suma(int pA, int pB) {
+		return pA + pB;
+	}
+}
+
+class RestaNumeros {
+	public int resta(int pA, int pB) {
+		return pA - pB;
+	}
+}
