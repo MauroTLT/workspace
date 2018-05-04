@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class CensoModel {
 
-	private ArrayList<Persona> personas;
+	private static ArrayList<Persona> personas;
 	
 	public CensoModel() {
-		this.personas = new ArrayList<Persona>();
+		CensoModel.personas = new ArrayList<Persona>();
 	}
 
-	public ArrayList<Persona> getPersonas() {
+	public static ArrayList<Persona> getPersonas() {
 		return personas;
 	}
 
-	public void setPersonas(ArrayList<Persona> personas) {
-		this.personas = personas;
+	public static void setPersonas(ArrayList<Persona> personas) {
+		CensoModel.personas = personas;
 	}
 
 }

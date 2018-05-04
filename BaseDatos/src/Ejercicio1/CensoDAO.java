@@ -2,8 +2,8 @@ package Ejercicio1;
 
 public interface CensoDAO {
 	
-	public void insertPersona();
-	public void removePersona(int dni);
-	public Persona consulta(int dni);
-	public void modify(int dni, int tupla, String cambio);
+	public void insertPersona(Persona persona);
+	public void removePersona(String dni);
+	public Persona consulta(String dni);
+	public void modify(String dni, String tupla, String cambio);
 }

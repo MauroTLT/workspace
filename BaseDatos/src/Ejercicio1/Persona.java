@@ -53,4 +53,10 @@ public class Persona {
 		this.telefono = telefono;
 	}
 
+	@Override
+	public String toString() {
+		return "Persona [dni=" + dni + ", nombre=" + nombre + ", fecha=" + fecha + ", direccion=" + direccion
+				+ ", telefono=" + telefono + "]";
+	}
+
 }

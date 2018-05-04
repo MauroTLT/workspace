@@ -18,7 +18,7 @@ public class updateTable {
 			result.beforeFirst();
 			
 			while(result.next()) {
-				result.updateString("nombre","pepe");
+				result.updateString("nombre","batman");
 				result.updateRow();
 				System.out.print(result.getInt("id")+" ");
 				System.out.print(result.getString("nombre")+" ");
