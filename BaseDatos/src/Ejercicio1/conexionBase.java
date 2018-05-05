@@ -11,7 +11,7 @@ public class conexionBase {
 		Connection conexion = null;
 		boolean valid = false;
 		try {
-			conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/m_ejerProg?useSSL=false&useLegacyDateTimeCode=false&serverTimezone=UTC","m","1234");
+			conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/m_ejerProg?useSSL=false&useLegacyDateTimeCode=false&serverTimezone=UTC","root","1234");
 			valid=conexion.isValid(5000);
 			System.out.println(valid ? "OK" : "FAIL");
 			
@@ -30,10 +30,10 @@ public class conexionBase {
 		try {
 			stmt = connect.createStatement();
 		
-			result = stmt.executeQuery("select * from film");
+			result = stmt.executeQuery("select * from Censo");
 			
 			while(result.next()) {
-				int exp = result.getInt("length");
+				int exp = result.getInt("Telefono");
 				System.out.println(exp);
 			}
 			

@@ -10,28 +10,22 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 	private conexionBase conexion = new conexionBase();
 	
 	@Override
-	public Persona consulta(String dni) {
+	public boolean consulta(String usuario, String pass) {
 		Connection connect = conexion.conectar();
 		Statement stmt;
 		ResultSet result;
 		try {
 			stmt = connect.createStatement();
-			result = stmt.executeQuery("select * from Censo");
-
+			result = stmt.executeQuery("select * from Usuarios");
 			while(result.next()) {
-				/*for (int i = 0; i < CensoModel.getPersonas().size(); i++) {
-					if(CensoModel.getPersonas().get(i).getDni().equalsIgnoreCase(dni)) {
-						return CensoModel.getPersonas().get(i);
-					}
-				}*/
-				if(result.getString("DNI").equals(dni)) {
-					return new Persona(result.getString("DNI"), result.getString("Nombre"), result.getString("Fecha Nacimiento"), result.getString("Direccion"), result.getInt("Telefono"));
+				if(result.getString("Nickname").equals(usuario) && result.getString("Password").equals(pass)) {
+					return true;
 				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return false;
 	}
 }

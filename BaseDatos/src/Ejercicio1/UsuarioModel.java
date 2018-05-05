@@ -10,7 +10,7 @@ public class UsuarioModel {
 		this.password = password;
 	}
 	
-	public UsuarioModel getInstance() {
+	public static UsuarioModel getInstance() {
 		return usuario;
 	}
 

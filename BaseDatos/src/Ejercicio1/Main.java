@@ -11,16 +11,22 @@ public class Main {
 		JDBCUsuarioDAO usuarioJDBC = new JDBCUsuarioDAO();
 		JDBCCensoDAO censoJDBC = new JDBCCensoDAO();
 		new CensoModel();
-		boolean usuario = false;
+		boolean autentificar = false;
 		int elec = 0;
 		
-		while(!usuario) {
-			String usu, pass;
+		while(!autentificar) {
+			String nick, pass;
 			System.out.println("Escribe tu Usuario: ");
-			usu = entradaTeclado.next();
+			nick = entradaTeclado.next();
 			System.out.println("Escribe la Contraseña: ");
 			pass = entradaTeclado.next();
-			
+			autentificar = usuarioJDBC.consulta(nick, pass);
+			if(!autentificar) {
+				System.out.println("Fallo al autentificar, prueba otra vez");
+			} else {
+				UsuarioModel.getInstance().setUsername(nick);
+				UsuarioModel.getInstance().setPassword(pass);
+			}
 		}
 		
 		System.out.println("Elige una operacion");
@@ -33,7 +39,7 @@ public class Main {
 		switch(elec) {
 		case 1://Select
 			System.out.println("Dime el DNI");
-			Persona per = usuarioJDBC.consulta(entradaTeclado.next());
+			Persona per = censoJDBC.consulta(entradaTeclado.next());
 			if(per != null) {
 				System.out.println(per.toString());
 			} else {

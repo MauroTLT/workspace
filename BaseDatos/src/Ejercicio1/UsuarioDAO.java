@@ -2,6 +2,6 @@ package Ejercicio1;
 
 public interface UsuarioDAO {
 	
-	public Persona consulta(String dni);
+	public boolean consulta(String usuario, String pass);
 	
 }
