@@ -27,7 +27,6 @@ public class VistaIMC extends JFrame{
 	private JPanel panelBotones;
 	private JButton botonCalcular;
 	private JButton botonLimpiar;
-	private JButton botonHistorial;
 	private JLabel labelResNumero;
 	
 	//b
@@ -49,7 +48,6 @@ public class VistaIMC extends JFrame{
 		
 		botonCalcular = new JButton("Calcular");
 		botonLimpiar = new JButton("Limpiar");
-		botonHistorial = new JButton("Mostrar Historial");
 		
 		textAltura = new JTextField(altura);
 		textMasa = new JTextField(masa);
@@ -74,7 +72,6 @@ public class VistaIMC extends JFrame{
 		panelIMC.add(panelBotones);
 		
 		panelBotones.add(botonCalcular);
-		panelBotones.add(botonHistorial);
 		panelBotones.add(botonLimpiar);
 		
 		panelIMC.add(labelResNumero);
@@ -85,6 +82,7 @@ public class VistaIMC extends JFrame{
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(400, 300);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		
 		
@@ -133,14 +131,6 @@ public class VistaIMC extends JFrame{
 
 	public void setMensaje(JOptionPane mensaje) {
 		this.mensaje = mensaje;
-	}
-
-	public JButton getBotonHistorial() {
-		return botonHistorial;
-	}
-
-	public void setBotonHistorial(JButton botonHistorial) {
-		this.botonHistorial = botonHistorial;
 	}
 	
 }

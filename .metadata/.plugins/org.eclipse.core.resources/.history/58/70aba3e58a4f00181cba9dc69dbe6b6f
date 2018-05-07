@@ -1,0 +1,46 @@
+package Ejercicio1;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Main {
+
+	public static void main(String[] args) {
+		JDBCUsuarioDAO usuarioJDBC = new JDBCUsuarioDAO();
+		JDBCCensoDAO censoJDBC = new JDBCCensoDAO();
+		boolean usuario = true;
+		int elec = 1;
+		censoJDBC.insertPersona();
+		
+		System.out.println("Escribe tu Usuario: ");
+		
+		System.out.println("Escribe la Contraseña: ");
+		switch(elec) {
+		case 1://Select
+			if(usuario) {
+				new CensoModel();
+				
+				Persona per = usuarioJDBC.consulta("12345678R");
+				if(per != null) {
+					per.toString();
+				} else {
+					System.out.println("usuario no encontrado");
+				}
+			}
+			break;
+		case 2: //
+			
+			break;
+		case 3:
+			
+			break;
+		case 4:
+			
+			break;
+		}
+		
+	}
+
+}

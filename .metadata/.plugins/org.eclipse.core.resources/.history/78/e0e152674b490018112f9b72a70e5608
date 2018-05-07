@@ -1,9 +1,0 @@
-package ejer1;
-
-public class LoggingSingleton {
-
-	public LoggingSingleton() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

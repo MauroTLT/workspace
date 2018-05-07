@@ -1,0 +1,47 @@
+package Ejercicio1;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JDBCCensoDAO implements CensoDAO {
+
+	private conexionBase conexion = new conexionBase();
+	
+	@Override
+	public void insertPersona() {
+		Connection connect = conexion.conectar();
+		PreparedStatement ps;
+		ResultSet result;
+		try {
+			ps = connect.prepareStatement("UPDATE m_prueba.Alumnos SET nombre = 'manoloX' WHERE id > ? AND id < ?");
+			result = ps.executeQuery("INSERT INTO censo VALUES ('?','Boston','East','Atlantic')");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void removePersona(String dni) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Persona consulta(String dni) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void modify(String dni, int tupla, String cambio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}

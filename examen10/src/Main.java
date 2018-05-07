@@ -1,6 +1,6 @@
 
 
-import Controller.ControlerIMC;
+import Controlador.ControlerIMC;
 
 public class Main {
 

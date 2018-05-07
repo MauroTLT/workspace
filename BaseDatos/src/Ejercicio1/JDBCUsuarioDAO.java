@@ -16,14 +16,13 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 		ResultSet result;
 		try {
 			stmt = connect.createStatement();
-			result = stmt.executeQuery("select * from Usuarios");
+			result = stmt.executeQuery("select * from Usuario");
 			while(result.next()) {
-				if(result.getString("Nickname").equals(usuario) && result.getString("Password").equals(pass)) {
+				if(result.getString("Username").equals(usuario) && result.getString("Password").equals(pass)) {
 					return true;
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;

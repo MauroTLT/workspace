@@ -1,0 +1,66 @@
+package Ejercicio1;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class JDBCCensoDAO implements CensoDAO {
+
+	private conexionBase conexion = new conexionBase();
+	
+	@Override
+	public void insertPersona(Persona persona) {
+		Connection connect = conexion.conectar();
+		PreparedStatement ps;
+		try {
+			ps = connect.prepareStatement("INSERT INTO Censo VALUES (?,?,?,?,?)");
+			ps.setString(1,persona.getDni());
+			ps.setString(2,persona.getNombre());
+			ps.setString(3,persona.getFecha());
+			ps.setString(4,persona.getDireccion());
+			ps.setInt(5,persona.getTelefono());
+			ps.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void removePersona(String dni) {
+		Connection connect = conexion.conectar();
+		PreparedStatement ps;
+		try {
+			ps = connect.prepareStatement("delete from Censo where DNI = ?");
+			ps.setString(1, dni);
+			ps.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Persona consulta(String dni) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void modify(String dni, String nombre, String cambio) {
+		Connection connect = conexion.conectar();
+		PreparedStatement ps;
+		try {//UPDATE Censo SET Nombre = "Manolox" WHERE DNI = "98765432P"
+			ps = connect.prepareStatement("UPDATE Censo SET ? = '?' WHERE id = '?'");
+			ps.setString(1, nombre);
+			ps.setString(2, cambio);
+			ps.setString(3, dni);
+			ps.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+}

@@ -2,13 +2,8 @@ package Ejercicio1;
 
 public class UsuarioModel {
 	
-	private static UsuarioModel usuario = new UsuarioModel("","");
+	private static UsuarioModel usuario = new UsuarioModel();
 	private String username, password;
-	
-	public UsuarioModel(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
 	
 	public static UsuarioModel getInstance() {
 		return usuario;

@@ -1,0 +1,35 @@
+package Ejercicio1;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JDBCUsuarioDAO implements UsuarioDAO{
+
+	private conexionBase conexion = new conexionBase();
+	
+	@Override
+	public Persona consulta(int dni) {
+		Connection connect = conexion.conectar();
+		Statement stmt;
+		ResultSet result;
+		try {
+			stmt = connect.createStatement();
+			result = stmt.executeQuery("select * from Alumnos");
+			
+			while(result.next()) {
+				System.out.print(result.getInt("id")+" ");
+				System.out.print(result.getString("nombre")+" ");
+				System.out.print(result.getString("sexo")+" ");
+				System.out.print(result.getString("date")+" ");
+				System.out.println();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}
