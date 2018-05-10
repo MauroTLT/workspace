@@ -26,6 +26,7 @@ public class VistaIMC extends JFrame{
 	
 	private JPanel panelBotones;
 	private JButton botonCalcular;
+	private JButton botonMostrar;
 	private JButton botonLimpiar;
 	private JLabel labelResNumero;
 	
@@ -47,6 +48,7 @@ public class VistaIMC extends JFrame{
 		labelTextRes = new JLabel();
 		
 		botonCalcular = new JButton("Calcular");
+		botonMostrar = new JButton("Mostrar");
 		botonLimpiar = new JButton("Limpiar");
 		
 		textAltura = new JTextField(altura);
@@ -72,6 +74,7 @@ public class VistaIMC extends JFrame{
 		panelIMC.add(panelBotones);
 		
 		panelBotones.add(botonCalcular);
+		panelBotones.add(botonMostrar);
 		panelBotones.add(botonLimpiar);
 		
 		panelIMC.add(labelResNumero);

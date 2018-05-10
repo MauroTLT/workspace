@@ -1,0 +1,21 @@
+package Controlador;
+
+import Conexion.Conexion;
+
+public class JDBCIMCDAO implements IMCDAO{
+
+	private Conexion conexion;
+
+	@Override
+	public void insertar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void consulta() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

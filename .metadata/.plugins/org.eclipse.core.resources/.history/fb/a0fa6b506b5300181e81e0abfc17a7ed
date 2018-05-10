@@ -1,0 +1,46 @@
+package Model;
+
+import java.util.Random;
+
+public class Dado {
+	
+	private static Random r;
+	private static int numero;
+	
+	public Dado() {
+		Dado.r = new Random();
+		Dado.numero = (r.nextInt(6)+1);
+	}
+	
+	/*
+	 * Metodo que devuelve un numero del 1-6
+	 */
+	
+	public static int getNewNumero() {
+		Dado.numero = (r.nextInt(6)+1);
+		return numero;
+	}
+	
+	/*
+	 * Metodo utilizado para controlar la direccion de los enemigos
+	 * (Posiblemente descartable)
+	 */
+	
+	public int getNew4() {
+		this.numero = (r.nextInt(4)+1);
+		return numero;
+	}
+
+	/*
+	 * Getters y setters
+	 */
+	
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+}

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="java.lang.Math"/>
 <fullyQualifiedTypeName name="utilidades.random"/>
 <fullyQualifiedTypeName name="utilidades.escaner"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
@@ -59,4 +56,8 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Ejercicio1.JDBCUsuarioDAO"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="Conexion.Conexion"/>
+<fullyQualifiedTypeName name="Model.Dado"/>
+<fullyQualifiedTypeName name="Model.Calle"/>
 </qualifiedTypeNameHistroy>

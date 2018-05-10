@@ -1,0 +1,8 @@
+package Controlador;
+
+public interface IMCDAO {
+	
+	public void insertar();
+	public void consulta();
+	
+}

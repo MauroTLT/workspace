@@ -8,11 +8,6 @@ public class Conexion {
 	private static Conexion bd;
 	private Connection conectar;
 	
-	private Conexion(String base, String usu, String pass) {
-		Conexion.bd = new Conexion(base, usu, pass);
-		this.conectar = bd.conectar(base, usu, pass);
-	}
-	
 	public Connection conectar(String base, String usu, String pass) {
 		Connection conexion = null;
 		boolean valid = false;

@@ -1,0 +1,33 @@
+package Controlador;
+
+import Conexion.Conexion;
+
+public class JDBCIMCDAO implements IMCDAO{
+
+	private Conexion conexion;
+	
+	public JDBCIMCDAO() {
+		this.conexion = new Conexion("m_ejerProg2","m","1234");
+	}
+
+	@Override
+	public void insertar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void consulta() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Conexion getConexion() {
+		return conexion;
+	}
+
+	public void setConexion(Conexion conexion) {
+		this.conexion = conexion;
+	}
+	
+}

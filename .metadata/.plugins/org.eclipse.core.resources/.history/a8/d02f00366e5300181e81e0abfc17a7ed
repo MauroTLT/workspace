@@ -1,0 +1,43 @@
+package Model;
+
+public class Casilla {
+	
+	private Personaje[] personajes;
+	private Edificacion edificio;
+	private Evento evento;
+	
+	public Casilla() {
+		this.personajes = new Personaje[2];
+		this.edificio = null;
+		this.evento = null;
+	}
+	
+	/*
+	 * Getters y setters
+	 */
+
+	public Personaje[] getPersonajes() {
+		return personajes;
+	}
+
+	public void setPersonajes(Personaje[] personajes) {
+		this.personajes = personajes;
+	}
+
+	public Edificacion getEdificio() {
+		return edificio;
+	}
+
+	public void setEdificio(Edificacion edificio) {
+		this.edificio = edificio;
+	}
+
+	public Evento getEvento() {
+		return evento;
+	}
+
+	public void setEvento(Evento evento) {
+		this.evento = evento;
+	}
+
+}

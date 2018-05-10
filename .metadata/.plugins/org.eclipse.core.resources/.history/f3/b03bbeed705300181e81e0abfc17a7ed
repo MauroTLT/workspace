@@ -1,0 +1,19 @@
+package Model;
+
+public abstract class Edificacion {
+	
+	protected static String ruta;
+	
+	public Edificacion(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+}

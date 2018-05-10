@@ -1,9 +1,0 @@
-package Ejercicio1;
-
-public class JDBCUsuarioDAO {
-
-	public JDBCUsuarioDAO() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

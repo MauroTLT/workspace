@@ -1,0 +1,36 @@
+package Conexion;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class conexion {
+	
+	private static conexion connect;
+	private Connection conectar;
+	
+	private conexion(String base, String usu, String pass) {
+		conexion.connect = new conexion(base, usu, pass);
+		this.conectar = connect.conectar(base, usu, pass);
+	}
+	
+	public Connection conectar(String base, String usu, String pass) {
+		Connection conexion = null;
+		boolean valid = false;
+		try {
+			conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/"+ base +"?useSSL=false&useLegacyDateTimeCode=false&serverTimezone=UTC",usu,pass);
+			valid=conexion.isValid(5000);
+			System.out.println(valid ? "OK" : "FAIL");
+			
+		} catch (java.sql.SQLException sql) {
+			System.out.println("Error" + sql);
+		}
+		return conexion;
+	}
+
+	public static conexion getInstance() {
+		if(connect == null) {
+			
+		}
+		return connect;
+	}
+}

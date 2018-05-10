@@ -32,21 +32,27 @@ public class ControlerIMC implements ActionListener{
 			if(source.getText().equals("Calcular")){
 				Double res= Double.parseDouble(vista.getTextMasa().getText())/Math.pow(Double.parseDouble(vista.getTextAltura().getText()), 2);
 				vista.getLabelResNumero().setText(String.valueOf(res));
-				/*vista.getLabelTextRes().setText((res < PESO_BAJO) ? "Peso bajo" : (res>PESO_NORMAL || res<SOBREPESO) ? "Sobrepeso" : (res>OBESIDAD1 || res< OBESIDAD2) ? "Obesidad 2" : "Obesidad 3");*/
-
+				String texto = "";
 				if(res<PESO_BAJO){
 					vista.getLabelTextRes().setText("Peso bajo");
+					texto = "Peso bajo";
 				}else if(res>PESO_BAJO || res<PESO_NORMAL){
 					vista.getLabelTextRes().setText("Peso Normal");
+					texto = "Peso Normal";
 				}else if(res>PESO_NORMAL || res<SOBREPESO){
 					vista.getLabelTextRes().setText("Sobrepeso");
+					texto = "Sobrepeso";
 				}else if(res>SOBREPESO || res<OBESIDAD1){
 					vista.getLabelTextRes().setText("Obesidad 1");
+					texto = "Obesidad 1";
 				}else if (res>OBESIDAD1 || res< OBESIDAD2){
 					vista.getLabelTextRes().setText("Obesidad 2");
+					texto = "Obesidad 2";
 				}else{
 					vista.getLabelTextRes().setText("Obesidad 3");
+					texto = "Obesidad 3";
 				}
+				this.imcDAO.insertar(Double.parseDouble(vista.getTextMasa().getText()), Double.parseDouble(vista.getTextAltura().getText()), res, texto);
 			}else{
 				vista.getLabelResNumero().setText("");
 				vista.getTextAltura().setText("");

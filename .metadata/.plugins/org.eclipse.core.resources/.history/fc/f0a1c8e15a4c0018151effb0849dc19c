@@ -1,9 +1,0 @@
-package Ejercicio1;
-
-public class DBCCensoDAO {
-
-	public DBCCensoDAO() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

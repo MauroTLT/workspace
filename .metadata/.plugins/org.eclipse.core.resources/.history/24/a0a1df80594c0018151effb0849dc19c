@@ -1,9 +1,0 @@
-package Ejercicio1;
-
-public class CensoModel {
-
-	public CensoModel() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

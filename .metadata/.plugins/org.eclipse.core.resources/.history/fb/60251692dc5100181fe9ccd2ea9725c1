@@ -1,0 +1,50 @@
+package Modelo;
+
+import java.sql.Date;
+
+public class ModeloIMC {
+
+	private double masa;
+	private double altura;
+	private Date fecha;
+	private String valoracion;
+	
+	public ModeloIMC(){
+		this.masa = 0.0;
+		this.altura = 0.0;
+		this.fecha = new Date(0);
+		this.valoracion = "";
+	}
+
+	public String getTextoMasa() {
+		return masa;
+	}
+
+	public void setTextoMasa(String masa) {
+		this.masa = masa;
+	}
+
+	public String getAltura() {
+		return altura;
+	}
+
+	public void setAltura(String altura) {
+		this.altura = altura;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getValoracion() {
+		return valoracion;
+	}
+
+	public void setValoracion(String valoracion) {
+		this.valoracion = valoracion;
+	}
+}
