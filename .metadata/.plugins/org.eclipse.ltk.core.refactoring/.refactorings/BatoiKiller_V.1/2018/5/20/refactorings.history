@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;View.BatoiKillerView.boton&apos; in &apos;View.BatoiKillerView&apos;&#x0A;- Original project: &apos;BatoiKiller_V.1&apos;&#x0A;- Original element: &apos;View.BatoiKillerView.boton&apos;&#x0A;- Getter method name: &apos;getBoton&apos;&#x0A;- Setter method name: &apos;setBoton&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Do not use getter and setter methods in declaring type" comments="false" declaring="false" description="Encapsulate field &apos;boton&apos;" flags="589830" getter="getBoton" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;View{BatoiKillerView.java[BatoiKillerView^boton" insertion="58" setter="setBoton" stamp="1526372611504" version="1.0" visibility="1"/>
+</session>
