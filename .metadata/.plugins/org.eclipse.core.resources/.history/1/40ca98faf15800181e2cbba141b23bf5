@@ -1,0 +1,68 @@
+package View;
+
+import java.awt.Color;
+
+import javax.swing.JDialog;
+import javax.swing.JProgressBar;
+
+@SuppressWarnings("serial")
+public class BarraView extends JDialog implements Runnable {
+
+	private Thread hilo;
+	private JProgressBar bar;
+	
+	public BarraView() {
+		this.hilo = new Thread(this);
+		this.bar = new JProgressBar(0,100);
+		darFormato();
+	}
+
+	private void darFormato() {
+		bar.setString("Guardando Partida, no cierre la Aplicación");
+		bar.setStringPainted(true);
+		bar.setBackground(Color.BLACK);
+		bar.setForeground(new Color(100,0,0));
+		this.add(bar);
+		
+		this.setModal(false);
+		this.setSize(350, 50);
+		this.setLocationRelativeTo(null);
+		this.setUndecorated(true);
+		this.setVisible(false);
+		this.hilo.start();
+	}
+
+	@Override
+	public void run() {
+		try {
+			Thread.sleep(3850);
+			this.setVisible(true);
+			while (bar.getValue()< bar.getMaximum()) {
+				bar.setValue(bar.getValue()+10);
+				bar.setForeground(new Color((int)bar.getForeground().getRed()+10, (int)bar.getForeground().getGreen(), (int)bar.getForeground().getBlue()));
+				Thread.sleep(500);
+			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.dispose();
+	}
+
+	public Thread getHilo() {
+		return hilo;
+	}
+
+	public void setHilo(Thread hilo) {
+		this.hilo = hilo;
+	}
+
+	public JProgressBar getBar() {
+		return bar;
+	}
+
+	public void setBar(JProgressBar bar) {
+		this.bar = bar;
+	}
+
+}

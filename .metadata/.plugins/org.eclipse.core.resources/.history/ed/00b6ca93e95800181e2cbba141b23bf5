@@ -1,0 +1,64 @@
+package barraPorcentaje;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+
+public class Main implements MouseListener {
+	public static void main(String[] args) {
+		Main main = new Main();
+		main.inici();
+	}
+
+	private void inici() {
+		JFrame ventana = new JFrame();
+		JButton boton = new JButton();
+		boton.addMouseListener(new MouseAdapter() {
+			JDialog dialog = new JDialog();
+			
+			dialog.setSize(250, 250);
+			dialog.setLocationRelativeTo(null);
+			dialog.setVisible(true);
+		});
+		ventana.add(boton);
+		
+		ventana.setSize(250, 250);
+		ventana.setLocationRelativeTo(null);
+		ventana.setVisible(true);
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+}

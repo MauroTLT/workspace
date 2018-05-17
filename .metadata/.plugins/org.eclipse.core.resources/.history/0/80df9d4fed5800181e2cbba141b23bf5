@@ -1,0 +1,39 @@
+package View;
+
+import java.awt.Color;
+
+import javax.swing.JDialog;
+import javax.swing.JProgressBar;
+
+@SuppressWarnings("serial")
+public class BarraView extends JDialog implements Runnable {
+
+	private Thread hilo;
+	private JProgressBar bar;
+	
+	public BarraView() {
+		this.hilo = new Thread(this);
+		this.bar = new JProgressBar();
+		darFormato();
+	}
+
+	private void darFormato() {
+		bar.setString("Barra");
+		bar.setStringPainted(true);
+		bar.setBackground(Color.BLUE);
+		bar.setForeground(Color.GREEN);
+		this.add(bar);
+		
+		this.setSize(350, 150);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		this.hilo.start();
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+}

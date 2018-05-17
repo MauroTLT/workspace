@@ -1,0 +1,16 @@
+package barraPorcentaje;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Main {
+	public static void main(String[] args) {
+		JFrame ventana = new JFrame();
+		JButton boton = new JButton();
+		ventana.add(boton);
+		
+		ventana.setSize(250, 250);
+		ventana.setLocationRelativeTo(null);
+		ventana.setVisible(true);
+	}
+}
