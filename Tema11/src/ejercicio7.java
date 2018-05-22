@@ -7,7 +7,7 @@ public class ejercicio7 {
 		// Copiar todo un fichero, con bloques de 512 Kb
 		// Sin ninguna comprobación de errores
 		System.out.println("Copiando fichero binario...");
-		final int BUFFER_SIZE = 512 * 1024;
+		final int BUFFER_SIZE = 5;
 		try {
 			InputStream ficheroEntrada3 = new FileInputStream(new File("fichero.in"));
 			OutputStream ficheroSalida3 = new FileOutputStream(new File("fichero2.out"));
@@ -15,6 +15,7 @@ public class ejercicio7 {
 			int cantidadLeida;
 			while ((cantidadLeida = ficheroEntrada3.read(buf, 0, BUFFER_SIZE)) > 0) {
 				ficheroSalida3.write(buf, 0, cantidadLeida);
+				ficheroSalida3.write('\n');
 			}
 			ficheroEntrada3.close();
 			ficheroSalida3.close();
