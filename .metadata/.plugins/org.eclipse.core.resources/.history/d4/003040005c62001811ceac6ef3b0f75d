@@ -1,0 +1,102 @@
+package Model;
+
+public class Recompensa extends Evento{
+	
+	private static Recompensa recompensa = new Recompensa();
+	private double[] gimnasio;
+	private double[] hospital;
+	private double[] biblioteca;
+	private double[] descampado;
+	private double[] calle;
+	
+	private Recompensa() {
+		this.gimnasio = new double[] {0.20, 0.10, 10, 0, 0};
+		this.descampado = new double[] {0.10, 0.10, 0, 10, 0.10};
+		this.calle = new double[] {0.05, 0.05, 5, 5, 0};
+		this.hospital = new double[] {0, 0, 10, 25, 0.05};
+		this.biblioteca = new double[] {0, 0, 10, 5, 0.25};
+	}
+	/**
+	 * Lista de metodos para cobrar recompensa segun la casilla
+	 * en la que caiga el Protagonista
+	 * @param prota -> Prota, para cobrar la recompensa
+	 */
+	public void cobrarGym(Personaje prota) {
+		prota.setFuerza(prota.getFuerza() * (gimnasio[0]+1));
+		prota.setVelocidad(prota.getVelocidad() * (gimnasio[1]+1));
+		prota.setOro(prota.getOro() + (int)gimnasio[2]);
+	}
+	
+	public void cobrarHospital(Personaje prota) {
+		prota.setOro(prota.getOro() + (int)hospital[2]);
+		prota.setEnergia(prota.getEnergia() + (int)hospital[3]);
+		if(prota.getEnergia() > 100) {
+			prota.setEnergia(100);
+		}
+		prota.setSabiduria(prota.getSabiduria() * (hospital[4]+1));
+	}
+	
+	public void cobrarBiblioteca(Personaje prota) {
+		prota.setOro(prota.getOro() + (int)biblioteca[2]);
+		prota.setEnergia(prota.getEnergia() + (int)biblioteca[3]);
+		if(prota.getEnergia() > 100) {
+			prota.setEnergia(100);
+		}
+		prota.setSabiduria(prota.getSabiduria() * (biblioteca[4]+1));
+	}
+	
+	public void cobrarDescampado(Personaje prota) {
+		prota.setFuerza(prota.getFuerza() * (descampado[0]+1));
+		prota.setVelocidad(prota.getVelocidad() * (descampado[1]+1));
+		prota.setEnergia(prota.getEnergia() + (int)descampado[3]);
+		if(prota.getEnergia() > 100) {
+			prota.setEnergia(100);
+		}
+		prota.setSabiduria(prota.getSabiduria() * (descampado[4]+1));
+	}
+	
+	public static Recompensa getInstance() {
+		return recompensa;
+	}
+
+	public double[] getGimnasio() {
+		return gimnasio;
+	}
+
+	public void setGimnasio(double[] gimnasio) {
+		this.gimnasio = gimnasio;
+	}
+
+	public double[] getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(double[] hospital) {
+		this.hospital = hospital;
+	}
+
+	public double[] getBiblioteca() {
+		return biblioteca;
+	}
+
+	public void setBiblioteca(double[] biblioteca) {
+		this.biblioteca = biblioteca;
+	}
+
+	public double[] getDescampado() {
+		return descampado;
+	}
+
+	public void setDescampado(double[] descampado) {
+		this.descampado = descampado;
+	}
+
+	public double[] getCalle() {
+		return calle;
+	}
+
+	public void setCalle(double[] calle) {
+		this.calle = calle;
+	}
+
+}

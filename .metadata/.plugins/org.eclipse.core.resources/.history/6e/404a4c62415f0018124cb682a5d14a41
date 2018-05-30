@@ -1,0 +1,83 @@
+package Controller;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+
+public class FicheroController {
+	/**
+	 * Controlador de fichero
+	 */
+	private static FicheroController controller;
+	private final int BUFFER_SIZE = 500;
+	/**
+	 * Constructor Privado
+	 */
+	private FicheroController() {}
+	/**
+	 * Metodo que lee el fichero de puntuaciones y
+	 * devuelve un ArrayList con todos los datos
+	 * @return array -> ArrayList con las puntuaciones
+	 */
+	public ArrayList<Integer> leer() {
+		ArrayList<Integer> array = new ArrayList<Integer>();
+		try {
+			InputStream ficheroEntrada = new FileInputStream(new File("puntuaciones.pn"));
+			byte[] buf = new byte[BUFFER_SIZE];
+			int cantidadLeida;
+			String numero = "";
+			while ((cantidadLeida = ficheroEntrada.read(buf, 0, BUFFER_SIZE)) > 0) {
+				for (int i = 0; i < cantidadLeida; i++) {
+					if(buf[i] != '\n') {
+						numero += (buf[i]-48);
+					} else {
+						array.add(Integer.parseInt(numero));
+						numero = "";
+					}
+				}
+			}
+			if(!numero.equals("")) {
+				array.add(Integer.parseInt(numero));
+			}
+			ficheroEntrada.close();
+		} catch (Exception errorDeFichero) {
+			System.out.println("Ha habido problemas: " + errorDeFichero.getMessage());
+		}
+		return array;
+	}
+	/**
+	 * Metodo que escribe las puntuaciones de una en una
+	 * al fichero binario al ganar la partida
+	 * @param num -> puntuación
+	 */
+	public void escribir(String num) {
+		try {
+			byte[] buf = new byte[num.length()];
+			int i = 0;
+			for (i = 0; i < num.length(); i++) {
+				buf[i] = (byte) num.charAt(i);
+			}
+			OutputStream ficheroSalida = new FileOutputStream(new File("puntuaciones.pn"), true);
+			
+			ficheroSalida.write(buf, 0, i);
+			ficheroSalida.write('\n');
+			
+			ficheroSalida.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	public static FicheroController getInstance() {
+		if (controller != null) {
+			return controller;
+		} else {
+			controller = new FicheroController();
+			return controller;
+		}
+	}
+	
+}

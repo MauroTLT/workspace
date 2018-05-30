@@ -1,0 +1,517 @@
+package View;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+import Model.Personaje;
+import Model.Protagonista;
+import Model.TableroModel;
+import resources.CompoundIcon;
+import resources.RoundButton;
+
+@SuppressWarnings("serial")
+public class BatoiKillerView extends JFrame {
+	
+	private final Color[] colores = {new Color(244, 70, 65), new Color(244, 112, 65), new Color(244, 148, 65), new Color(244, 184, 65), new Color(244, 205, 65), new Color(244, 232, 65), new Color(229, 244, 65), new Color(199, 244, 65), new Color(160, 244, 65), new Color(125, 244, 65)};
+	private final Font font = new Font("TimesRoman", Font.BOLD, 28);
+	private TableroModel modelo;
+	private JLabel[][] tablero;
+	private JLabel[] vida;
+	private JPanel hpBar;
+	private JLabel stats, nombre, img, total, totalP, fuerza, fuerzaP, velocidad, velocidadP, oro, oroP, energia, energiaP, sabiduria, sabiduriaP, dadoNum, tiempo;
+	private JLabel mapa;
+	private JButton arriba, abajo, derecha, izquierda, save;
+	private RoundButton dado, stop;
+
+	public BatoiKillerView(TableroModel modelo) {
+		this.modelo = modelo;
+		this.tablero = new JLabel[this.modelo.getCasillas().length][this.modelo.getCasillas()[0].length];
+		this.vida = new JLabel[10];
+		this.mapa = new JLabel();
+		
+		this.stats = new JLabel();
+		this.img = new JLabel();
+		this.nombre = new JLabel(Protagonista.getNombre());
+		this.total = new JLabel("Puntos Totales:", SwingConstants.CENTER);
+		this.totalP = new JLabel("" + 1024, SwingConstants.LEFT);
+		this.fuerza = new JLabel("", SwingConstants.CENTER);
+		this.fuerzaP = new JLabel(String.format("%.2f", 1.000, SwingConstants.CENTER));
+		this.velocidad = new JLabel("", SwingConstants.CENTER);
+		this.velocidadP = new JLabel(String.format("%.2f", 1.000, SwingConstants.CENTER));
+		this.oro = new JLabel("", SwingConstants.CENTER);
+		this.oroP = new JLabel("" + 0, SwingConstants.CENTER);
+		this.energia = new JLabel();
+		this.energiaP = new JLabel("" + 100, SwingConstants.CENTER);
+		this.sabiduria = new JLabel("", SwingConstants.CENTER);
+		this.sabiduriaP = new JLabel(String.format("%.2f", 1.000, SwingConstants.CENTER));
+		this.tiempo = new JLabel("00:00");
+		
+		this.arriba = new JButton();
+		this.abajo = new JButton();
+		this.derecha = new JButton();
+		this.izquierda = new JButton();
+		this.save = new JButton("Guardar Partida");
+		this.dado = new RoundButton("");
+		this.dadoNum = new JLabel("0", SwingConstants.CENTER);
+		this.stop = new RoundButton("");
+		this.mapa.setBackground(Color.ORANGE);
+		this.mapa.setOpaque(true);
+		darFormato();
+	}
+	
+	public void actualizarStats(Personaje prota) {
+		this.fuerzaP.setText(String.format("%.2f", prota.getFuerza()));
+		this.velocidadP.setText(String.format("%.2f", prota.getVelocidad()));
+		this.energiaP.setText("" + prota.getEnergia());
+		actualizarHP();
+		this.oroP.setText("" + prota.getOro());
+		this.sabiduriaP.setText(String.format("%.2f", prota.getSabiduria()));
+		this.totalP.setText("" + ((Protagonista)prota).calcularTotal());
+	}
+
+	public void actualizarHP() {
+		try {
+			this.hpBar.setVisible(false);
+			this.hpBar = null;
+			this.hpBar();
+		} catch (Exception e) {
+			System.out.println("La barra de vida todavia no se ha creado, creandola...");
+		}
+	}
+
+	private void darFormato() {
+		Protagonista prota = null;
+		JLabel background = new JLabel();
+		background.setIcon(new ImageIcon(getClass().getResource("../resources/extras/bg2.jpg")));
+		this.setContentPane(background);
+
+		this.setLayout(null);
+		this.mapa.setLayout(new GridLayout(11, 11));
+		this.mapa.setBackground(new Color(0,0,0,0));
+		// Comienzo Pintar casillas
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
+				try {
+					JLabel label = new JLabel();
+					label.setLayout(null);
+					Image fondo = new ImageIcon(getClass().getResource(this.modelo.getCasillas()[i][j].getEdificio().getRuta())).getImage();
+					label.setIcon(new ImageIcon(fondo.getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					if(this.modelo.getCasillas()[i][j].getPersonajes()[0] != null) {
+						Image per = new ImageIcon(getClass().getResource(this.modelo.getCasillas()[i][j].getPersonajes()[0].getRuta())).getImage();
+						label.setIcon(new CompoundIcon(label.getIcon(), new ImageIcon(per.getScaledInstance(60, 60, Image.SCALE_SMOOTH))));
+					} else if (this.modelo.getCasillas()[i][j].getPersonajes()[1] != null) {
+						prota = (Protagonista) this.modelo.getCasillas()[i][j].getPersonajes()[1];
+						this.totalP.setText("" + prota.calcularTotal());
+						actualizarStats(prota);
+						Image prot = new ImageIcon(getClass().getResource(this.modelo.getCasillas()[i][j].getPersonajes()[1].getRuta())).getImage();
+						label.setIcon(new CompoundIcon(label.getIcon(), new ImageIcon(prot.getScaledInstance(60, 60, Image.SCALE_SMOOTH))));
+					}
+					label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+					this.tablero[i][j] = label;
+					this.mapa.add(label);
+				} catch (Exception e) {
+					System.out.println(i+" "+j);
+					e.printStackTrace();
+				}
+			}
+		} // Fin pintar casillas
+		this.mapa.setBounds(50, 50, 700, 700);
+		this.add(mapa);
+
+		// Comienzo pintar cruzeta de control
+		
+		Image img = new ImageIcon(getClass().getResource("../resources/flechas/up.png")).getImage();
+		this.arriba.setIcon(new ImageIcon(img.getScaledInstance(90, 90, Image.SCALE_SMOOTH)));
+		this.arriba.setBounds(1030,450,90,90);
+		this.add(arriba);
+
+		img = new ImageIcon(getClass().getResource("../resources/flechas/left.png")).getImage();
+		this.izquierda.setIcon(new ImageIcon(img.getScaledInstance(90, 90, Image.SCALE_SMOOTH)));
+		this.izquierda.setBounds(940,540,90,90);
+		this.add(izquierda);
+
+		img = new ImageIcon(getClass().getResource("../resources/flechas/right.png")).getImage();
+		this.derecha.setIcon(new ImageIcon(img.getScaledInstance(90, 90, Image.SCALE_SMOOTH)));
+		this.derecha.setBounds(1120,540,90,90);
+		this.add(derecha);
+
+		img = new ImageIcon(getClass().getResource("../resources/flechas/down.png")).getImage();
+		this.abajo.setIcon(new ImageIcon(img.getScaledInstance(90, 90, Image.SCALE_SMOOTH)));
+		this.abajo.setBounds(1030,630,90,90);
+		this.add(abajo);
+		
+		this.stop.setIcon(new ImageIcon(getClass().getResource("../resources/extras/stop.png")));
+		this.stop.setBounds(1030,540,90,90);
+		this.add(stop);
+		
+		this.dado.setIcon(new ImageIcon(getClass().getResource("../resources/extras/dado.gif")));
+		this.dado.setBounds(800,470,90,90);
+		this.add(dado);
+		
+		this.dadoNum.setForeground(Color.LIGHT_GRAY);
+		this.dadoNum.setBorder(BorderFactory.createRaisedBevelBorder());
+		this.dadoNum.setFont(font);
+		this.dadoNum.setBounds(820,570,50,50);
+		this.add(dadoNum);
+		
+		this.save.setBounds(775,650,150,90);
+		this.add(save);
+		
+		// Fin pintar cruzeta de control
+		
+		this.tiempo.setBounds(1125,670,125,75);
+		//this.tiempo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.tiempo.setForeground(Color.LIGHT_GRAY);
+		this.tiempo.setFont(new Font("TimesRoman", Font.BOLD, 36));
+		this.tiempo.setHorizontalAlignment(SwingConstants.CENTER);
+		this.add(tiempo);
+		
+		
+		// Comienzo pintar estadisticas
+		
+		img = new ImageIcon(getClass().getResource("../resources/extras/frame.png")).getImage();
+		this.stats.setIcon(new ImageIcon(img.getScaledInstance(490, 365, Image.SCALE_SMOOTH)));
+		this.stats.setLayout(null);
+		this.stats.setBounds(765, 50, 490, 365);
+		
+		this.nombre.setBounds(40,30,490,35);
+		this.nombre.setFont(font);
+		this.nombre.setForeground(Color.LIGHT_GRAY);
+		this.stats.add(nombre);
+		
+		this.img.setBounds(25,75,125,125);
+		Image prot = new ImageIcon(getClass().getResource(prota.getRuta())).getImage();
+		this.img.setIcon(new ImageIcon(prot.getScaledInstance(125, 125, Image.SCALE_SMOOTH)));
+		this.stats.add(this.img);
+		
+		this.total.setBounds(90,65,335,50);
+		this.total.setFont(font);
+		this.total.setForeground(Color.LIGHT_GRAY);
+		this.totalP.setFont(font);
+		this.totalP.setForeground(Color.LIGHT_GRAY);
+		this.totalP.setBounds(385,65,100,50);
+		this.stats.add(total);
+		this.stats.add(totalP);
+		
+		this.fuerza.setIcon(new ImageIcon(getClass().getResource("../resources/stats/strength.png")));
+		this.fuerza.setBounds(165,120,100,75);
+		this.fuerza.setBorder(BorderFactory.createRaisedBevelBorder());
+		this.fuerzaP.setFont(font);
+		this.fuerzaP.setForeground(Color.LIGHT_GRAY);
+		this.fuerzaP.setBorder(BorderFactory.createRaisedBevelBorder());
+		this.fuerzaP.setBounds(165,195,100,50);
+		this.fuerzaP.setHorizontalAlignment(SwingConstants.CENTER);
+		this.stats.add(fuerza);
+		this.stats.add(fuerzaP);
+		
+		this.velocidad.setIcon(new ImageIcon(getClass().getResource("../resources/stats/speed.png")));
+		this.velocidad.setBounds(265,120,100,75);
+		this.velocidad.setBorder(BorderFactory.createRaisedBevelBorder());
+		this.velocidadP.setFont(font);
+		this.velocidadP.setForeground(Color.LIGHT_GRAY);
+		this.velocidadP.setBorder(BorderFactory.createRaisedBevelBorder());
+		this.velocidadP.setBounds(265,195,100,50);
+		this.velocidadP.setHorizontalAlignment(SwingConstants.CENTER);
+		this.stats.add(velocidad);
+		this.stats.add(velocidadP);
+		
+		this.oro.setIcon(new ImageIcon(getClass().getResource("../resources/stats/g.png")));
+		this.oro.setBounds(35,210,100,75);
+		this.oroP.setFont(font);
+		this.oroP.setForeground(Color.LIGHT_GRAY);
+		this.oroP.setBounds(35,290,100,50);
+		this.stats.add(oro);
+		this.stats.add(oroP);
+		
+		this.energia.setIcon(new ImageIcon(getClass().getResource("../resources/stats/hp.png")));
+		this.energia.setBounds(165,260,100,75);
+		JLabel _100 = new JLabel("/ 100", SwingConstants.CENTER);
+		_100.setFont(new Font("TimesRoman", Font.BOLD, 17));
+		_100.setForeground(Color.LIGHT_GRAY);
+		_100.setBounds(325,260,50,25);
+		this.energiaP.setFont(new Font("TimesRoman", Font.BOLD, 17));
+		this.energiaP.setForeground(Color.LIGHT_GRAY);
+		this.energiaP.setBounds(275,260,50,25);
+		this.energiaP.setHorizontalAlignment(SwingConstants.CENTER);
+		this.stats.add(energia);
+		this.stats.add(energiaP);
+		this.stats.add(_100);
+		hpBar();
+		
+		this.sabiduria.setIcon(new ImageIcon(getClass().getResource("../resources/stats/sabiduria.png")));
+		this.sabiduria.setBounds(365,120,100,75);
+		this.sabiduria.setBorder(BorderFactory.createRaisedBevelBorder());
+		this.sabiduriaP.setFont(font);
+		this.sabiduriaP.setForeground(Color.LIGHT_GRAY);
+		this.sabiduriaP.setBorder(BorderFactory.createRaisedBevelBorder());
+		this.sabiduriaP.setBounds(365,195,100,50);
+		this.sabiduriaP.setHorizontalAlignment(SwingConstants.CENTER);
+		this.stats.add(sabiduria);
+		this.stats.add(sabiduriaP);
+		this.add(stats);
+		
+		// Fin pintar estadisticas
+
+		this.setSize(1300, 820);
+		this.setTitle("Batoi Killer");
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+	}
+
+	private void hpBar() {
+		this.hpBar = new JPanel();
+		this.hpBar.setBackground(new Color(0,0,0,0));
+		this.hpBar.setBorder(BorderFactory.createLineBorder(Color.lightGray, 5, true));
+		this.hpBar.setLayout(new GridLayout(1,10));
+		for (int i = 0; i < colores.length; i++) {
+			JLabel label = new JLabel();
+			if((i*10) >= Integer.parseInt(this.getEnergiaP().getText())) {
+				label.setBackground(new Color(0,0,0,0));
+			} else {
+				label.setBackground(colores[i]);
+			}
+			label.setOpaque(true);
+			this.vida[i] = label;
+			this.hpBar.add(label);
+		}
+		this.hpBar.setBounds(235,285,200,30);
+		this.stats.add(hpBar);
+	}
+
+	public TableroModel getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(TableroModel modelo) {
+		this.modelo = modelo;
+	}
+
+	public JLabel[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(JLabel[][] tablero) {
+		this.tablero = tablero;
+	}
+
+	public JLabel getStats() {
+		return stats;
+	}
+
+	public void setStats(JLabel stats) {
+		this.stats = stats;
+	}
+
+	public JLabel getTotal() {
+		return total;
+	}
+
+	public void setTotal(JLabel total) {
+		this.total = total;
+	}
+
+	public JLabel getTotalP() {
+		return totalP;
+	}
+
+	public void setTotalP(JLabel totalP) {
+		this.totalP = totalP;
+	}
+
+	public JLabel getFuerza() {
+		return fuerza;
+	}
+
+	public void setFuerza(JLabel fuerza) {
+		this.fuerza = fuerza;
+	}
+
+	public JLabel getFuerzaP() {
+		return fuerzaP;
+	}
+
+	public void setFuerzaP(JLabel fuerzaP) {
+		this.fuerzaP = fuerzaP;
+	}
+
+	public JLabel getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(JLabel velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public JLabel getVelocidadP() {
+		return velocidadP;
+	}
+
+	public void setVelocidadP(JLabel velocidadP) {
+		this.velocidadP = velocidadP;
+	}
+
+	public JLabel getOro() {
+		return oro;
+	}
+
+	public void setOro(JLabel oro) {
+		this.oro = oro;
+	}
+
+	public JLabel getOroP() {
+		return oroP;
+	}
+
+	public void setOroP(JLabel oroP) {
+		this.oroP = oroP;
+	}
+
+	public JLabel getEnergia() {
+		return energia;
+	}
+
+	public void setEnergia(JLabel energia) {
+		this.energia = energia;
+	}
+
+	public JLabel getEnergiaP() {
+		return energiaP;
+	}
+
+	public void setEnergiaP(JLabel energiaP) {
+		this.energiaP = energiaP;
+	}
+
+	public JLabel getSabiduria() {
+		return sabiduria;
+	}
+
+	public void setSabiduria(JLabel sabiduria) {
+		this.sabiduria = sabiduria;
+	}
+
+	public JLabel getSabiduriaP() {
+		return sabiduriaP;
+	}
+
+	public void setSabiduriaP(JLabel sabiduriaP) {
+		this.sabiduriaP = sabiduriaP;
+	}
+
+	public JLabel getMapa() {
+		return mapa;
+	}
+
+	public void setMapa(JLabel mapa) {
+		this.mapa = mapa;
+	}
+
+	public JButton getArriba() {
+		return arriba;
+	}
+
+	public void setArriba(JButton arriba) {
+		this.arriba = arriba;
+	}
+
+	public JButton getAbajo() {
+		return abajo;
+	}
+
+	public void setAbajo(JButton abajo) {
+		this.abajo = abajo;
+	}
+
+	public JButton getDerecha() {
+		return derecha;
+	}
+
+	public void setDerecha(JButton derecha) {
+		this.derecha = derecha;
+	}
+
+	public JButton getIzquierda() {
+		return izquierda;
+	}
+
+	public void setIzquierda(JButton izquierda) {
+		this.izquierda = izquierda;
+	}
+
+	public JButton getSave() {
+		return save;
+	}
+
+	public void setSave(JButton save) {
+		this.save = save;
+	}
+
+	public JPanel getHpBar() {
+		return hpBar;
+	}
+
+	public void setHpBar(JPanel hpBar) {
+		this.hpBar = hpBar;
+	}
+
+	public JLabel getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(JLabel nombre) {
+		this.nombre = nombre;
+	}
+
+	public JLabel getImg() {
+		return img;
+	}
+
+	public void setImg(JLabel img) {
+		this.img = img;
+	}
+
+	public RoundButton getDado() {
+		return dado;
+	}
+
+	public void setDado(RoundButton dado) {
+		this.dado = dado;
+	}
+
+	public RoundButton getStop() {
+		return stop;
+	}
+
+	public void setStop(RoundButton stop) {
+		this.stop = stop;
+	}
+
+	public JLabel getDadoNum() {
+		return dadoNum;
+	}
+
+	public void setDadoNum(JLabel dadoNum) {
+		this.dadoNum = dadoNum;
+	}
+
+	public JLabel getTiempo() {
+		return tiempo;
+	}
+
+	public void setTiempo(JLabel tiempo) {
+		this.tiempo = tiempo;
+	}
+
+}

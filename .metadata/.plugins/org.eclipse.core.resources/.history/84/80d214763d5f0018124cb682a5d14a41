@@ -1,0 +1,143 @@
+package Controller;
+
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.ImageIcon;
+
+import View.ElecView;
+/*
+ * Clase que crea y controla todo lo referente a la customizacion de la partida antes de que se genere
+ */
+public class ElecController implements MouseListener, KeyListener {
+	
+	private final int[] konami = new int[]{KeyEvent.VK_UP,KeyEvent.VK_UP,KeyEvent.VK_DOWN,KeyEvent.VK_DOWN,KeyEvent.VK_LEFT,KeyEvent.VK_RIGHT,KeyEvent.VK_LEFT,KeyEvent.VK_RIGHT,KeyEvent.VK_A,KeyEvent.VK_B,KeyEvent.VK_ENTER};
+	private int[] intento;
+	private boolean debug;
+	private ElecView ventana;//Vista del controlador
+	
+	public ElecController() {
+		this.debug = false;
+		this.intento = new int[11];
+		this.ventana = new ElecView();
+		setActions();
+		// "Dormimos" el Hilo principal hasta que la pantalla de eleccion este cerrada
+		while(ventana.isShowing()) {try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}}
+	}
+	
+	private void setActions() {
+		this.ventana.addKeyListener(this);
+		this.ventana.getNombreTxt().addKeyListener(this);
+		this.ventana.getMale().addMouseListener(this);
+		this.ventana.getFemale().addMouseListener(this);
+		this.ventana.getFacil().addMouseListener(this);
+		this.ventana.getMedio().addMouseListener(this);
+		this.ventana.getDificil().addMouseListener(this);
+		this.ventana.getFacilB().addMouseListener(this);
+		this.ventana.getMedioB().addMouseListener(this);
+		this.ventana.getDificilB().addMouseListener(this);
+		this.ventana.getCerrar().addMouseListener(this);
+		this.ventana.requestFocus();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getSource() == this.ventana.getMale()) {
+			Image image = new ImageIcon(getClass().getResource("../resources/sprites/maxim.png")).getImage();
+			this.ventana.getImg().setIcon(new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH)));
+			
+			this.ventana.getMale().setIcon(new ImageIcon(image.getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
+			
+			image = new ImageIcon(getClass().getResource("../resources/sprites/selan.png")).getImage();
+			this.ventana.getFemale().setIcon(new ImageIcon(image.getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+			
+			this.ventana.setRuta("../resources/sprites/maxim.png");
+		} else if(e.getSource() == this.ventana.getFemale()) {
+			Image image = new ImageIcon(getClass().getResource("../resources/sprites/selan.png")).getImage();
+			this.ventana.getImg().setIcon(new ImageIcon(image.getScaledInstance(200, 200, Image.SCALE_SMOOTH)));
+			
+			this.ventana.getFemale().setIcon(new ImageIcon(image.getScaledInstance(75, 75, Image.SCALE_SMOOTH)));
+			
+			image = new ImageIcon(getClass().getResource("../resources/sprites/maxim.png")).getImage();
+			this.ventana.getMale().setIcon(new ImageIcon(image.getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+			
+			this.ventana.setRuta("../resources/sprites/selan.png");
+		} else if(e.getSource() == this.ventana.getFacilB() || e.getSource() == this.ventana.getFacil()) {
+			this.ventana.setDificultad(1);
+			this.ventana.getFacilB().doClick();
+		} else if(e.getSource() == this.ventana.getMedioB() || e.getSource() == this.ventana.getMedio()) {
+			this.ventana.setDificultad(3);
+			this.ventana.getMedioB().doClick();
+		} else if(e.getSource() == this.ventana.getDificilB() || e.getSource() == this.ventana.getDificil()) {
+			this.ventana.setDificultad(6);
+			this.ventana.getDificilB().doClick();
+		} else if(e.getSource() == this.ventana.getCerrar()) {
+			this.getVentana().dispose();
+		}
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		boolean semaforo = false;
+		for (int i = 0; i < intento.length && !semaforo; i++) {
+			if(intento[i] == 0) {
+				intento[i] = e.getKeyCode();
+				System.out.println(intento[i]);
+				if(konami[i] == intento[i]) {
+					System.out.println("Bien");
+					if(i == intento.length-1) {
+						this.debug = true;
+					}
+				} else {
+					intento = new int[11];
+					System.out.println("Borrando");
+				}
+				semaforo = true;
+			}
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		if(e.getSource() == this.ventana.getNombreTxt()) {
+			if (this.ventana.getNombreTxt().getText().length() == 10) {
+				e.consume();
+			}
+		} 
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {}
+	
+	public ElecView getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(ElecView ventana) {
+		this.ventana = ventana;
+	}
+
+	public boolean isDebug() {
+		return debug;
+	}
+
+	public void setDebug(boolean debug) {
+		this.debug = debug;
+	}
+
+}

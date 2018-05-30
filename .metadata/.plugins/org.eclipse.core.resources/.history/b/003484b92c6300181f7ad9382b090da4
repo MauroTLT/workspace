@@ -1,0 +1,108 @@
+package View;
+
+import java.awt.AWTException;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Robot;
+
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class GameOverView extends JDialog {
+	
+	private Thread hilo;
+	private JLabel per, gameOver, txt1;
+	private JTextArea txt2;
+	
+	public GameOverView(String ruta) {
+		this.hilo = new Thread(this::lanzar);
+		this.per = new JLabel();
+		this.gameOver = new JLabel("Game Over", SwingConstants.CENTER);
+		this.txt1 = new JLabel("Suerte la próxima vez", SwingConstants.CENTER);
+		this.txt2 = new JTextArea("Debido a un despiste el \nHéroe pereció en batalla.", 2, 1);
+		darFormato(ruta);
+	}
+
+	private void darFormato(String ruta) {
+		JLabel background = new JLabel();
+		Image img = new ImageIcon(getClass().getResource("../resources/extras/foco.jpg")).getImage();
+		background.setIcon(new ImageIcon(img.getScaledInstance(600, 700, Image.SCALE_SMOOTH)));
+		this.setContentPane(background);
+		this.setLayout(null);
+		
+		this.per.setBounds(250,525,100,100);
+		if (ruta.equals("../resources/sprites/maxim.png")) {
+			img = new ImageIcon(getClass().getResource("../resources/sprites/maximDeath.png")).getImage();
+		} else {
+			img = new ImageIcon(getClass().getResource("../resources/sprites/selanDeath.png")).getImage();
+		}
+		this.per.setIcon(new ImageIcon(img.getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+		this.add(per);
+		
+		this.gameOver.setBounds(100,225,400,75);
+		this.gameOver.setFont(new Font("Purisa", Font.BOLD, 60));
+		this.gameOver.setForeground(new Color(192, 192, 192, 0));
+		this.add(gameOver);
+		
+		this.txt1.setBounds(100,450,400,50);
+		this.txt1.setFont(new Font("kinnari", Font.BOLD, 36));
+		this.txt1.setForeground(new Color(192, 192, 192, 5));
+		this.add(txt1);
+		
+		this.txt2.setBounds(100,300,400,150);
+		this.txt2.setFont(new Font("kinnari", Font.BOLD, 36));
+		this.txt2.setBackground(new Color(0,0,0,0));
+		this.txt2.setEditable(false);
+		this.txt2.setFocusable(false);
+		this.txt2.setForeground(new Color(192, 192, 192, 5));
+		this.add(txt2);
+		
+		//this.setModal(true);
+		this.setSize(600, 700);
+		this.setUndecorated(true);
+		this.setLocationRelativeTo(null);
+		this.setAlwaysOnTop(true);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+		this.setVisible(true);
+		
+		hilo.start();
+	}
+	
+	public void lanzar() {
+		try {
+			Robot robot = new Robot();
+			Thread.sleep(500);
+			while(this.txt2.getForeground().getAlpha() < 255) {
+				this.txt2.setForeground(new Color(192, 192, 192, this.txt2.getForeground().getAlpha()+10));
+				Thread.sleep(100);
+				robot.mouseMove(this.getWidth()/2, this.getHeight()/2);
+			}
+			this.txt2.setVisible(false);
+			while(this.txt1.getForeground().getAlpha() < 255) {
+				this.txt1.setForeground(new Color(192, 192, 192, this.txt1.getForeground().getAlpha()+10));
+				Thread.sleep(100);
+				robot.mouseMove(this.getWidth()/2, this.getHeight()/2);
+			}
+			while(this.gameOver.getForeground().getAlpha() < 250) {
+				this.txt1.setForeground(new Color(192, 192, 192, this.txt1.getForeground().getAlpha()-10));
+				this.gameOver.setForeground(new Color(192, 192, 192, this.gameOver.getForeground().getAlpha()+10));
+				Thread.sleep(100);
+				robot.mouseMove(this.getWidth()/2, this.getHeight()/2);
+			}
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.dispose();
+	}
+}

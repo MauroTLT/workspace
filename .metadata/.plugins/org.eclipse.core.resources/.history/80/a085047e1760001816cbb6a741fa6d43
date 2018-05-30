@@ -1,0 +1,324 @@
+package View;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import Model.Biblioteca;
+import Model.Casilla;
+import Model.Descampado;
+import Model.Gimnasio;
+import Model.Hospital;
+import Model.Recompensa;
+
+@SuppressWarnings("serial")
+public class RecompensaView extends JDialog implements KeyListener,ActionListener{
+
+	private final Font font = new Font("TimesRoman", Font.BOLD, 28);
+	private JLabel img, param1, param1UP, param2, param2UP, param3, param3UP, param4, param4UP, gold, goldUP;
+	private JButton aceptar;
+	
+	public RecompensaView(Casilla casilla) {
+		this.img = new JLabel("", SwingConstants.CENTER);
+		this.param1 = new JLabel("", SwingConstants.CENTER);
+		this.param1UP = new JLabel("", SwingConstants.CENTER);
+		this.param2 = new JLabel("", SwingConstants.CENTER);
+		this.param2UP = new JLabel("", SwingConstants.CENTER);
+		this.param3 = new JLabel("", SwingConstants.CENTER);
+		this.param3UP = new JLabel("", SwingConstants.CENTER);
+		this.param4 = new JLabel("", SwingConstants.CENTER);
+		this.param4UP = new JLabel("", SwingConstants.CENTER);
+		this.gold = new JLabel("", SwingConstants.CENTER);
+		this.goldUP = new JLabel("", SwingConstants.CENTER);
+		this.aceptar = new JButton("Aceptar");
+		
+		this.setLayout(null);
+		
+		if(casilla.getEdificio() instanceof Gimnasio) {
+			JLabel background = new JLabel();
+			Image bg = new ImageIcon(getClass().getResource("../resources/extras/gymBG.png")).getImage();
+			background.setIcon(new ImageIcon(bg.getScaledInstance(700, 450, Image.SCALE_SMOOTH)));
+			this.setContentPane(background);
+			darFormatoGimnasio(casilla);
+		} else if(casilla.getEdificio() instanceof Descampado) {
+			JLabel background = new JLabel();
+			Image bg = new ImageIcon(getClass().getResource("../resources/extras/descampadoBG.png")).getImage();
+			background.setIcon(new ImageIcon(bg.getScaledInstance(700, 450, Image.SCALE_SMOOTH)));
+			this.setContentPane(background);
+			darFormatoDescampado(casilla);
+		} 
+		/*else if(casilla.getEdificio() instanceof Calle) {
+			JLabel background = new JLabel();
+			Image bg = new ImageIcon(getClass().getResource("../resources/extras/calleBG.png")).getImage();
+			background.setIcon(new ImageIcon(bg.getScaledInstance(700, 450, Image.SCALE_SMOOTH)));
+			this.setContentPane(background);
+			darFormatoCalle(casilla);
+		}*/ 
+		else if(casilla.getEdificio() instanceof Hospital) {
+			JLabel background = new JLabel();
+			Image bg = new ImageIcon(getClass().getResource("../resources/extras/hospitalBG.png")).getImage();
+			background.setIcon(new ImageIcon(bg.getScaledInstance(700, 450, Image.SCALE_SMOOTH)));
+			this.setContentPane(background);
+			darFormatoHospital(casilla);
+		} else if(casilla.getEdificio() instanceof Biblioteca) {
+			JLabel background = new JLabel();
+			Image bg = new ImageIcon(getClass().getResource("../resources/extras/biblioBG.png")).getImage();
+			background.setIcon(new ImageIcon(bg.getScaledInstance(700, 450, Image.SCALE_SMOOTH)));
+			this.setContentPane(background);
+			darFormatoBiblioteca(casilla);
+		}
+		this.img.setBounds(30,125,150,150);
+		Image prot = new ImageIcon(getClass().getResource(casilla.getPersonajes()[1].getRuta())).getImage();
+		this.img.setIcon(new ImageIcon(prot.getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+		this.add(this.img);
+		
+		this.aceptar.setBounds(500,300,150,100);
+		this.aceptar.addKeyListener(this);
+		this.add(aceptar);
+		
+		this.setModal(true);
+		this.setSize(700, 450);
+		this.setUndecorated(true);
+		this.setLocationRelativeTo(null);
+		this.setAlwaysOnTop(true);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setVisible(true);
+	}
+	
+	private void darFormatoGimnasio(Casilla casilla) {
+		this.param1.setIcon(new ImageIcon(getClass().getResource("../resources/stats/strengthUP.png")));
+		this.param1.setBounds(200,150,75,75);
+		this.add(param1);
+		this.param1UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getGimnasio()[0]*100) + "%");
+		this.param1UP.setFont(font);
+		this.param1UP.setBackground(new Color(0,0,0,100));
+		this.param1UP.setOpaque(true);
+		this.param1UP.setForeground(Color.LIGHT_GRAY);
+		this.param1UP.setBounds(200,250,75,25);
+		this.add(param1UP);
+		
+		this.param2.setIcon(new ImageIcon(getClass().getResource("../resources/stats/speedUP.png")));
+		this.param2.setBounds(300,150,75,75);
+		this.add(param2);
+		this.param2UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getGimnasio()[1]*100) + "%");
+		this.param2UP.setFont(font);
+		this.param2UP.setBackground(new Color(0,0,0,100));
+		this.param2UP.setOpaque(true);
+		this.param2UP.setForeground(Color.LIGHT_GRAY);
+		this.param2UP.setBounds(300,250,75,25);
+		this.add(param2UP);
+		
+		this.gold.setIcon(new ImageIcon(getClass().getResource("../resources/stats/gold.png")));
+		this.gold.setBounds(200,310,100,100);
+		this.add(gold);
+		this.goldUP.setText("" + (int)((Recompensa) casilla.getEvento()).getGimnasio()[2]);
+		this.goldUP.setFont(new Font("TimesRoman", Font.BOLD, 40));
+		this.goldUP.setBackground(new Color(0,0,0,100));
+		this.goldUP.setOpaque(true);
+		this.goldUP.setForeground(Color.LIGHT_GRAY);
+		this.goldUP.setBounds(310,340,75,50);
+		this.add(goldUP);
+		
+		((Recompensa)casilla.getEvento()).cobrarGym(casilla.getPersonajes()[1]);
+	}
+	
+	private void darFormatoDescampado(Casilla casilla) {
+		this.param1.setIcon(new ImageIcon(getClass().getResource("../resources/stats/strengthUP.png")));
+		this.param1.setBounds(200,150,75,75);
+		this.add(param1);
+		this.param1UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getDescampado()[0]*100) + "%");
+		this.param1UP.setFont(font);
+		this.param1UP.setBackground(new Color(0,0,0,100));
+		this.param1UP.setOpaque(true);
+		this.param1UP.setForeground(Color.LIGHT_GRAY);
+		this.param1UP.setBounds(200,250,75,25);
+		this.add(param1UP);
+		
+		this.param2.setIcon(new ImageIcon(getClass().getResource("../resources/stats/speedUP.png")));
+		this.param2.setBounds(300,150,75,75);
+		this.add(param2);
+		this.param2UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getDescampado()[1]*100) + "%");
+		this.param2UP.setFont(font);
+		this.param2UP.setBackground(new Color(0,0,0,100));
+		this.param2UP.setOpaque(true);
+		this.param2UP.setForeground(Color.LIGHT_GRAY);
+		this.param2UP.setBounds(300,250,75,25);
+		this.add(param2UP);
+		
+		this.param3.setIcon(new ImageIcon(getClass().getResource("../resources/stats/hpUP.png")));
+		this.param3.setBounds(400,150,75,75);
+		this.add(param3);
+		this.param3UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getDescampado()[3]));
+		this.param3UP.setFont(font);
+		this.param3UP.setBackground(new Color(0,0,0,100));
+		this.param3UP.setOpaque(true);
+		this.param3UP.setForeground(Color.LIGHT_GRAY);
+		this.param3UP.setBounds(400,250,75,25);
+		this.add(param3UP);
+		
+		this.param4.setIcon(new ImageIcon(getClass().getResource("../resources/stats/sabiduriaUP.png")));
+		this.param4.setBounds(500,150,75,75);
+		this.add(param4);
+		this.param4UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getDescampado()[4]*100) + "%");
+		this.param4UP.setFont(font);
+		this.param4UP.setBackground(new Color(0,0,0,100));
+		this.param4UP.setOpaque(true);
+		this.param4UP.setForeground(Color.LIGHT_GRAY);
+		this.param4UP.setBounds(500,250,75,25);
+		this.add(param4UP);
+		
+		((Recompensa)casilla.getEvento()).cobrarDescampado(casilla.getPersonajes()[1]);
+	}
+
+	//Formato para Calle (Metodo descartado ya que Calle ya no da recompensa)
+	
+	/*private void darFormatoCalle(Casilla casilla) {
+		this.param1.setIcon(new ImageIcon(getClass().getResource("../resources/stats/strengthUP.png")));
+		this.param1.setBounds(200,150,75,75);
+		this.add(param1);
+		this.param1UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getCalle()[0]*100) + "%");
+		this.param1UP.setFont(font);
+		this.param1UP.setBackground(new Color(0,0,0,100));
+		this.param1UP.setOpaque(true);
+		this.param1UP.setForeground(Color.LIGHT_GRAY);
+		this.param1UP.setBounds(200,250,75,25);
+		this.add(param1UP);
+		
+		this.param2.setIcon(new ImageIcon(getClass().getResource("../resources/stats/speedUP.png")));
+		this.param2.setBounds(300,150,75,75);
+		this.add(param2);
+		this.param2UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getCalle()[1]*100) + "%");
+		this.param2UP.setFont(font);
+		this.param2UP.setBackground(new Color(0,0,0,100));
+		this.param2UP.setOpaque(true);
+		this.param2UP.setForeground(Color.LIGHT_GRAY);
+		this.param2UP.setBounds(300,250,75,25);
+		this.add(param2UP);
+		
+		this.param3.setIcon(new ImageIcon(getClass().getResource("../resources/stats/hpUP.png")));
+		this.param3.setBounds(400,150,75,75);
+		this.add(param3);
+		this.param3UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getCalle()[3]));
+		this.param3UP.setFont(font);
+		this.param3UP.setBackground(new Color(0,0,0,100));
+		this.param3UP.setOpaque(true);
+		this.param3UP.setForeground(Color.LIGHT_GRAY);
+		this.param3UP.setBounds(400,250,75,25);
+		this.add(param3UP);
+		
+		this.gold.setIcon(new ImageIcon(getClass().getResource("../resources/stats/gold.png")));
+		this.gold.setBounds(200,310,100,100);
+		this.add(gold);
+		this.goldUP.setText("" + (int)((Recompensa) casilla.getEvento()).getCalle()[2]);
+		this.goldUP.setFont(new Font("TimesRoman", Font.BOLD, 40));
+		this.goldUP.setBackground(new Color(0,0,0,100));
+		this.goldUP.setOpaque(true);
+		this.goldUP.setForeground(Color.LIGHT_GRAY);
+		this.goldUP.setBounds(310,340,75,50);
+		this.add(goldUP);
+		
+		casilla.getPersonajes()[1].setFuerza(casilla.getPersonajes()[1].getFuerza() * (((Recompensa) casilla.getEvento()).getCalle()[0]+1));
+		casilla.getPersonajes()[1].setVelocidad(casilla.getPersonajes()[1].getVelocidad() * (((Recompensa) casilla.getEvento()).getCalle()[1]+1));
+		casilla.getPersonajes()[1].setEnergia(casilla.getPersonajes()[1].getEnergia() + (int)((Recompensa) casilla.getEvento()).getCalle()[3]);
+		if(casilla.getPersonajes()[1].getEnergia() > 100) {
+			casilla.getPersonajes()[1].setEnergia(100);
+		}
+		casilla.getPersonajes()[1].setOro(casilla.getPersonajes()[1].getOro() + (int)((Recompensa) casilla.getEvento()).getCalle()[2]);
+	}*/
+	
+	private void darFormatoHospital(Casilla casilla) {
+		this.param3.setIcon(new ImageIcon(getClass().getResource("../resources/stats/hpUP.png")));
+		this.param3.setBounds(400,150,75,75);
+		this.add(param3);
+		this.param3UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getHospital()[3]));
+		this.param3UP.setFont(font);
+		this.param3UP.setBackground(new Color(0,0,0,100));
+		this.param3UP.setOpaque(true);
+		this.param3UP.setForeground(Color.LIGHT_GRAY);
+		this.param3UP.setBounds(400,250,75,25);
+		this.add(param3UP);
+		
+		this.param4.setIcon(new ImageIcon(getClass().getResource("../resources/stats/sabiduriaUP.png")));
+		this.param4.setBounds(500,150,75,75);
+		this.add(param4);
+		this.param4UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getHospital()[4]*100) + "%");
+		this.param4UP.setFont(font);
+		this.param4UP.setBackground(new Color(0,0,0,100));
+		this.param4UP.setOpaque(true);
+		this.param4UP.setForeground(Color.LIGHT_GRAY);
+		this.param4UP.setBounds(500,250,75,25);
+		this.add(param4UP);
+		
+		this.gold.setIcon(new ImageIcon(getClass().getResource("../resources/stats/gold.png")));
+		this.gold.setBounds(200,310,100,100);
+		this.add(gold);
+		this.goldUP.setText("" + (int)((Recompensa) casilla.getEvento()).getHospital()[2]);
+		this.goldUP.setFont(new Font("TimesRoman", Font.BOLD, 40));
+		this.goldUP.setBackground(new Color(0,0,0,100));
+		this.goldUP.setOpaque(true);
+		this.goldUP.setForeground(Color.LIGHT_GRAY);
+		this.goldUP.setBounds(310,340,75,50);
+		this.add(goldUP);
+		
+		((Recompensa)casilla.getEvento()).cobrarHospital(casilla.getPersonajes()[1]);
+	}
+
+	private void darFormatoBiblioteca(Casilla casilla) {
+		this.param3.setIcon(new ImageIcon(getClass().getResource("../resources/stats/hpUP.png")));
+		this.param3.setBounds(400,150,75,75);
+		this.add(param3);
+		this.param3UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getBiblioteca()[3]));
+		this.param3UP.setFont(font);
+		this.param3UP.setBackground(new Color(0,0,0,100));
+		this.param3UP.setOpaque(true);
+		this.param3UP.setForeground(Color.LIGHT_GRAY);
+		this.param3UP.setBounds(400,250,75,25);
+		this.add(param3UP);
+		
+		this.param4.setIcon(new ImageIcon(getClass().getResource("../resources/stats/sabiduriaUP.png")));
+		this.param4.setBounds(500,150,75,75);
+		this.add(param4);
+		this.param4UP.setText("" + (int)(((Recompensa) casilla.getEvento()).getBiblioteca()[4]*100) + "%");
+		this.param4UP.setFont(font);
+		this.param4UP.setBackground(new Color(0,0,0,100));
+		this.param4UP.setOpaque(true);
+		this.param4UP.setForeground(Color.LIGHT_GRAY);
+		this.param4UP.setBounds(500,250,75,25);
+		this.add(param4UP);
+		
+		this.gold.setIcon(new ImageIcon(getClass().getResource("../resources/stats/gold.png")));
+		this.gold.setBounds(200,310,100,100);
+		this.add(gold);
+		this.goldUP.setText("" + (int)((Recompensa) casilla.getEvento()).getBiblioteca()[2]);
+		this.goldUP.setFont(new Font("TimesRoman", Font.BOLD, 40));
+		this.goldUP.setBackground(new Color(0,0,0,100));
+		this.goldUP.setOpaque(true);
+		this.goldUP.setForeground(Color.LIGHT_GRAY);
+		this.goldUP.setBounds(310,340,75,50);
+		this.add(goldUP);
+		
+		((Recompensa)casilla.getEvento()).cobrarBiblioteca(casilla.getPersonajes()[1]);
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		this.dispose();
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {}
+
+	
+}

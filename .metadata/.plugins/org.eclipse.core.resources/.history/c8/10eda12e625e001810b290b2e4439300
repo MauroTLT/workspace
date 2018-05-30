@@ -1,0 +1,221 @@
+package Conexion;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import Model.Aldeano;
+import Model.Autoridad;
+import Model.Biblioteca;
+import Model.Calle;
+import Model.Casilla;
+import Model.Delincuente;
+import Model.Descampado;
+import Model.Gimnasio;
+import Model.Hospital;
+import Model.Mentalista;
+import Model.Protagonista;
+import Model.TableroModel;
+
+public class Conexion {
+	
+	private static Conexion bd;
+	private Connection conectar;
+	
+	/**
+	 * Metodo de conexion a la base de datos
+	 * @param base -> Nombre de la base por defecto m_BatoiKiller
+	 * @param usu -> Nombre de la base por defecto m
+	 * @param pass -> Nombre de la base por defecto 1234
+	 * @return
+	 */
+	public Connection conectar(String base, String usu, String pass) {
+		Connection conexion = null;
+		boolean valid = false;
+		try {
+			conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/"+ base +"?useSSL=false&useLegacyDateTimeCode=false&serverTimezone=UTC",usu,pass);
+			valid=conexion.isValid(5000);
+			System.out.println(valid ? "OK" : "FAIL");
+			
+		} catch (java.sql.SQLException sql) {
+			System.out.println("Error" + sql);
+		}
+		return conexion;
+	}
+	
+	public void guardar(Casilla[][] casillas) {
+		Connection connect = conectar("m_BatoiKiller","m","1234");
+		Statement stmt;
+		PreparedStatement ps;
+		PreparedStatement ps2;
+		Protagonista prota;
+		try {
+			stmt = connect.createStatement();
+			stmt.execute("DELETE FROM Casillas");
+			stmt.execute("DELETE FROM Protagonista");
+			
+			ps2 = connect.prepareStatement("INSERT INTO Protagonista VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+			
+			for (int i = 0; i < casillas.length; i++) {
+				for (int j = 0; j < casillas[i].length; j++) {
+					ps = connect.prepareStatement("INSERT INTO Casillas VALUES (?,?,?)");
+					
+					ps.setInt(1, ((i*11)+j));
+					
+					if(casillas[i][j].getEdificio() instanceof Calle) {
+						ps.setString(2, "calle");
+					} else if(casillas[i][j].getEdificio() instanceof Gimnasio) {
+						ps.setString(2, "gimnasio");
+					} else if(casillas[i][j].getEdificio() instanceof Hospital) {
+						ps.setString(2, "hospital");
+					} else if(casillas[i][j].getEdificio() instanceof Descampado) {
+						ps.setString(2, "descampado");
+					} else if(casillas[i][j].getEdificio() instanceof Biblioteca) {
+						ps.setString(2, "biblioteca");
+					}
+					
+					if(casillas[i][j].getPersonajes()[0] != null) {
+						if(casillas[i][j].getPersonajes()[0] instanceof Aldeano) {
+							ps.setString(3, "aldeano");
+						} else if(casillas[i][j].getPersonajes()[0] instanceof Autoridad) {
+							ps.setString(3, "autoridad");
+						} else if(casillas[i][j].getPersonajes()[0] instanceof Delincuente) {
+							ps.setString(3, "delincuente");
+						} else if(casillas[i][j].getPersonajes()[0] instanceof Mentalista) {
+							ps.setString(3, "mentalista");
+						}
+					} else {
+						//ps.setString(3, null);
+						ps.setNull(3, java.sql.Types.VARCHAR);
+					}
+					
+					if(casillas[i][j].getPersonajes()[1] != null) {
+						prota = (Protagonista) casillas[i][j].getPersonajes()[1];
+						if (prota.getRuta().contains("maxim")) {
+							ps2.setInt(1, 1);
+						} else {ps2.setInt(1, 2);}
+						ps2.setInt(2, i);
+						ps2.setInt(3, j);
+						ps2.setDouble(4, prota.getFuerza());
+						ps2.setDouble(5, prota.getVelocidad());
+						ps2.setInt(6, prota.getEnergia());
+						ps2.setInt(7, prota.getOro());
+						ps2.setDouble(8, prota.getSabiduria());
+						ps2.setString(9, Protagonista.getNombre());
+						
+						ps2.setInt(10, TableroModel.getMinutos());
+						ps2.setInt(11, TableroModel.getSegundos());
+						
+						ps2.execute();
+					}
+					ps.execute();
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public TableroModel cargar() {
+		Casilla[][] casillas = new Casilla[11][11];
+		Integer min = 0,seg = 0;
+		Protagonista prota = new Protagonista();
+		int i = 0, j = 0;
+		Connection connect = conectar("m_BatoiKiller","m","1234");
+		Statement stmt;
+		ResultSet result;
+		try {
+			stmt = connect.createStatement();
+			result = stmt.executeQuery("select * from Casillas");
+			if(!result.next()) {
+				System.out.println("No hay partida para Cargar");
+				return null;
+			}
+			result.beforeFirst();
+			while(result.next()) {
+				casillas[i][j] = new Casilla();
+				switch (result.getString("tipo")) {
+				case "gimnasio":
+					casillas[i][j].setEdificio(new Gimnasio());
+					break;
+				case "hospital":
+					casillas[i][j].setEdificio(new Hospital());
+					break;
+				case "descampado":
+					casillas[i][j].setEdificio(new Descampado());
+					break;
+				case "biblioteca":
+					casillas[i][j].setEdificio(new Biblioteca());
+					break;
+				default:
+					casillas[i][j].setEdificio(new Calle());
+					break;
+				}
+				if(result.getString("enemigo") != null) {
+					switch (result.getString("enemigo")) {
+					case "aldeano":
+						casillas[i][j].getPersonajes()[0] = new Aldeano();
+						break;
+					case "autoridad":
+						casillas[i][j].getPersonajes()[0] = new Autoridad();
+						break;
+					case "delincuente":
+						casillas[i][j].getPersonajes()[0] = new Delincuente();
+						break;
+					case "mentalista":
+						casillas[i][j].getPersonajes()[0] = new Mentalista();
+						break;
+					}
+				}
+				j++;
+				if(j == 11) {
+					i++;
+					j = 0;
+				}
+				System.out.println(i +" "+ j);
+			}
+			
+			result = stmt.executeQuery("select * from Protagonista");
+			while(result.next()) {
+				if (result.getInt("id") == 1) {
+					prota.setRuta("../resources/sprites/maxim.png");
+				} else {
+					prota.setRuta("../resources/sprites/selan.png");
+				}
+				prota.setFuerza(result.getDouble("fuerza"));
+				prota.setVelocidad(result.getDouble("velocidad"));
+				prota.setEnergia(result.getInt("vida"));
+				prota.setOro(result.getInt("oro"));
+				prota.setSabiduria(result.getDouble("sabiduria"));
+				Protagonista.setNombre(result.getString("nombre"));
+				min = result.getInt("min");
+				seg = result.getInt("seg");
+				casillas[result.getInt("fila")][result.getInt("columna")].getPersonajes()[1] = prota;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return new TableroModel(casillas, min, seg);
+	}
+
+	public static Conexion getInstance() {
+		if(bd != null) {
+			return bd;
+		} else {
+			bd = new Conexion();
+			return bd;
+		}
+	}
+
+	public Connection getConectar() {
+		return conectar;
+	}
+
+	public void setConectar(Connection conectar) {
+		this.conectar = conectar;
+	}
+}
