@@ -1,34 +1,28 @@
 package enemigo;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Image;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class View extends JFrame {
 	
 	private JLabel mapa;
-	private Modelo modelo;
 	private JLabel[][] casillas;
-	private JLabel bg;
 	
 	public View(Modelo modelo) {
-		this.modelo = modelo;
 		this.mapa = new JLabel();
 		this.casillas = new JLabel[10][10];
-		this.bg = new JLabel();
-		darFormato();
+		darFormato(modelo);
 	}
 
-	private void darFormato() {
-		pintar();
-		this.add(mapa);
+	private void darFormato(Modelo modelo) {
+		pintar(modelo.getTablero());
+		this.add(mapa, BorderLayout.CENTER);
 		this.setSize(750, 750);
 		this.setTitle("Prueba");
 		this.setLocationRelativeTo(null);
@@ -36,15 +30,15 @@ public class View extends JFrame {
 		this.setVisible(true);
 	}
 
-	public void pintar() {
+	public void pintar(Casilla[][] tablero) {
 		this.mapa.removeAll();
-		this.mapa.setLayout(new GridLayout(10, 10));
-		for (int i = 0; i < casillas.length; i++) {
-			for (int j = 0; j < casillas[i].length; j++) {
+		this.mapa.setLayout(new GridLayout(10, 10,0,0));
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
 				JLabel label = new JLabel();
-				if (this.modelo.getTablero()[i][j].getEnemy() != null) {
+				if (tablero[i][j].getEnemy() != null) {
 					label.setBackground(Color.RED);
-				} else if (this.modelo.getTablero()[i][j].getPer() != null) {
+				} else if (tablero[i][j].getPer() != null) {
 					label.setBackground(Color.BLUE);
 				} else {
 					label.setBackground(Color.YELLOW);
@@ -65,14 +59,6 @@ public class View extends JFrame {
 		this.mapa = mapa;
 	}
 
-	public Modelo getModelo() {
-		return modelo;
-	}
-
-	public void setModelo(Modelo modelo) {
-		this.modelo = modelo;
-	}
-
 	public JLabel[][] getCasillas() {
 		return casillas;
 	}
@@ -80,12 +66,5 @@ public class View extends JFrame {
 	public void setCasillas(JLabel[][] casillas) {
 		this.casillas = casillas;
 	}
-
-	public JLabel getBg() {
-		return bg;
-	}
-
-	public void setBg(JLabel bg) {
-		this.bg = bg;
-	}
+	
 }

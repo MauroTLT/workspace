@@ -1,22 +1,20 @@
 package enemigo;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Random;
 
-public class Controller implements KeyListener, Runnable {
+public class Controller implements KeyListener {
 	
-	private Thread enemy;
 	private Modelo modelo;
 	private View ventana;
 	
 	public Controller() {
-		this.enemy = new Thread(this);
 		this.modelo = new Modelo();
 		this.ventana = new View(modelo);
 		setActions();
-		this.enemy.start();
+		EnemyMove enemigo1 = new EnemyMove(modelo, 1, ventana);
+		EnemyMove enemigo2 = new EnemyMove(modelo, 2, ventana);
+		EnemyMove enemigo3 = new EnemyMove(modelo, 3, ventana);
 	}
 
 	private void setActions() {
@@ -44,38 +42,34 @@ public class Controller implements KeyListener, Runnable {
 		for (int i = 0; i < this.modelo.getTablero().length && !semaforo; i++) {
 			for (int j = 0; j < this.modelo.getTablero()[i].length && !semaforo; j++) {
 				if (this.modelo.getTablero()[i][j].getPer() != null) {
-					switch (elec) {
-					case 0:
-						this.modelo.getTablero()[i][j].setPer(null);
-						this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
-						this.modelo.getTablero()[i-1][j].setPer(new Personaje());
-						this.ventana.getCasillas()[i-1][j].setBackground(Color.BLUE);
-						break;
-					case 1:
-						this.modelo.getTablero()[i][j].setPer(null);
-						this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
-						this.modelo.getTablero()[i+1][j].setPer(new Personaje());
-						this.ventana.getCasillas()[i+1][j].setBackground(Color.BLUE);
-						break;
-					case 2:
-						this.modelo.getTablero()[i][j].setPer(null);
-						this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
-						this.modelo.getTablero()[i][j-1].setPer(new Personaje());
-						this.ventana.getCasillas()[i][j-1].setBackground(Color.BLUE);
-						break;
-					case 3:
-						this.modelo.getTablero()[i][j].setPer(null);
-						this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
-						this.modelo.getTablero()[i][j+1].setPer(new Personaje());
-						this.ventana.getCasillas()[i][j+1].setBackground(Color.BLUE);
-						break;
+					try {
+						switch (elec) {
+						case 0:
+							this.modelo.getTablero()[i][j].setPer(null);
+							this.modelo.getTablero()[i-1][j].setPer(new Personaje());
+							break;
+						case 1:
+							this.modelo.getTablero()[i][j].setPer(null);
+							this.modelo.getTablero()[i+1][j].setPer(new Personaje());
+							break;
+						case 2:
+							this.modelo.getTablero()[i][j].setPer(null);
+							this.modelo.getTablero()[i][j-1].setPer(new Personaje());
+							break;
+						case 3:
+							this.modelo.getTablero()[i][j].setPer(null);
+							this.modelo.getTablero()[i][j+1].setPer(new Personaje());
+							break;
+						}
+					} catch (ArrayIndexOutOfBoundsException e) {
+						this.modelo.getTablero()[i][j].setPer(new Personaje());
 					}
 					semaforo = true;
-					//this.ventana.pintar();
 				}
 			}
 		}
-		
+		this.ventana.pintar(modelo.getTablero());
+		this.ventana.revalidate();
 	}
 
 	@Override
@@ -83,74 +77,5 @@ public class Controller implements KeyListener, Runnable {
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {}
-
-	@Override
-	public void run() {
-		System.out.println("hola");
-		Random r = new Random();
-		boolean semaforo = false;
-		while(true) {
-			semaforo = false;
-			for (int i = 0; i < this.modelo.getTablero().length && !semaforo; i++) {
-				for (int j = 0; j < this.modelo.getTablero()[i].length && !semaforo; j++) {
-					if (this.modelo.getTablero()[i][j].getEnemy() != null) {
-						System.out.println("move");
-						try {
-							if(IA(i,j)) {
-								
-							} else {
-								switch (r.nextInt(4)) {
-								case 0:
-									this.modelo.getTablero()[i][j].setEnemy(null);
-									this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
-									this.modelo.getTablero()[i-1][j].setEnemy(new Enemigo());
-									this.ventana.getCasillas()[i-1][j].setBackground(Color.RED);
-									break;
-								case 1:
-									this.modelo.getTablero()[i][j].setEnemy(null);
-									this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
-									this.modelo.getTablero()[i+1][j].setEnemy(new Enemigo());
-									this.ventana.getCasillas()[i+1][j].setBackground(Color.RED);
-									break;
-								case 2:
-									this.modelo.getTablero()[i][j].setEnemy(null);
-									this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
-									this.modelo.getTablero()[i][j-1].setEnemy(new Enemigo());
-									this.ventana.getCasillas()[i][j-1].setBackground(Color.RED);
-									break;
-								case 3:
-									this.modelo.getTablero()[i][j].setEnemy(null);
-									this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
-									this.modelo.getTablero()[i][j+1].setEnemy(new Enemigo());
-									this.ventana.getCasillas()[i][j+1].setBackground(Color.RED);
-									break;
-								}
-								semaforo = true;
-							}
-						} catch (ArrayIndexOutOfBoundsException e) {
-							System.out.println("No salgas");
-							this.modelo.getTablero()[i][j].setEnemy(new Enemigo());
-							this.ventana.getCasillas()[i][j].setBackground(Color.RED);
-						}
-						try {
-							Thread.sleep(750);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-		}
-		
-	}
-
-	private boolean IA(int fila, int columna) {
-		for (int i = 0; i < this.modelo.getTablero().length; i++) {
-			for (int j = 0; j < this.modelo.getTablero()[i].length; j++) {
-				
-			}
-		}
-		return false;
-	}
+	
 }
