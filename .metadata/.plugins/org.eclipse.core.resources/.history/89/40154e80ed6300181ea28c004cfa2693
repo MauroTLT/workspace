@@ -1,0 +1,20 @@
+package enemigo;
+
+import java.awt.event.KeyListener;
+
+public class Controller implements KeyListener {
+	
+	private Modelo modelo;
+	private View ventana;
+	
+	public Controller() {
+		this.modelo = new Modelo();
+		this.ventana = new View(modelo);
+		setActions();
+	}
+
+	private void setActions() {
+		this.ventana.addKeyListener(this);
+		
+	}
+}

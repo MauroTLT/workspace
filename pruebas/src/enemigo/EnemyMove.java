@@ -15,7 +15,7 @@ public class EnemyMove implements Runnable {
 		this.id = id;
 		this.ventana = ventana;
 		this.modelo = modelo;
-		this.tiempo = 2000;
+		this.tiempo = 1000;
 		this.hilo = new Thread(this);
 		this.hilo.start();
 	}
@@ -32,7 +32,7 @@ public class EnemyMove implements Runnable {
 						this.enemigo = this.modelo.getTablero()[i][j].getEnemy();
 						try {
 							if(IA(i,j)) {
-								tiempo = 550;
+								tiempo = 350;
 								for (int ii = 0; ii < this.modelo.getTablero().length && !semaforo; ii++) {
 									for (int jj = 0; jj < this.modelo.getTablero()[ii].length && !semaforo; jj++) {
 										if (this.modelo.getTablero()[ii][jj].getPer() != null) {
@@ -54,7 +54,7 @@ public class EnemyMove implements Runnable {
 									}
 								}
 							} else {
-								tiempo = 2000;
+								tiempo = 1000;
 								switch (r.nextInt(4)) {
 								case 0:
 									if (this.modelo.getTablero()[i-1][j].getEnemy() == null) {

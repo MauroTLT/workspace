@@ -1,0 +1,7 @@
+package enemigo;
+
+public class Modelo {
+	
+	private Casilla[][] tablero;
+	
+}

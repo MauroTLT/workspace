@@ -1,0 +1,13 @@
+package enemigo;
+
+public class Casilla {
+	
+	private Enemigo enemy;
+	private Personaje per;
+	
+	public Casilla() {
+		this.enemy = null;
+		this.per = null;
+	}
+	
+}

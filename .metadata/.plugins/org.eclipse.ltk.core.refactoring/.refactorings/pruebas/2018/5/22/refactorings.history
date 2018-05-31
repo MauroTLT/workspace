@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;enemigo.Modelo.tablero&apos; in &apos;enemigo.Modelo&apos;&#x0A;- Original project: &apos;pruebas&apos;&#x0A;- Original element: &apos;enemigo.Modelo.tablero&apos;&#x0A;- Getter method name: &apos;getTablero&apos;&#x0A;- Setter method name: &apos;setTablero&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Do not use getter and setter methods in declaring type" comments="false" declaring="false" description="Encapsulate field &apos;tablero&apos;" flags="589830" getter="getTablero" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;enemigo{Modelo.java[Modelo^tablero" insertion="0" setter="setTablero" stamp="1527672608460" version="1.0" visibility="1"/>
+</session>

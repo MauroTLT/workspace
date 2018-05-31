@@ -1,0 +1,143 @@
+package enemigo;
+
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Random;
+
+public class Controller implements KeyListener, Runnable {
+	
+	private Thread enemy;
+	private Modelo modelo;
+	private View ventana;
+	
+	public Controller() {
+		this.enemy = new Thread(this);
+		this.modelo = new Modelo();
+		this.ventana = new View(modelo);
+		setActions();
+		this.enemy.start();
+	}
+
+	private void setActions() {
+		this.ventana.addKeyListener(this);
+		this.ventana.setFocusable(true);
+		this.ventana.requestFocus();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent k) {
+		if(k.getKeyCode() == KeyEvent.VK_UP) {
+			move(0);
+		} else if(k.getKeyCode() == KeyEvent.VK_DOWN) {
+			move(1);
+		} else if(k.getKeyCode() == KeyEvent.VK_LEFT) {
+			move(2);
+		} else if(k.getKeyCode() == KeyEvent.VK_RIGHT) {
+			move(3);
+		}
+		
+	}
+
+	private void move(int elec) {
+		boolean semaforo = false;
+		for (int i = 0; i < this.modelo.getTablero().length && !semaforo; i++) {
+			for (int j = 0; j < this.modelo.getTablero()[i].length && !semaforo; j++) {
+				if (this.modelo.getTablero()[i][j].getPer() != null) {
+					switch (elec) {
+					case 0:
+						this.modelo.getTablero()[i][j].setPer(null);
+						this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
+						this.modelo.getTablero()[i-1][j].setPer(new Personaje());
+						this.ventana.getCasillas()[i-1][j].setBackground(Color.BLUE);
+						break;
+					case 1:
+						this.modelo.getTablero()[i][j].setPer(null);
+						this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
+						this.modelo.getTablero()[i+1][j].setPer(new Personaje());
+						this.ventana.getCasillas()[i+1][j].setBackground(Color.BLUE);
+						break;
+					case 2:
+						this.modelo.getTablero()[i][j].setPer(null);
+						this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
+						this.modelo.getTablero()[i][j-1].setPer(new Personaje());
+						this.ventana.getCasillas()[i][j-1].setBackground(Color.BLUE);
+						break;
+					case 3:
+						this.modelo.getTablero()[i][j].setPer(null);
+						this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
+						this.modelo.getTablero()[i][j+1].setPer(new Personaje());
+						this.ventana.getCasillas()[i][j+1].setBackground(Color.BLUE);
+						break;
+					}
+					semaforo = true;
+					//this.ventana.pintar();
+				}
+			}
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {}
+
+	@Override
+	public void run() {
+		System.out.println("hola");
+		Random r = new Random();
+		boolean semaforo = false;
+		while(true) {
+			semaforo = false;
+			for (int i = 0; i < this.modelo.getTablero().length && !semaforo; i++) {
+				for (int j = 0; j < this.modelo.getTablero()[i].length && !semaforo; j++) {
+					if (this.modelo.getTablero()[i][j].getEnemy() != null) {
+						System.out.println("move");
+						try {
+							switch (r.nextInt(4)) {
+							case 0:
+								this.modelo.getTablero()[i][j].setEnemy(null);
+								this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
+								this.modelo.getTablero()[i-1][j].setEnemy(new Enemigo());
+								this.ventana.getCasillas()[i-1][j].setBackground(Color.RED);
+								break;
+							case 1:
+								this.modelo.getTablero()[i][j].setEnemy(null);
+								this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
+								this.modelo.getTablero()[i+1][j].setEnemy(new Enemigo());
+								this.ventana.getCasillas()[i+1][j].setBackground(Color.RED);
+								break;
+							case 2:
+								this.modelo.getTablero()[i][j].setEnemy(null);
+								this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
+								this.modelo.getTablero()[i][j-1].setEnemy(new Enemigo());
+								this.ventana.getCasillas()[i][j-1].setBackground(Color.RED);
+								break;
+							case 3:
+								this.modelo.getTablero()[i][j].setEnemy(null);
+								this.ventana.getCasillas()[i][j].setBackground(Color.YELLOW);
+								this.modelo.getTablero()[i][j+1].setEnemy(new Enemigo());
+								this.ventana.getCasillas()[i][j+1].setBackground(Color.RED);
+								break;
+							}
+							semaforo = true;
+						} catch (ArrayIndexOutOfBoundsException e) {
+							System.out.println("No salgas");
+							this.modelo.getTablero()[i][j].setEnemy(new Enemigo());
+							this.ventana.getCasillas()[i][j].setBackground(Color.RED);
+						}
+						try {
+							Thread.sleep(750);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		}
+		
+	}
+}

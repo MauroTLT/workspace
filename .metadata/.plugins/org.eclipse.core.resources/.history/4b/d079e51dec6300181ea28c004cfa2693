@@ -1,0 +1,20 @@
+package enemigo;
+
+public class Modelo {
+	
+	private Casilla[][] tablero;
+	
+	public Modelo() {
+		this.tablero = new Casilla[10][10];
+		
+	}
+
+	public Casilla[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(Casilla[][] tablero) {
+		this.tablero = tablero;
+	}
+	
+}

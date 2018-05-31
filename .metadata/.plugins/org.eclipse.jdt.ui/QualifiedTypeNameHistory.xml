@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.Font"/>
-<fullyQualifiedTypeName name="java.util.Calendar"/>
-<fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
-<fullyQualifiedTypeName name="javax.swing.JLabel"/>
-<fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
-<fullyQualifiedTypeName name="java.awt.GridLayout"/>
-<fullyQualifiedTypeName name="javax.swing.JScrollBar"/>
 <fullyQualifiedTypeName name="java.awt.Container"/>
-<fullyQualifiedTypeName name="javax.swing.JPanel"/>
 <fullyQualifiedTypeName name="javax.swing.BoxLayout"/>
 <fullyQualifiedTypeName name="resources.Sip"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
@@ -36,11 +28,9 @@
 <fullyQualifiedTypeName name="Model.Calle"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
-<fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="javax.swing.JButton"/>
 <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
 <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="javax.swing.JDialog"/>
 <fullyQualifiedTypeName name="javax.swing.JProgressBar"/>
 <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
@@ -56,8 +46,18 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-<fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
 <fullyQualifiedTypeName name="Model.Protagonista"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
+<fullyQualifiedTypeName name="javax.swing.text.View"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="pruebas.font"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
 </qualifiedTypeNameHistroy>

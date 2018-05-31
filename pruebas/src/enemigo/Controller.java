@@ -15,6 +15,8 @@ public class Controller implements KeyListener {
 		EnemyMove enemigo1 = new EnemyMove(modelo, 1, ventana);
 		EnemyMove enemigo2 = new EnemyMove(modelo, 2, ventana);
 		EnemyMove enemigo3 = new EnemyMove(modelo, 3, ventana);
+		EnemyMove enemigo4 = new EnemyMove(modelo, 4, ventana);
+		EnemyMove enemigo5 = new EnemyMove(modelo, 5, ventana);
 	}
 
 	private void setActions() {
