@@ -14,10 +14,10 @@ public class AsteroidVista extends JFrame {
 	
 	private final Random r = new Random();
 	private final static int ANCHO = 1200;
-	private final static int ALTO = 700;
+	private final static int ALTO = 800;
 	private RotatedIcon rImg;
 	private RotatedIcon rImgF;
-	private JLabel fondo, nave;
+	private JLabel fondo, nave, disparo;
 	private JLabel[] grupo;
 	
 	public AsteroidVista() {
@@ -25,7 +25,8 @@ public class AsteroidVista extends JFrame {
 		this.rImgF = new RotatedIcon(new ImageIcon(getClass().getResource("../resources/naveF.png")), 0,true);
 		this.fondo = new JLabel();
 		this.nave = new JLabel();
-		this.grupo = new JLabel[8];
+		this.disparo = new JLabel();
+		this.grupo = new JLabel[1];
 		darFormato();
 	}
 
@@ -46,10 +47,18 @@ public class AsteroidVista extends JFrame {
 		}
 		
 		this.nave.setHorizontalAlignment(SwingConstants.CENTER);
-		this.nave.setBounds(570, 350, 70, 70);
+		this.nave.setBounds(570, 350, 50, 50);
 		this.nave.setIcon(rImg);
 		this.nave.setBorder(BorderFactory.createLineBorder(Color.black));
-		this.add(nave);		
+		this.add(nave);
+		
+		this.disparo.setHorizontalAlignment(SwingConstants.CENTER);
+		this.disparo.setBounds(570, 350, 10, 10);
+		this.disparo.setBackground(Color.RED);
+		this.disparo.setOpaque(true);
+		this.disparo.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.disparo.setVisible(false);
+		this.add(disparo);
 		
 		this.setSize(ANCHO, ALTO);
 		this.setTitle("Asteroids");
@@ -72,6 +81,14 @@ public class AsteroidVista extends JFrame {
 
 	public void setNave(JLabel nave) {
 		this.nave = nave;
+	}
+
+	public JLabel getDisparo() {
+		return disparo;
+	}
+
+	public void setDisparo(JLabel disparo) {
+		this.disparo = disparo;
 	}
 
 	public RotatedIcon getrImg() {
