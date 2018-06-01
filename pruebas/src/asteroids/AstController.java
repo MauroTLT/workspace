@@ -1,23 +1,32 @@
 package asteroids;
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
+
+import javax.swing.JOptionPane;
 
 public class AstController implements KeyListener, Runnable {
 	
+	private final Random r = new Random();
 	private int xVel, yVel;
 	private Thread hilo;
 	private AsteroidVista ventana;
+	@SuppressWarnings("unused")
+	private Move mover;
 	
 	public AstController() {
 		this.xVel = 0;
 		this.yVel = 0;
 		this.hilo = new Thread(this);
 		this.ventana = new AsteroidVista();
+		this.mover = new Move(ventana);
 		this.ventana.addKeyListener(this);
 		this.ventana.requestFocus();
-		new AsteroideController(8, 2, this.ventana.getAsteroide1());
-		new AsteroideController(-6, -7, this.ventana.getAsteroide2());
+		for (int i = 0; i < this.ventana.getGrupo().length; i++) {
+			new AsteroideController(r.nextInt(30)-15, r.nextInt(30)-15, this.ventana.getGrupo()[i]);
+		}
 		this.hilo.start();
 	}
 	
@@ -42,6 +51,14 @@ public class AstController implements KeyListener, Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			for (int i = 0; i < this.ventana.getGrupo().length; i++) {
+				Point p = new Point(this.ventana.getNave().getX()+(this.ventana.getNave().getWidth()/2),this.ventana.getNave().getY()+(this.ventana.getNave().getHeight()/2));
+				Point p2 = new Point(this.ventana.getGrupo()[i].getX()+(this.ventana.getGrupo()[i].getWidth()/2),this.ventana.getGrupo()[i].getY()+(this.ventana.getGrupo()[i].getHeight()/2));
+				if (p2.distance(p) < 100) {
+					JOptionPane.showMessageDialog(null, "Te has estrellado.");
+					System.exit(0);
+				}
+			}
 			this.ventana.getNave().revalidate();
 			this.ventana.getNave().repaint();
 		}
@@ -50,19 +67,7 @@ public class AstController implements KeyListener, Runnable {
 	
 	@Override
 	public void keyPressed(KeyEvent k) {
-		if(k.getKeyCode() == KeyEvent.VK_LEFT) {
-			this.ventana.getrImg().setDegrees(this.ventana.getrImg().getDegrees()-5);
-			if (this.ventana.getrImg().getDegrees() < 0) {
-				this.ventana.getrImg().setDegrees(350);
-			}
-			this.ventana.getrImgF().setDegrees(this.ventana.getrImg().getDegrees());
-		} else if(k.getKeyCode() == KeyEvent.VK_RIGHT) {
-			this.ventana.getrImg().setDegrees(this.ventana.getrImg().getDegrees()+5);
-			if (this.ventana.getrImg().getDegrees() > 360) {
-				this.ventana.getrImg().setDegrees(10);
-			}
-			this.ventana.getrImgF().setDegrees(this.ventana.getrImg().getDegrees());
-		} else if (k.getKeyCode() == KeyEvent.VK_SPACE) {
+		if (k.getKeyCode() == KeyEvent.VK_SPACE) {
 			this.ventana.getrImgF().setDegrees(this.ventana.getrImg().getDegrees());
 			this.ventana.getNave().setIcon(this.ventana.getrImgF());
 			if(this.ventana.getrImg().getDegrees() == 0 || this.ventana.getrImg().getDegrees() == 360) {

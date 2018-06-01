@@ -1,0 +1,70 @@
+package Model;
+
+public abstract class Personaje {
+
+	protected String ruta;
+	protected double fuerza, velocidad, sabiduria;
+	protected int oro, energia;
+	
+	public Personaje(String ruta, double fuerza, double velocidad, int oro, int energia, double sabiduria) {
+		this.ruta = ruta;
+		this.fuerza = fuerza;
+		this.velocidad = velocidad;
+		this.oro = oro;
+		this.energia = energia;
+		this.sabiduria = sabiduria;
+	}
+	
+	public Personaje(Personaje copia) {
+		this(copia.getRuta(),copia.getFuerza(),copia.getVelocidad(),copia.getOro(),copia.getEnergia(),copia.getSabiduria());
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+	public double getFuerza() {
+		return fuerza;
+	}
+
+	public void setFuerza(double fuerza) {
+		this.fuerza = fuerza;
+	}
+
+	public double getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(double velocidad) {
+		this.velocidad = velocidad;
+	}
+
+	public double getSabiduria() {
+		return sabiduria;
+	}
+
+	public void setSabiduria(double sabiduria) {
+		this.sabiduria = sabiduria;
+	}
+
+	public int getOro() {
+		return oro;
+	}
+
+	public void setOro(int oro) {
+		this.oro = oro;
+	}
+
+	public int getEnergia() {
+		return energia;
+	}
+
+	public void setEnergia(int energia) {
+		this.energia = energia;
+	}
+
+}

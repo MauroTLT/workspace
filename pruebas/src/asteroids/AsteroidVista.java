@@ -1,7 +1,9 @@
 package asteroids;
 
 import java.awt.Color;
+import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,19 +12,20 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class AsteroidVista extends JFrame {
 	
+	private final Random r = new Random();
 	private final static int ANCHO = 1200;
 	private final static int ALTO = 700;
 	private RotatedIcon rImg;
 	private RotatedIcon rImgF;
-	private JLabel fondo, nave, asteroide1, asteroide2;
+	private JLabel fondo, nave;
+	private JLabel[] grupo;
 	
 	public AsteroidVista() {
 		this.rImg = new RotatedIcon(new ImageIcon(getClass().getResource("../resources/nave.png")), 0,true);
 		this.rImgF = new RotatedIcon(new ImageIcon(getClass().getResource("../resources/naveF.png")), 0,true);
 		this.fondo = new JLabel();
 		this.nave = new JLabel();
-		this.asteroide1 = new JLabel();
-		this.asteroide2 = new JLabel();
+		this.grupo = new JLabel[8];
 		darFormato();
 	}
 
@@ -32,19 +35,20 @@ public class AsteroidVista extends JFrame {
 		this.setContentPane(fondo);
 		this.setLayout(null);
 		
-		this.asteroide1.setHorizontalAlignment(SwingConstants.CENTER);
-		this.asteroide1.setBounds(550, -100, 100, 100);
-		this.asteroide1.setIcon(new ImageIcon(getClass().getResource("../resources/asteroide1.png")));
-		this.add(asteroide1);
-		
-		this.asteroide2.setHorizontalAlignment(SwingConstants.CENTER);
-		this.asteroide2.setBounds(200, -100, 100, 100);
-		this.asteroide2.setIcon(new ImageIcon(getClass().getResource("../resources/asteroide1.png")));
-		this.add(asteroide2);
+		for (int i = 0; i < grupo.length; i++) {
+			JLabel asteroide = new JLabel();
+			asteroide.setHorizontalAlignment(SwingConstants.CENTER);
+			asteroide.setBounds(r.nextInt(ANCHO), r.nextInt(ANCHO), 100, 100);
+			asteroide.setIcon(new ImageIcon(getClass().getResource("../resources/asteroide1.png")));
+			asteroide.setBorder(BorderFactory.createLineBorder(Color.black));
+			this.grupo[i] = asteroide;
+			this.add(grupo[i]);
+		}
 		
 		this.nave.setHorizontalAlignment(SwingConstants.CENTER);
-		this.nave.setBounds(350, 350, 70, 70);
+		this.nave.setBounds(570, 350, 70, 70);
 		this.nave.setIcon(rImg);
+		this.nave.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.add(nave);		
 		
 		this.setSize(ANCHO, ALTO);
@@ -70,22 +74,6 @@ public class AsteroidVista extends JFrame {
 		this.nave = nave;
 	}
 
-	public JLabel getAsteroide1() {
-		return asteroide1;
-	}
-
-	public void setAsteroide1(JLabel asteroide1) {
-		this.asteroide1 = asteroide1;
-	}
-
-	public JLabel getAsteroide2() {
-		return asteroide2;
-	}
-
-	public void setAsteroide2(JLabel asteroide2) {
-		this.asteroide2 = asteroide2;
-	}
-
 	public RotatedIcon getrImg() {
 		return rImg;
 	}
@@ -108,6 +96,14 @@ public class AsteroidVista extends JFrame {
 
 	public static int getAlto() {
 		return ALTO;
+	}
+
+	public JLabel[] getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(JLabel[] grupo) {
+		this.grupo = grupo;
 	}
 
 }
