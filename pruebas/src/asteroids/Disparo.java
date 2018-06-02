@@ -19,12 +19,12 @@ public class Disparo implements Runnable {
 
 	@Override
 	public void run() {
-		while (!(((this.disparo.getLocation().getX()+this.disparo.getSize().getWidth() < 0) || (this.disparo.getLocation().getX() > AsteroidVista.getAncho())) && ((this.disparo.getLocation().getY()+this.disparo.getSize().getHeight() < 0) || this.disparo.getLocation().getY() > AsteroidVista.getAlto()))) {
+		while (!(((this.disparo.getLocation().getX()+this.disparo.getSize().getWidth() < 0) || (this.disparo.getLocation().getX() > AsteroidVista.getAncho())) || ((this.disparo.getLocation().getY()+this.disparo.getSize().getHeight() < 0) || this.disparo.getLocation().getY() > AsteroidVista.getAlto()))) {
 			this.disparo.setLocation(this.disparo.getX()+this.xVel, this.disparo.getY()+this.yVel);
 			
 			
 			try {
-				Thread.sleep(50);
+				Thread.sleep(30);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
