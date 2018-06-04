@@ -24,7 +24,7 @@ public class Contrincante implements Runnable {
 				}
 			}
 			try {
-				Thread.sleep(25);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

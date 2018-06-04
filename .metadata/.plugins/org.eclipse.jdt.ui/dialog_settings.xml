@@ -9,6 +9,270 @@
 	<item value="/home/mati/Descargas/mysql-connector-java_8.0.11-1ubuntu16.04_all/usr/share/java" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="0" key="org.eclipse.jdt.uiformatter_page.white_space.java_view.inner"/>
 	<item value="filter_imports;" key="filters_last_used"/>
+	<section name="SelfEncapsulateFieldWizard">
+		<item value="false" key="GenerateJavadoc"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
+		<item value="2" key="layout"/>
+		<item value="true" key="group_libraries"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;packageExplorer group_libraries=&quot;1&quot; layout=&quot;2&quot; linkWithEditor=&quot;0&quot; rootMode=&quot;1&quot; workingSetName=&quot;Aggregate for window 1498553210669&quot;&gt;&#x0A;&lt;customFilters userDefinedPatternsEnabled=&quot;false&quot;&gt;&#x0A;&lt;xmlDefinedFilters&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.StaticsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.buildship.ui.packageexplorer.filter.gradle.buildfolder&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.mylyn.java.ui.MembersFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonSharedProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ContainedLibraryFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.HideInnerClassFilesFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyInnerPackageFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.m2e.MavenModuleFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.buildship.ui.packageexplorer.filter.gradle.subProject&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ClosedProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.EmptyLibraryContainerFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.PackageDeclarationFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ImportDeclarationFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaElementFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LibraryFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.CuAndClassFileFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyPackageFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.FieldsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;/xmlDefinedFilters&gt;&#x0A;&lt;/customFilters&gt;&#x0A;&lt;/packageExplorer&gt;" key="memento"/>
+		<item value="1" key="rootMode"/>
+		<item value="false" key="linkWithEditor"/>
+	</section>
+	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
+		<item value="536" key="DIALOG_WIDTH"/>
+		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="736" key="DIALOG_HEIGHT"/>
+		<item value="132" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="SourceActionDialog.constructors">
+		<item value="false" key="SynchronizedModifier"/>
+		<item value="false" key="Comments"/>
+		<item value="1" key="VisibilityModifier"/>
+		<item value="false" key="FinalModifier"/>
+	</section>
+	<section name="javadoc">
+		<item value="private" key="access"/>
+		<item value="false" key="noindex"/>
+		<item value="/home/mati/git/ProyectoProg/javadoc.xml" key="antpath"/>
+		<item value="false" key="nodeprecatedlist"/>
+		<item value="true" key="use"/>
+		<item value="true" key="author"/>
+		<item value="false" key="nodeprecated"/>
+		<item value="false" key="nonavbar"/>
+		<item value="" key="docletpath"/>
+		<item value="/usr/lib/jvm/java-8-openjdk-amd64/bin/javadoc" key="javadoc_command_history"/>
+		<item value="1.8" key="source"/>
+		<item value="true" key="version"/>
+		<item value="" key="docletname"/>
+		<item value="true" key="splitindex"/>
+		<item value="true" key="fromStandard"/>
+		<item value="false" key="notree"/>
+		<item value="/home/mati/git/ProyectoProg/doc" key="destdir"/>
+		<item value="false" key="openinbrowser"/>
+		<section name="projects">
+			<section name="proyecto">
+				<item value="/home/mati/workspace/proyecto/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/proyecto/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ampliacion">
+				<item value="/home/mati/workspace/ampliacion/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/ampliacion/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen3">
+				<item value="/home/mati/workspace/examen3/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen3/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen12">
+				<item value="/home/mati/workspace/examen12/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen12/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ampliacionT5">
+				<item value="/home/mati/workspace/ampliacionT5/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/ampliacionT5/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ampliacionT4">
+				<item value="/home/mati/workspace/ampliacionT4/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/ampliacionT4/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ampliacionT8">
+				<item value="/home/mati/workspace/ampliacionT8/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/ampliacionT8/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ProyectoZelda">
+				<item value="/home/mati/git/workspace-casa/ProyectoZelda/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/git/workspace-casa/ProyectoZelda/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="BatoiKiller_V.1">
+				<item value="/home/mati/git/ProyectoProg/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/git/ProyectoProg/doc" key="destdir"/>
+				<item value="file:/home/mati/git/ProyectoProg/doc/" key="href"/>
+			</section>
+			<section name="Tema11">
+				<item value="/home/mati/workspace/Tema11/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema11/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema10">
+				<item value="/home/mati/workspace/Tema10/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema10/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen10">
+				<item value="/home/mati/workspace/examen10/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen10/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ED">
+				<item value="/home/mati/workspace/ED/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/ED/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="pruebas">
+				<item value="/home/mati/workspace/pruebas/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/pruebas/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema4">
+				<item value="/home/mati/workspace/Tema4/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema4/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema3">
+				<item value="/home/mati/workspace/Tema3/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema3/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="BaseDatos">
+				<item value="/home/mati/workspace/BaseDatos/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/BaseDatos/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="TresEnRaya">
+				<item value="/home/mati/workspace/TresEnRaya/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/TresEnRaya/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema11_ejer1">
+				<item value="/home/mati/workspace/Tema11_ejer1/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema11_ejer1/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema11_ejer2">
+				<item value="/home/mati/workspace/Tema11_ejer2/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema11_ejer2/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ampliacionT6-7">
+				<item value="/home/mati/workspace/ampliacionT6-7/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/ampliacionT6-7/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen11-12">
+				<item value="/home/mati/workspace/examen11-12/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen11-12/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Menu-T10-Ejer6">
+				<item value="/home/mati/workspace/Menu-T10-Ejer6/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Menu-T10-Ejer6/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen45">
+				<item value="/home/mati/workspace/examen45/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen45/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen67">
+				<item value="/home/mati/workspace/examen67/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen67/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen89">
+				<item value="/home/mati/workspace/examen89/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen89/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ampliacionT10">
+				<item value="/home/mati/workspace/ampliacionT10/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/ampliacionT10/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="EDPatrones">
+				<item value="/home/mati/workspace/EDPatrones/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/EDPatrones/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema9">
+				<item value="/home/mati/workspace/Tema9/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema9/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema8">
+				<item value="/home/mati/workspace/Tema8/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema8/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen10_1">
+				<item value="/home/mati/workspace/examen10_1/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen10_1/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema7">
+				<item value="/home/mati/workspace/Tema7/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema7/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema6">
+				<item value="/home/mati/workspace/Tema6/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema6/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="FireEmblem">
+				<item value="/home/mati/git/workspace-casa/FireEmblem/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/git/workspace-casa/FireEmblem/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Tema5">
+				<item value="/home/mati/workspace/Tema5/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/Tema5/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="examen10_2">
+				<item value="/home/mati/workspace/examen10_2/javadoc.xml" key="antpath"/>
+				<item value="/home/mati/workspace/examen10_2/doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+		</section>
+	</section>
+	<section name="FatJarPackageWizard">
+		<item value="/home/mati/workspace" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
+		<item value="Main (35) - BatoiKiller_V.1" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="/home/mati/Escritorio/BaoiKiller.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
+		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
+		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="/home/mati/Escritorio/BaoiKiller.jar"/>
+		</list>
+		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
+			<item value=".xml"/>
+		</list>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.preferences.EditTemplateDialog_dialogBounds">
+		<item value="600" key="DIALOG_WIDTH"/>
+		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="352" key="DIALOG_HEIGHT"/>
+		<item value="184" key="DIALOG_X_ORIGIN"/>
+		<item value="51" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="RenameInformationPopup">
+	</section>
+	<section name="JavadocWizardDialog">
+		<item value="606" key="DIALOG_WIDTH"/>
+		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="608" key="DIALOG_HEIGHT"/>
+		<item value="500" key="DIALOG_X_ORIGIN"/>
+		<item value="33" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="completion_proposal_size">
+		<item value="248" key="size.y"/>
+		<item value="361" key="size.x"/>
+	</section>
+	<section name="AddGetterSetterDialog">
+		<item value="false" key="SortOrdering"/>
+		<item value="false" key="RemoveFinal"/>
+	</section>
+	<section name="JavaElementSearchActions">
+	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item value="false" key="renameSubpackages"/>
 		<item value="false" key="updateQualifiedNames"/>
@@ -27,25 +291,8 @@
 		<item value="false" key="expanded7"/>
 		<item value="true" key="expanded0"/>
 	</section>
-	<section name="SelfEncapsulateFieldWizard">
-		<item value="false" key="GenerateJavadoc"/>
-	</section>
 	<section name="GenerateConstructorUsingFieldsSelectionDialog">
 		<item value="false" key="OmitCallToSuper"/>
-	</section>
-	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
-		<item value="2" key="layout"/>
-		<item value="true" key="group_libraries"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;packageExplorer group_libraries=&quot;1&quot; layout=&quot;2&quot; linkWithEditor=&quot;0&quot; rootMode=&quot;1&quot; workingSetName=&quot;Aggregate for window 1498553210669&quot;&gt;&#x0A;&lt;customFilters userDefinedPatternsEnabled=&quot;false&quot;&gt;&#x0A;&lt;xmlDefinedFilters&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.StaticsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.buildship.ui.packageexplorer.filter.gradle.buildfolder&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.mylyn.java.ui.MembersFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonSharedProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ContainedLibraryFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.HideInnerClassFilesFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyInnerPackageFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.m2e.MavenModuleFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.buildship.ui.packageexplorer.filter.gradle.subProject&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ClosedProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.EmptyLibraryContainerFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.PackageDeclarationFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ImportDeclarationFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaElementFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LibraryFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.CuAndClassFileFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyPackageFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.FieldsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0A;&lt;/xmlDefinedFilters&gt;&#x0A;&lt;/customFilters&gt;&#x0A;&lt;/packageExplorer&gt;" key="memento"/>
-		<item value="1" key="rootMode"/>
-		<item value="false" key="linkWithEditor"/>
-	</section>
-	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
-		<item value="536" key="DIALOG_WIDTH"/>
-		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="736" key="DIALOG_HEIGHT"/>
-		<item value="132" key="DIALOG_X_ORIGIN"/>
-		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
@@ -53,12 +300,6 @@
 	</section>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
-	</section>
-	<section name="SourceActionDialog.constructors">
-		<item value="false" key="SynchronizedModifier"/>
-		<item value="false" key="Comments"/>
-		<item value="1" key="VisibilityModifier"/>
-		<item value="false" key="FinalModifier"/>
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
 		<item value="549" key="DIALOG_WIDTH"/>
@@ -108,15 +349,6 @@
 		<item value="false" key="FinalModifier"/>
 		<item value="10" key="LimitValue"/>
 	</section>
-	<section name="org.eclipse.jdt.internal.ui.preferences.EditTemplateDialog_dialogBounds">
-		<item value="600" key="DIALOG_WIDTH"/>
-		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="352" key="DIALOG_HEIGHT"/>
-		<item value="184" key="DIALOG_X_ORIGIN"/>
-		<item value="51" key="DIALOG_Y_ORIGIN"/>
-	</section>
-	<section name="RenameInformationPopup">
-	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="NewPackageWizardPage">
@@ -141,15 +373,5 @@
 	</section>
 	<section name="BuildPathsPropertyPage">
 		<item value="2" key="pageIndex"/>
-	</section>
-	<section name="completion_proposal_size">
-		<item value="248" key="size.y"/>
-		<item value="361" key="size.x"/>
-	</section>
-	<section name="AddGetterSetterDialog">
-		<item value="false" key="SortOrdering"/>
-		<item value="false" key="RemoveFinal"/>
-	</section>
-	<section name="JavaElementSearchActions">
 	</section>
 </section>
