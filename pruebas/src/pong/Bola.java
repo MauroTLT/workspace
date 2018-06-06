@@ -20,10 +20,10 @@ public class Bola implements Runnable {
 			this.ventana.getBola().setLocation(this.ventana.getBola().getX()+xVel, this.ventana.getBola().getY()+yVel);
 			
 			if (this.ventana.getBola().getLocation().getX()+this.ventana.getBola().getWidth() < 0) {
-				System.out.println("punto para el contrincante");
+				this.ventana.getPuntos2().setText(""+(Integer.parseInt(this.ventana.getPuntos2().getText())+1));
 				this.ventana.getBola().setLocation(600,400);
 			} else if (this.ventana.getBola().getLocation().getX() > PongVista.getAncho()) {
-				System.out.println("punto para el jugador");
+				this.ventana.getPuntos1().setText(""+(Integer.parseInt(this.ventana.getPuntos1().getText())+1));
 				this.ventana.getBola().setLocation(600,400);
 			}
 			if (this.ventana.getBola().getY() <= this.ventana.getArriba().getY()+this.ventana.getArriba().getHeight()) { //Por Arriba
@@ -37,10 +37,8 @@ public class Bola implements Runnable {
 						this.xVel += 10;
 						if (this.ventana.getBola().getY() < this.ventana.getIzquierda().getY()+this.ventana.getIzquierda().getHeight()/2 && this.yVel > 0) {
 							this.yVel -= 10;
-							System.out.println("arriba");
 						} else if(this.ventana.getBola().getY() > this.ventana.getIzquierda().getY()+this.ventana.getIzquierda().getHeight()/2 && this.yVel < 0) {
 							this.yVel += 10;
-							System.out.println("abajo");
 						}
 					}
 				}
@@ -50,16 +48,14 @@ public class Bola implements Runnable {
 						this.xVel -= 10;
 						if (this.ventana.getBola().getY() < this.ventana.getDerecha().getY()+this.ventana.getDerecha().getHeight()/2 && this.yVel > 0) {
 							this.yVel -= 10;
-							System.out.println("arriba");
 						} else if(this.ventana.getBola().getY() > this.ventana.getDerecha().getY()+this.ventana.getDerecha().getHeight()/2 && this.yVel < 0) {
 							this.yVel += 10;
-							System.out.println("abajo");
 						}
 					}
 				}
 			}
 			try {
-				Thread.sleep(25);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
