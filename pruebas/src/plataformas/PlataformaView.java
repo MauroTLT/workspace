@@ -31,7 +31,7 @@ public class PlataformaView extends JFrame {
 		this.setContentPane(fondo);
 		this.setLayout(null);
 		
-		this.personaje.setBounds(500, 400, 50, 100);
+		this.personaje.setBounds(500, 580, 50, 100);
 		this.personaje.setBackground(Color.red);
 		this.personaje.setOpaque(true);
 		this.add(personaje);

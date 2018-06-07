@@ -7,7 +7,7 @@ public class Prota implements Runnable {
 	private Thread hilo;
 	private PlataformaView ventana;
 	private JLabel prota;
-	private final int GRAVITY = 10;
+	private final int GRAVITY = 2;
 	private int yVel, xVel, suelo, salto;
 	private boolean enElAire;
 	
@@ -28,10 +28,10 @@ public class Prota implements Runnable {
 	@Override
 	public void run() {
 		while (true) {//680
-			while (this.enElAire && salto < 60) { // Parte que controla la altura del salto
+			while (this.enElAire && salto < 270) { // Parte que controla la altura del salto
 				this.prota.setLocation(this.prota.getX()+this.xVel, this.prota.getY()-this.yVel);
 				try {
-					Thread.sleep(20);
+					Thread.sleep(4);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class Prota implements Runnable {
 			}
 			
 			 
-			if (this.prota.getY()+this.prota.getHeight() >= suelo && this.enElAire) { //Metodo que aterriza
+			if (this.prota.getY()+this.prota.getHeight() == suelo && this.enElAire) { //Metodo que aterriza
 				this.enElAire = false;
 				salto = 0;
 			}
@@ -59,11 +59,17 @@ public class Prota implements Runnable {
 			
 			if (this.prota.getY()+this.prota.getHeight() < suelo) { // Metodo que aplica la gravedad
 				this.prota.setLocation(this.prota.getX()+this.xVel, this.prota.getY()+GRAVITY);
+				if (this.prota.getY()+this.prota.getHeight() > suelo) {
+					this.prota.setLocation(this.prota.getX(), suelo-this.prota.getHeight());
+					System.out.println("hola");
+					System.out.println(suelo);
+				}
 			} else { // o que aplica solo el movimiento de izq a der
 				this.prota.setLocation(this.prota.getX()+this.xVel, this.prota.getY());
 			}
+			
 			try {
-				Thread.sleep(20);
+				Thread.sleep(4);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
